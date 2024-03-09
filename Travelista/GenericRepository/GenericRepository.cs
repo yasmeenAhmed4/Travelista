@@ -23,7 +23,8 @@ namespace Travelista.GenericRepository
         {
             return _set.Where(Expression) as IQueryable<TEntity>;
         }
-        public TEntity GetById(int id)
+
+		public TEntity GetById(int id)
         {
             return _set.Find(id);
         }

@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
+using Travelista.GenericRepository;
+using Travelista.Models;
 
 namespace Travelista
 {
@@ -27,9 +30,9 @@ namespace Travelista
            
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<IGenericRepository<TripType>, GenericRepository<TripType>>();
 
-			
-			var app = builder.Build();
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
@@ -49,6 +52,12 @@ namespace Travelista
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
+
+
+			app.MapAreaControllerRoute(
+			name: "Admin",
+			areaName: "Admin",
+			pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
 
 			app.MapControllerRoute(
 				name: "default",

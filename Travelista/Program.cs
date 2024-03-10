@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.GenericRepository;
+using Travelista.Helpers;
 
 namespace Travelista
 {
@@ -18,7 +19,8 @@ namespace Travelista
 			builder.Services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(connectionString));
 			builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
+			//Adding data to database once it's created
+			//SeedData.Seed();
 			builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 

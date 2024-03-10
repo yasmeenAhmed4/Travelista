@@ -31,6 +31,35 @@
 	<link rel="stylesheet" href="css/animate.min.css">
 	<link rel="stylesheet" href="css/owl.carousel.css">
 	<link rel="stylesheet" href="css/main.css">
+	<style>
+		.book{
+			width: 200px;
+			height: 40px;
+			background-color: #1B1212;
+			border-radius: 1px;
+			color: white;
+			text-align: center;
+			padding-top: 10px;
+		}
+		.book:hover{
+			transform:scale(1.2);
+		}
+		.wishlist{
+			position:absolute;
+			top:70px;
+			left:650px;
+			color:white;
+			outline:red;
+			font-size:xx-large;
+		}
+		.wishlist:hover{
+			color: red;
+			transform: scale(1.5);
+		}
+		.whishlist:visited{
+			color:red;
+		}
+	</style>
 </head>
 <body>
 	<!-- start banner Area -->
@@ -54,8 +83,11 @@
 				<div class="col-lg-8 posts-list">
 					<div class="single-post row">
 						<div class="col-lg-12">
-							<div class="feature-img">
-								<img class="img-fluid" src="~/images/@Model.Name 1.jpg" alt="">
+							<div class="feature-img" style="position:relative">
+								<a href="#" class="wishlist">
+									<i class="fa fa-heart"></i>
+								</a>
+								<img class="img-fluid" src="~/images/@Model.Images[0].ImageURL" alt="first  image">
 							</div>
 						</div>
 						<div class="col-lg-3  col-md-3 meta-details">
@@ -83,15 +115,26 @@
 							</p>
 						</div>
 						<div class="col-lg-12">
-							<div class="quotes">
+							<div class="quotes" style="display:flex;align-items:center;justify-content:center;">
 								
+								@if (Model.IsAvailable())
+								{
+									<h4 style="width:120px;height:40px;background-color:limegreen;border-radius:10px;color:white;text-align:center;padding-top:10px;">Available</h4>
+								}
+								else
+								{
+									<h4 style="width:120px;height:40px;background-color:red;border-radius:10px;color:white;text-align:center;padding-top:10px;">UnAvailable</h4>
+								}
+
+
+
 							</div>
 							<div class="row mt-30 mb-30">
 								<div class="col-6">
-									<img class="img-fluid" src="~/images/@Model.Name 2.jpg" alt="">
+									<img class="img-fluid" src="~/images/@Model.Images[1].ImageURL" alt="">
 								</div>
 								<div class="col-6">
-									<img class="img-fluid" src="~/images/@Model.Name 3.jpg" alt="">
+									<img class="img-fluid" src="~/images/@Model.Images[2].ImageURL" alt="">
 								</div>
 								<div class="col-lg-12 mt-30">
 									<p>
@@ -102,29 +145,53 @@
 							</div>
 						</div>
 					</div>
-					<div class="comment-form">
-						<h4>Leave a Message</h4>
-						<form>
-							<div class="form-group form-inline">
-								<div class="form-group col-lg-6 col-md-12 name">
-									<input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-								</div>
-								<div class="form-group col-lg-6 col-md-12 email">
-									<input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+					<div class="comments-area">
+						<h4>Reviews</h4>
+						@foreach (var item in ViewBag.Reviews)
+						{
+							<div class="comment-list">
+								<div class="single-comment justify-content-between d-flex">
+									<div class="user justify-content-between d-flex">
+										<div class="thumb">
+											<img src="~/img/blog/user.png" alt="reviewerimg" width="100px" height="100" style="border-radius:50%;">
+										</div>
+										<div class="desc">
+											<h5><a href="#">@item.Username</a></h5>
+											<p class="date">@item.Email </p>
+											<p class="comment">
+												@item.Message
+											</p>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+						}
+					</div>
+					<div class="comment-form">
+						<h4>Leave a Review</h4>
+						<form asp-action="CreateReview" asp-route-id="@Model.Id">
+							<div class="form-group form-inline">
+								<div class="form-group col-lg-6 col-md-12 name">
+									<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+								</div>
+								<div class="form-group col-lg-6 col-md-12 email">
+									<input type="email" class="form-control" name="email" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+								</div>
 							</div>
 							<div class="form-group">
 								<textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
 							</div>
-							<a href="#" class="primary-btn text-uppercase" onclick="reset()">Post Message</a>
+							<input type="submit" class="primary-btn text-uppercase" value="Post a Review"/>
 						</form>
 					</div>
 				</div>
 				<div class="col-lg-4 sidebar-widgets">
 					<div class="widget-wrap">
+						<div class="single-sidebar-widget user-info-widget search-widget popular-post-widget">
+							<div style="display:flex;align-items:center;justify-content:center;">
+								<a href="#"><h5 class="book">Book for $ @Model.Cost</h5></a>
+							</div>
+						</div>
 						<div class="single-sidebar-widget user-info-widget search-widget popular-post-widget">
 							<p>
 								visit our pages on social media to discover a virtual journey filled with vibrant and awe-inspiring content.
@@ -136,7 +203,6 @@
 								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>	
 							</ul>
-							<a href="#"><h4 class="popular-title">Book Your Trip for $ @Model.Cost</h4></a>
 						</div>
 						<div class="single-sidebar-widget popular-post-widget">
 							<h4 class="popular-title">Popular Trips</h4>
@@ -145,7 +211,7 @@
 								{
 									<div class="single-post-list d-flex flex-row al+ign-items-center">
 									<div class="thumb">
-											<img class="img-fluid" src="~/images/@item.Name 1.jpg" alt="">
+											<img class="img-fluid" src="~/images/@item.Images[0].ImageURL" alt="">
 									</div>
 									<div class="details">
 										<a href="/Trip/Details/@item.Id"><h6>@item.Name</h6></a>
@@ -170,24 +236,12 @@
 
 
 	<script>
-		function reset()
-		{
-			document.forms[0].reset();
-		}
+			document.forms[0].onsubmit = function(){
+				setTimeout(function () {
+				document.forms[0].reset();
+				} , 1000)
+			};
 	</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.min.js"></script>

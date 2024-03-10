@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Travelista.Data;
 
@@ -11,9 +12,11 @@ using Travelista.Data;
 namespace Travelista.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240310010110_addingsingletripreviewtable")]
+    partial class addingsingletripreviewtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -529,7 +532,7 @@ namespace Travelista.Data.Migrations
             modelBuilder.Entity("Travelista.Models.TripReView", b =>
                 {
                     b.HasOne("Travelista.Models.Trip", "Trip")
-                        .WithMany("TripReviews")
+                        .WithMany()
                         .HasForeignKey("TripId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -564,8 +567,6 @@ namespace Travelista.Data.Migrations
             modelBuilder.Entity("Travelista.Models.Trip", b =>
                 {
                     b.Navigation("Images");
-
-                    b.Navigation("TripReviews");
                 });
 
             modelBuilder.Entity("Travelista.Models.TripType", b =>

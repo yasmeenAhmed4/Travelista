@@ -12,6 +12,20 @@ namespace Travelista.Data
 		{
 		}
 
+		public ApplicationDbContext()
+		{
+		}
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			IConfigurationRoot configuration = new ConfigurationBuilder()
+			.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+			.AddJsonFile("appsettings.json")
+			.Build();
+			optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+
+		}
+
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);
@@ -23,6 +37,7 @@ namespace Travelista.Data
 		public DbSet<Image> Images { get; set; }
 		public DbSet<Country> Countries { get; set; }
 		public DbSet<Booking> Bookings { get; set; }
+		public DbSet<TripReView> TripReview { get; set; }
 
 	}
 }

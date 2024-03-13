@@ -15,8 +15,6 @@ namespace Travelista.Controllers
 {
     public class TripsController : Controller
     {
-        private readonly ApplicationDbContext _context;
-
         private readonly IGenericRepository<Trip> _tripsRepo;
         private readonly IGenericRepository<Country> _countryRepo;
         private readonly IGenericRepository<TripType> _TripTypeRepo;

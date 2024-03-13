@@ -26,7 +26,7 @@ function generatePagination()
     {
         paginationHtml += '<li class="page-item"><a href="#" class="page-link prev" style="font-size: 25px;">Previous</a></li>';
     }
-
+               
     for (var i = startRange; i <= endRange; i++)
     {
         paginationHtml += '<li class="page-item"><a href="#" class="page-link page-number'  + '" style="font-size: 25px;">' + i + '</a></li>';

@@ -1,0 +1,11 @@
+﻿@model Travelista.Models.Country
+
+
+
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input type="text" class="form-control" asp-for="Name">
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<button type="submit" class="btn btn-primary mr-2">Submit</button>

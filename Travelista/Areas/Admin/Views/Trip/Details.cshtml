@@ -1,0 +1,147 @@
+﻿@model Travelista.Models.Trip
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Trip Details</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Name:</strong> @Model.Name</p>
+                                <p><strong>Cost:</strong> @Model.Cost</p>
+                                <p><strong>Duration:</strong> @Model.Duration</p>
+                                <p><strong>Capacity:</strong> @Model.Capacity</p>
+                                <p><strong>Type:</strong> @Model.TripType.Name</p>
+                                <p><strong>Country:</strong> @Model.Country.Name</p>
+                                <p><strong>Description:</strong> @Model.Description</p>
+                                <p><strong>Program:</strong> @Model.Program</p>
+                                
+                            </div>
+                            
+                            <div id="imageData" style="display:none;">@Html.Raw(Json.Serialize(Model.Images.Select(i => i.ImageURL)))</div>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="imagesCardBody" class= "col-md-12">
+                            <!-- Images will be rendered here -->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    <button id="toggleImagesBtn" type="button" class="btn btn-primary btn-sm">View Images</button>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal"> Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this trip?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <!-- Actual delete button -->
+                <a asp-action="Delete" asp-route-id="@Model.Id" id="deleteTripBtn" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="noImagesModal" tabindex="-1" role="dialog" aria-labelledby="noImagesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="noImagesModalLabel">No Images Found</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                There are no images associated with this trip.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var imagesShown = false;
+
+            $('#toggleImagesBtn').click(function () {
+                if (!imagesShown) {
+                    var imageUrls = JSON.parse(document.getElementById('imageData').textContent);
+                    if (imageUrls.length > 0) {
+                        var imagesHtml = '';
+                        var path;
+                        var numRows = Math.ceil(imageUrls.length / 3); // Calculate the number of rows needed
+                        if (imageUrls.length < 3)
+                        {
+                            newRows = 1;
+                        }
+                       
+                        for (var i = 0; i < numRows; i++) {
+                            imagesHtml += '<div class="row">';
+                            for (var j = i * 3; j < Math.min((i + 1) * 3, imageUrls.length); j++) {
+                                path = '/assets/images/' + imageUrls[j];
+                                imagesHtml += '<div class="col-md-4 mb-3">';
+                                imagesHtml += '<div class="card">';
+                                imagesHtml += `<img src="${path}" alt="Trip Image" class="card-img-top" style="height: 200px;">`;
+                                imagesHtml += '</div>';
+                                imagesHtml += '</div>';
+                            }
+                            imagesHtml += '</div>'; // Close the row
+                        }
+                        $('#imagesCardBody').html(imagesHtml);
+                        imagesShown = true;
+                        $('#toggleImagesBtn').text('Hide Images');
+                    } else {
+                        $('#noImagesModal').modal('show');
+                    }
+                } else {
+                    $('#imagesCardBody').html('');
+                    imagesShown = false;
+                    $('#toggleImagesBtn').text('View Images');
+                }
+            });
+        });
+    </script>
+}
+
+
+
+
+
+

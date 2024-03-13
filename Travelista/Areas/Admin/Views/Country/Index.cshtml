@@ -1,0 +1,95 @@
+﻿@model List<Country>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Connect Plus</title>
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
+    <!-- DataTables Buttons Extension CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.0.0/css/buttons.dataTables.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+    <!-- DataTables Buttons Extension JavaScript -->
+    <script src="https://cdn.datatables.net/buttons/3.0.0/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.dataTables.js"></script>
+    <!-- PDFMake -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <!-- DataTables Buttons PDF Export -->
+    <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.html5.min.js"></script>
+
+
+
+</head>
+<body>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <a class="btn btn-primary btn-fw" asp-action="Create" asp-controller="Country" asp-area="Admin"> Add Country </a>
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="example" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td><a asp-action="Edit" asp-area="Admin" asp-route-id="@item.Id" asp-controller="Country" class="btn btn-success"> Edit </a></td>
+                                            <td>
+                                                <a asp-controller="Country" asp-action="Delete" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-danger"> Delete </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        new DataTable('#example', {
+            layout: {
+                topStart: {
+                    buttons: [
+                        {
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            exportOptions: {
+                                columns: [0]
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

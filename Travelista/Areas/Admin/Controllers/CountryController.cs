@@ -1,29 +1,26 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Travelista.GenericRepository;
 using Travelista.Models;
-using Travelista.Data;
 
 namespace Travelista.Areas.Admin.Controllers
 {
-    public class TripTypesController : Controller
+    public class CountryController : Controller
     {
+        private readonly IGenericRepository<Country> _countryRepository;
 
-        private readonly IGenericRepository<TripType> _tripTypeRepository;
-
-        public TripTypesController(IGenericRepository<TripType> tripTypeRepository)
+        public CountryController(IGenericRepository<Country> countryRepository)
         {
-            _tripTypeRepository = tripTypeRepository;
+            _countryRepository = countryRepository;
         }
 
 
         [Area("Admin")]
         public ActionResult Index()
         {
-            return View(_tripTypeRepository.GetAll().ToList());
+            return View(_countryRepository.GetAll().ToList());
         }
 
-        
+       
         //public ActionResult Details(int id)
         //{
         //    return View();
@@ -36,14 +33,14 @@ namespace Travelista.Areas.Admin.Controllers
             return View();
         }
 
-       
+
         [HttpPost]
         [Area("Admin")]
-        public ActionResult Create(TripType type)
+        public ActionResult Create(Country country)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                _tripTypeRepository.Create(type);
+                _countryRepository.Create(country);
                 return RedirectToAction("Index");
             }
             else
@@ -55,30 +52,30 @@ namespace Travelista.Areas.Admin.Controllers
         [Area("Admin")]
         public ActionResult Edit(int id)
         {
-            return View(_tripTypeRepository.GetById(id));
+            return View(_countryRepository.GetById(id));
         }
 
-        
+
         [HttpPost]
         [Area("Admin")]
-        public ActionResult Edit(TripType type)
+        public ActionResult Edit(Country country)
         {
             if (ModelState.IsValid)
             {
-                _tripTypeRepository.Update(type);
+                _countryRepository.Update(country);
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(type);
+                return View(country);
             }
         }
 
-         [Area("Admin")]
+        [Area("Admin")]
         public ActionResult Delete(int id)
         {
-            var type = _tripTypeRepository.GetById(id);
-            _tripTypeRepository.Delete(type);
+            var type = _countryRepository.GetById(id);
+            _countryRepository.Delete(type);
             return RedirectToAction("Index");
         }
     }

@@ -13489,7 +13489,7 @@ dl {
   background: #181824;
   font-family: "nunito-medium", sans-serif;
   padding: 0;
-  width: 258px;
+  width: 271px;  /*258px*/
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -14288,4 +14288,22 @@ dl {
     margin: auto 0;
     color: #b1b1b1; }
 
-/*# sourceMappingURL=style.css.map */
+main {
+    position: absolute;
+    left: 245px;  
+    top: 59px;  
+    width: 100%; 
+    height: 100%; 
+   /* overflow-y: auto; */ 
+    padding: 20px;  
+    box-sizing: border-box;   
+}
+.btnLf
+{
+    position:relative;
+    left:590px;
+}
+
+
+
+

@@ -31,6 +31,9 @@ namespace Travelista
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IGenericRepository<TripType>, GenericRepository<TripType>>();
+            builder.Services.AddScoped<IGenericRepository<Country>, GenericRepository<Country>>();
+            builder.Services.AddScoped<IGenericRepository<Image>, GenericRepository<Image>>();
+            builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
 
             var app = builder.Build();
 

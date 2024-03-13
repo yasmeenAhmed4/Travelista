@@ -53,6 +53,8 @@ namespace Travelista.Models
 
 		public virtual TripType? TripType { get; set; }
 
+		public virtual List<TripReView> TripReviews { get; set; } = new List<TripReView>();
+
 		public bool IsAvailable()
 		{
 			if (Capacity > 0) return true;

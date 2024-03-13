@@ -136,9 +136,12 @@
 						<li><a asp-area="" asp-controller="Contact" asp-action="SendMessage">Contact</a></li>
 						<li><a href="packages.html">Packages</a></li>
 																	
+						<li><a href="about.html">About</a></li>
+						<li><a asp-area="" asp-controller="Trips" asp-action="Index">Trips</a></li>
+
+						<li><a href="hotels.html">Hotels</a></li>
 						<partial name="_LoginPartial" />
-					</ul>
-				</nav><!-- #nav-menu-container -->
+					</ul>				</nav><!-- #nav-menu-container -->
 			</div>
 		</div>
 	</header><!-- #header -->
@@ -260,5 +263,6 @@
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script> *@
 	@await RenderSectionAsync("Scripts", required: false)
+	@await RenderSectionAsync("Styles", required: false)
 </body>
 </html>

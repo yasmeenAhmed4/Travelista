@@ -5,6 +5,9 @@ using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Models;
+using Travelista.Helpers;
+using Travelista.Models;
+using Travelista.PayPalModels;
 
 namespace Travelista
 {
@@ -20,6 +23,9 @@ namespace Travelista
 				options.UseSqlServer(connectionString));
 			builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+			//Adding data to database once it's created
+			//SeedData.Seed();
+
 			builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -33,8 +39,16 @@ namespace Travelista
 			builder.Services.AddScoped<IGenericRepository<Wishlist>, GenericRepository<Wishlist>>();
 
 			builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 
+            builder.Services.AddControllersWithViews();
+
+			builder.Services.AddSingleton(x =>
+			new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,
+			builder.Configuration["PayPalOptions:ClientSecret"],
+			builder.Configuration["PayPalOptions:Mode"])
+			);
 			
 			var app = builder.Build();
 

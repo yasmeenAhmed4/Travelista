@@ -26,6 +26,11 @@
     <span asp-validation-for="Capacity" class="text-danger"></span>
 </div>
 <div class="form-group">
+    <label asp-for="StartDate"></label>
+    <input class="form-control" asp-for="StartDate">
+    <span asp-validation-for="StartDate" class="text-danger"></span>
+</div>
+<div class="form-group">
     <label>Type</label>
     <select class="form-control" asp-for="TripTypeID" asp-items="@types">
     </select>

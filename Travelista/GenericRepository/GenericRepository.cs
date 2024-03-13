@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using Travelista.Data;
 
 namespace Travelista.GenericRepository
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity>
-    where TEntity : class
-
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         public ApplicationDbContext _context;
         public DbSet<TEntity> _set;
@@ -19,11 +18,13 @@ namespace Travelista.GenericRepository
         {
             return _set;
         }
+
         public IQueryable<TEntity> GetAll(Func<TEntity, bool> Expression)
         {
             return _set.Where(Expression) as IQueryable<TEntity>;
         }
-        public TEntity GetById(int id)
+
+		public TEntity GetById(int id)
         {
             return _set.Find(id);
         }
@@ -48,16 +49,30 @@ namespace Travelista.GenericRepository
 
         }
 
-        public IQueryable<TEntity> GetAll(Func<TEntity> Expression)
-        {
-            throw new NotImplementedException();
-        }
-        public bool AddRange(List<TEntity> entities)
+        
+		public bool AddRange(List<TEntity> entities)
         {
             _set.AddRange(entities);
             return _context.SaveChanges() > 0;
 
         }
 
-    }
+
+        public IQueryable<TEntity> GetAllWithInclude(List<Expression<Func<TEntity, bool>>> predicates, params Expression<Func<TEntity, object>>[] includes)
+        {
+            IQueryable<TEntity> query = _set;
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            foreach (var predicate in predicates)
+            {
+                query = query.Where(predicate);
+            }
+            return query;
+        }
+
+
+	}
 }
+

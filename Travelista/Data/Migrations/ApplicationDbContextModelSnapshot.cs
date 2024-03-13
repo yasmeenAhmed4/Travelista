@@ -183,11 +183,15 @@ namespace Travelista.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("DefaultFirstName");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("DefaultLastName");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -265,6 +269,35 @@ namespace Travelista.Data.Migrations
                     b.ToTable("Bookings");
                 });
 
+            modelBuilder.Entity("Travelista.Models.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageContent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("Travelista.Models.Country", b =>
                 {
                     b.Property<int>("Id")
@@ -325,8 +358,14 @@ namespace Travelista.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Discount")
+                        .HasColumnType("float");
+
                     b.Property<int>("Duration")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsTrend")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -352,6 +391,36 @@ namespace Travelista.Data.Migrations
                     b.ToTable("Trips");
                 });
 
+            modelBuilder.Entity("Travelista.Models.TripReView", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TripId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TripId");
+
+                    b.ToTable("TripReview");
+                });
+
             modelBuilder.Entity("Travelista.Models.TripType", b =>
                 {
                     b.Property<int>("Id")
@@ -369,7 +438,7 @@ namespace Travelista.Data.Migrations
                     b.ToTable("TripTypes");
                 });
 
-            modelBuilder.Entity("Travelista.Models.Wishlist", b =>
+            modelBuilder.Entity("Travelista.Models.WishlistItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -393,7 +462,7 @@ namespace Travelista.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Wishlists");
+                    b.ToTable("WishlistItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -496,7 +565,18 @@ namespace Travelista.Data.Migrations
                     b.Navigation("TripType");
                 });
 
-            modelBuilder.Entity("Travelista.Models.Wishlist", b =>
+            modelBuilder.Entity("Travelista.Models.TripReView", b =>
+                {
+                    b.HasOne("Travelista.Models.Trip", "Trip")
+                        .WithMany("TripReviews")
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Trip");
+                });
+
+            modelBuilder.Entity("Travelista.Models.WishlistItem", b =>
                 {
                     b.HasOne("Travelista.Models.Trip", "Trip")
                         .WithMany()
@@ -523,6 +603,8 @@ namespace Travelista.Data.Migrations
             modelBuilder.Entity("Travelista.Models.Trip", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("TripReviews");
                 });
 
             modelBuilder.Entity("Travelista.Models.TripType", b =>

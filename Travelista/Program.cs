@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.PayPalModels;
+
 
 namespace Travelista
 {
@@ -28,9 +31,27 @@ namespace Travelista
 			
 			builder.Services.AddControllersWithViews();
 
+			//builder.Services.AddScoped<UserManager<ApplicationUser>>();
+			//builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+
+			builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
+
+			builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
+
+			builder.Services.AddScoped<IGenericRepository<Wishlist>, GenericRepository<Wishlist>>();
+
+			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             builder.Services.AddControllersWithViews();
+
+
+            builder.Services.AddScoped<IGenericRepository<TripType>, GenericRepository<TripType>>();
+            builder.Services.AddScoped<IGenericRepository<Country>, GenericRepository<Country>>();
+            builder.Services.AddScoped<IGenericRepository<Image>, GenericRepository<Image>>();
+            builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
+
+            var app = builder.Build();
 
 			builder.Services.AddSingleton(x =>
 			new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,
@@ -39,6 +60,7 @@ namespace Travelista
 			);
 			
 			var app = builder.Build();
+
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
@@ -58,6 +80,12 @@ namespace Travelista
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
+
+
+			app.MapAreaControllerRoute(
+			name: "Admin",
+			areaName: "Admin",
+			pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
 
 			app.MapControllerRoute(
 				name: "default",

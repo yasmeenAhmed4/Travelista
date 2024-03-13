@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore;
+@using Travelista.Areas.Identity.Data;
+@using Travelista.Data
+@using Travelista.Models;
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	@* <meta charset="utf-8" />
@@ -32,11 +39,59 @@
 	<link rel="stylesheet" href="~/css/animate.min.css">
 	<link rel="stylesheet" href="~/css/owl.carousel.css">
 	<link rel="stylesheet" href="~/css/main.css">
-
+    
 	@* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
 	@* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
 	@* <link rel="stylesheet" href="~/Travelista.styles.css" asp-append-version="true" /> *@
+	<style>
+		/*Header Middle Wishlist*/
+		.hm-wishlist {
+			float: left;
+			margin-right: 25px;
+			position: relative;
+			margin-top: -11px;
+		}
 
+		.hm-wishlist > a {
+			border: 1px solid #e1e1e1;
+			font-size: 20px;
+			color: #242424;
+			width: 45px;
+			text-align: center;
+			height: 45px;
+			line-height: 45px;
+			display: block;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.hm-wishlist > a:hover {
+			border-color: #fed700;
+			color: #fed700;
+		}
+
+		.cart-item-count {
+			position: absolute;
+			top: -25px;
+			left: -60px;
+			display: block;
+			overflow: hidden;
+			min-width: 26px;
+			line-height: 26px;
+			font-size: 12px;
+			font-weight: 400;
+			color: #242424;
+			background: #fed700;
+			text-align: center;
+			border-radius: 100%;
+		}
+
+		.wishlist-item-count {
+			top: -10px;
+			left: -10px;
+		}
+
+		
+	</style>
 </head>
 <body>
 	@* <header>
@@ -70,7 +125,17 @@
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
+						<li class="hm-wishlist">
+							<a asp-area="" asp-controller="Wishlist" asp-action="Index">
+								<span class="cart-item-count wishlist-item-count">0</span>
+								<i style="color: #fed700;" class="fa fa-heart"></i>
+							</a>
+						</li>
+
 						<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+						<li><a asp-area="" asp-controller="Contact" asp-action="SendMessage">Contact</a></li>
+						<li><a href="packages.html">Packages</a></li>
+																	
 						<li><a href="about.html">About</a></li>
 						<li><a asp-area="" asp-controller="Trips" asp-action="Index">Trips</a></li>
 
@@ -193,7 +258,6 @@
 	<script src="~/js/owl.carousel.min.js"></script>
 	<script src="~/js/mail-script.js"></script>
 	<script src="~/js/main.js"></script>
-
 
 	@* <script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

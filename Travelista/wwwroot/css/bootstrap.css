@@ -6880,7 +6880,7 @@ button.bg-dark:focus {
 }
 
 @media (min-width: 576px) {
-  .m-sm-0 {
+    .m-sm-0 {
     margin: 0 !important;
   }
   .mt-sm-0,

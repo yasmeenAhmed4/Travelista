@@ -28,12 +28,17 @@ namespace Travelista.Data
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
-			base.OnModelCreating(builder);
+            builder.Entity<ApplicationUser>(entity =>
+            {
+                entity.Property(e => e.FirstName).HasDefaultValue("DefaultFirstName");
+                entity.Property(e => e.LastName).HasDefaultValue("DefaultLastName");
+            });
+            base.OnModelCreating(builder);
 		}
 
 		public DbSet<Trip> Trips { get; set; }
 		public DbSet<TripType> TripTypes { get; set; }
-		public DbSet<Wishlist> Wishlists { get; set; }
+		public DbSet<WishlistItem> WishlistItems { get; set; }
 		public DbSet<Image> Images { get; set; }
 		public DbSet<Country> Countries { get; set; }
 		public DbSet<Booking> Bookings { get; set; }

@@ -33,13 +33,20 @@
 	<link rel="stylesheet" href="css/main.css">
 	<style>
 		.book{
-			width: 200px;
-			height: 40px;
 			background-color: #1B1212;
 			border-radius: 1px;
 			color: white;
 			text-align: center;
 			padding-top: 10px;
+			
+			
+		}
+		.book span{
+				display : inline-block;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				border: 1px solid grey;
 		}
 		.book:hover{
 			transform:scale(1.2);
@@ -84,7 +91,7 @@
 					<div class="single-post row">
 						<div class="col-lg-12">
 							<div class="feature-img" style="position:relative">
-								<a href="#" class="wishlist">
+								<a href="/WishList/AddToWishList/@Model.Id" class="wishlist">
 									<i class="fa fa-heart"></i>
 								</a>
 								<img class="img-fluid" src="~/images/@Model.Images[0].ImageURL" alt="first  image">
@@ -125,9 +132,6 @@
 								{
 									<h4 style="width:120px;height:40px;background-color:red;border-radius:10px;color:white;text-align:center;padding-top:10px;">UnAvailable</h4>
 								}
-
-
-
 							</div>
 							<div class="row mt-30 mb-30">
 								<div class="col-6">
@@ -145,6 +149,24 @@
 							</div>
 						</div>
 					</div>
+					<div class="comment-form">
+						<h4>Leave a Review</h4>
+						<form asp-action="CreateReview" asp-route-id="@Model.Id">
+							<div class="form-group form-inline">
+								<div class="form-group col-lg-6 col-md-12 name">
+									<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+								</div>
+								<div class="form-group col-lg-6 col-md-12 email">
+									<input type="email" class="form-control" name="email" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+								</div>
+							</div>
+							<div class="form-group">
+								<textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+							</div>
+							<input type="submit" class="primary-btn text-uppercase" value="Post a Review" />
+						</form>
+					</div>
+
 					<div class="comments-area">
 						<h4>Reviews</h4>
 						@foreach (var item in ViewBag.Reviews)
@@ -167,29 +189,13 @@
 							</div>
 						}
 					</div>
-					<div class="comment-form">
-						<h4>Leave a Review</h4>
-						<form asp-action="CreateReview" asp-route-id="@Model.Id">
-							<div class="form-group form-inline">
-								<div class="form-group col-lg-6 col-md-12 name">
-									<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-								</div>
-								<div class="form-group col-lg-6 col-md-12 email">
-									<input type="email" class="form-control" name="email" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-								</div>
-							</div>
-							<div class="form-group">
-								<textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-							</div>
-							<input type="submit" class="primary-btn text-uppercase" value="Post a Review"/>
-						</form>
-					</div>
+					
 				</div>
 				<div class="col-lg-4 sidebar-widgets">
 					<div class="widget-wrap">
 						<div class="single-sidebar-widget user-info-widget search-widget popular-post-widget">
-							<div style="display:flex;align-items:center;justify-content:center;">
-								<a href="#"><h5 class="book">Book for $ @Model.Cost</h5></a>
+							<div class="button-group-area mt-10">
+								<a href="/Booking/CheckOut/@Model.Id" class="genric-btn primary-border e-large">Book For $@Model.Cost</a>
 							</div>
 						</div>
 						<div class="single-sidebar-widget user-info-widget search-widget popular-post-widget">

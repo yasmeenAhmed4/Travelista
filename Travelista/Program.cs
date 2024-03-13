@@ -5,6 +5,8 @@ using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Helpers;
+using Travelista.Models;
+using Travelista.PayPalModels;
 
 namespace Travelista
 {
@@ -29,7 +31,11 @@ namespace Travelista
 
             builder.Services.AddControllersWithViews();
 
-
+			builder.Services.AddSingleton(x =>
+			new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,
+			builder.Configuration["PayPalOptions:ClientSecret"],
+			builder.Configuration["PayPalOptions:Mode"])
+			);
 			
 			var app = builder.Build();
 

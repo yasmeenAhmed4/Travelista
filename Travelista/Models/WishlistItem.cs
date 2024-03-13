@@ -4,7 +4,7 @@ using Travelista.Areas.Identity.Data;
 
 namespace Travelista.Models
 {
-	public class Wishlist
+	public class WishlistItem
 	{
 		[Key]
 		public int Id { get; set; }

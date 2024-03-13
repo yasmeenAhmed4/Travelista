@@ -1,10 +1,7 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.GenericRepository;
-using Travelista.Helpers;
 using Travelista.Models;
 using Travelista.PayPalModels;
 
@@ -26,10 +23,12 @@ namespace Travelista
 			//SeedData.Seed();
 
 			builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+				.AddEntityFrameworkStores<ApplicationDbContext>();			
+
+			
+			builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
 
             builder.Services.AddControllersWithViews();
 

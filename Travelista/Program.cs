@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
+using Travelista.GenericRepository;
+using Travelista.Models;
 
 namespace Travelista
 {
@@ -21,11 +23,16 @@ namespace Travelista
 			builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 
-            //builder.Services.AddScoped<UserManager<ApplicationUser>>();
-            //builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+			//builder.Services.AddScoped<UserManager<ApplicationUser>>();
+			//builder.Services.AddScoped<SignInManager<ApplicationUser>>();
 
-           
-            builder.Services.AddControllersWithViews();
+			builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
+
+			builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
+
+			builder.Services.AddScoped<IGenericRepository<Wishlist>, GenericRepository<Wishlist>>();
+
+			builder.Services.AddControllersWithViews();
 
 
 			

@@ -1,4 +1,11 @@
-﻿<!-- start banner Area -->
+﻿
+@model List<Trip>
+@{
+	var AllDisountedTrips = (List<Trip>)ViewBag.AllDiscountedTrip;
+}
+
+
+<!-- start banner Area -->
 <section class="banner-area relative">
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
@@ -15,153 +22,141 @@
 	</div>
 </section>
 <!-- End banner Area -->
+
+<div class="video" style="position:relative;left:50%;transform:translateX(-50%);text-align: center;">
+	<video width="1000" height="700" autoplay muted  loop controls>
+		<source src="~/img/DiscoverEgypt.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+</video>
+
+	<a class="genric-btn primary text-uppercase" style="padding:20px" asp-controller="" asp-action=""><h1>Discover Egypt</h1></a>
+</div>
+@* Disounted Trip *@
+
 <!-- Start blog Area -->
 <section class="recent-blog-area section-gap">
 	<div class="container">
+
 		<div class="row d-flex justify-content-center">
 			<div class="menu-content pb-60 col-lg-9">
 				<div class="title text-center">
-					<h1 class="mb-10">Latest from Our Blog</h1>
-					<p>With the exception of Nietzsche, no other madman has contributed so much to human sanity as has.</p>
+					<h1 class="mb-10">Explore Our Offers</h1>
+					@* <p>With the exception of Nietzsche, no other madman has contributed so much to human sanity as has.</p> *@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="active-recent-blog-carusel">
-				<div class="single-recent-blog-post item">
-					<div class="thumb">
-						<img class="img-fluid" src="img/b1.jpg" alt="">
-					</div>
-					<div class="details">
-						<div class="tags">
-							<ul>
-								<li>
-									<a href="#">Travel</a>
-								</li>
-								<li>
-									<a href="#">Life Style</a>
-								</li>
-							</ul>
-						</div>
-						<a href="#"><h4 class="title">Low Cost Advertising</h4></a>
-						<p>
-							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.
-						</p>
-						<h6 class="date">31st January,2018</h6>
-					</div>
-				</div>
-				<div class="single-recent-blog-post item">
-					<div class="thumb">
-						<img class="img-fluid" src="img/b2.jpg" alt="">
-					</div>
-					<div class="details">
-						<div class="tags">
-							<ul>
-								<li>
-									<a href="#">Travel</a>
-								</li>
-								<li>
-									<a href="#">Life Style</a>
-								</li>
-							</ul>
-						</div>
-						<a href="#"><h4 class="title">Creative Outdoor Ads</h4></a>
-						<p>
-							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.
-						</p>
-						<h6 class="date">31st January,2018</h6>
-					</div>
-				</div>
-				<div class="single-recent-blog-post item">
-					<div class="thumb">
-						<img class="img-fluid" src="img/b3.jpg" alt="">
-					</div>
-					<div class="details">
-						<div class="tags">
-							<ul>
-								<li>
-									<a href="#">Travel</a>
-								</li>
-								<li>
-									<a href="#">Life Style</a>
-								</li>
-							</ul>
-						</div>
-						<a href="#"><h4 class="title">It's Classified How To Utilize Free</h4></a>
-						<p>
-							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.
-						</p>
-						<h6 class="date">31st January,2018</h6>
-					</div>
-				</div>
-				<div class="single-recent-blog-post item">
-					<div class="thumb">
-						<img class="img-fluid" src="img/b1.jpg" alt="">
-					</div>
-					<div class="details">
-						<div class="tags">
-							<ul>
-								<li>
-									<a href="#">Travel</a>
-								</li>
-								<li>
-									<a href="#">Life Style</a>
-								</li>
-							</ul>
-						</div>
-						<a href="#"><h4 class="title">Low Cost Advertising</h4></a>
-						<p>
-							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.
-						</p>
-						<h6 class="date">31st January,2018</h6>
-					</div>
-				</div>
-				<div class="single-recent-blog-post item">
-					<div class="thumb">
-						<img class="img-fluid" src="img/b2.jpg" alt="">
-					</div>
-					<div class="details">
-						<div class="tags">
-							<ul>
-								<li>
-									<a href="#">Travel</a>
-								</li>
-								<li>
-									<a href="#">Life Style</a>
-								</li>
-							</ul>
-						</div>
-						<a href="#"><h4 class="title">Creative Outdoor Ads</h4></a>
-						<p>
-							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.
-						</p>
-						<h6 class="date">31st January,2018</h6>
-					</div>
-				</div>
-				<div class="single-recent-blog-post item">
-					<div class="thumb">
-						<img class="img-fluid" src="img/b3.jpg" alt="">
-					</div>
-					<div class="details">
-						<div class="tags">
-							<ul>
-								<li>
-									<a href="#">Travel</a>
-								</li>
-								<li>
-									<a href="#">Life Style</a>
-								</li>
-							</ul>
-						</div>
-						<a href="#"><h4 class="title">It's Classified How To Utilize Free</h4></a>
-						<p>
-							Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.
-						</p>
-						<h6 class="date">31st January,2018</h6>
-					</div>
-				</div>
+		<div class="active-recent-blog-carusel">
+			@foreach (var trip in AllDisountedTrips)
+			{
+				<div class="custom-row">
 
+					<div class="single-recent-blog-post item">
+						<div class="thumb">
+							<a asp-controller="" asp-action="">
+								<img class="img-fluid" src="~/img/@trip.Images[0].ImageURL" alt="pic">
+							</a>
+						</div>
+						<div class="details">
+							<div class="tags">
+								<ul>
+									<li>
+										@trip.Country.Name
+									</li>
+									@* <li>
+								<a href="#">@trip.Name</a>
+								</li>
+								<li>
+								<a href="#">@trip.Cost</a>
+								</li> *@
+								</ul>
+							</div>
+							<a asp-controller="" asp-action=""><h4 class="title">@trip.Name</h4></a>
+
+							<h4 class="title">@trip.Cost EGP
+								<span style="display:inline-block;float:right;margin-right:50px;color:red">@trip.Discount %</span>
+							</h4>
+
+							<p>
+								@trip.Description
+							</p>
+							<h6 class="date">@trip.StartDate</h6>
+							<a class="genric-btn primary text-uppercase" style="margin:13px 20px 10px 0" asp-area="" asp-controller="" asp-action="">Book Now</a>
+							<a asp-area="" asp-controller="WishList" asp-action="AddToWishlist" asp-route-id="@trip.Id">
+								<i style="color: #fed700;font-size:25px;border: 1px solid #c7bebe;padding:7px;" class="fa fa-heart"></i>
+							</a>
+
+						</div>
+					</div>
+
+
+					@* </div> *@
+				</div>
+			}
+		</div>
+	</div>
+</section>
+<!-- End recent-blog Area -->
+
+
+
+<!-- Start blog Area -->
+<section class="recent-blog-area section-gap">
+	<div class="container">
+
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-60 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-10">Trending Trips</h1>
+					@* <p>With the exception of Nietzsche, no other madman has contributed so much to human sanity as has.</p> *@
+				</div>
 			</div>
+		</div>
+		<div class="active-recent-blog-carusel">
+		@foreach (var trip in Model)
+		{
+					<div class="custom-row">
+
+						<div class="single-recent-blog-post item">
+							<div class="thumb">
+							<a asp-controller="" asp-action="">
+								<img class="img-fluid" src="~/img/@trip.Images[0].ImageURL" alt="pic">
+							</a>
+							</div>
+							<div class="details">
+								<div class="tags">
+									<ul>
+										<li>
+											@trip.Country.Name
+										</li>
+										@* <li>
+											<a href="#">@trip.Name</a>
+										</li>
+										<li>
+											<a href="#">@trip.Cost</a>
+										</li> *@
+									</ul>
+								</div>
+							<a asp-controller="" asp-action=""><h4 class="title">@trip.Name</h4></a>
+
+								<h4 class="title">@trip.Cost EGP
+								</h4>
+
+								<p>
+									@trip.Description
+								</p>
+								<h6 class="date">@trip.StartDate</h6>
+								<a class="genric-btn primary text-uppercase" style="margin:13px 20px 10px 0" asp-area="" asp-controller="" asp-action="">Book Now</a>
+								<a asp-area="" asp-controller="WishList" asp-action="AddToWishlist" asp-route-id="@trip.Id">
+									<i style="color: #fed700;font-size:25px;border: 1px solid #c7bebe;padding:7px;" class="fa fa-heart"></i>
+								</a>
+								
+							</div>
+						</div>
+
+
+					@* </div> *@
+				</div>			
+	}
 		</div>
 	</div>
 </section>

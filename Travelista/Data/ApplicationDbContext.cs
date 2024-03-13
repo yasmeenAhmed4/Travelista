@@ -42,6 +42,7 @@ namespace Travelista.Data
 		public DbSet<Image> Images { get; set; }
 		public DbSet<Country> Countries { get; set; }
 		public DbSet<Booking> Bookings { get; set; }
+		public DbSet<Contact> Messages { get; set; }
 		public DbSet<TripReView> TripReview { get; set; }
 
 	}

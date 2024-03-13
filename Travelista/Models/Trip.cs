@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Metadata.Ecma335;
 
@@ -31,6 +32,11 @@ namespace Travelista.Models
 		[Range(1, int.MaxValue)]
 		public int Capacity { get; set; }
 
+		public bool IsTrend { get; set; }
+
+		[Range(0, 100)]
+		[DefaultValue(0.00)]
+		public double Discount { get; set; }
 		public DateTime StartDate { get; set; }
 
 		public virtual List<Image> Images { get; set; } = new List<Image>();
@@ -58,6 +64,10 @@ namespace Travelista.Models
 		public DateTime ReturnDate()
 		{
 			return StartDate.AddDays(Duration);
+		}
+		public double CostAfterDiscount()
+		{
+			return Cost * (1 - Discount / 100);
 		}
 	}
 }

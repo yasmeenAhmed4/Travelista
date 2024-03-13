@@ -1,0 +1,111 @@
+﻿@model Travelista.Models.Contact
+
+
+<section class="banner-area relative">
+	<div class=" overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					Contact Us
+				</h1>
+				<p class="text-white link-nav">
+					<a asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>
+					<a asp-controller="Contact" asp-action="SendMessage"> Contact Us</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- Start contact-page Area -->
+<section class="contact-page-area section-gap">
+	<div class="container">
+		<div class="row">
+			<div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
+			<div class="col-lg-4 d-flex flex-column address-wrap">
+				<div class="single-contact-address d-flex flex-row">
+					<div class="icon">
+						<span class="lnr lnr-home"></span>
+					</div>
+					<div class="contact-details">
+						<h5>Binghamton, New York</h5>
+						<p>
+							4343 Hinkle Deegan Lake Road
+						</p>
+					</div>
+				</div>
+				<div class="single-contact-address d-flex flex-row">
+					<div class="icon">
+						<span class="lnr lnr-phone-handset"></span>
+					</div>
+					<div class="contact-details">
+						<h5>00 (958) 9865 562</h5>
+						<p>Mon to Fri 9am to 6 pm</p>
+					</div>
+				</div>
+				<div class="single-contact-address d-flex flex-row">
+					<div class="icon">
+						<span class="lnr lnr-envelope"></span>
+					</div>
+					<div class="contact-details">
+						<h5>support@colorlib.com</h5>
+						<p>Send us your query anytime!</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<form asp-action="SendMessage" method="post">
+					<div class="row">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+						<div class="col-lg-6 form-group">
+							<input asp-for="Name" name="Name" placeholder="Enter Your Name"
+								   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Name'"
+								   class="common-input mb-20 form-control" required="" type="text">
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+						<div class=" col-lg-6 form-group">
+							<input asp-for="Email" name="email" placeholder="Enter email address"
+								   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
+								   class="common-input mb-20 form-control" required="" type="email">
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+						<div class="col-lg-6 form-group">
+							<input asp-for="Subject" name="subject"
+								   placeholder="Enter subject" onfocus="this.placeholder = ''"
+								   onblur="this.placeholder = 'Enter subject'" class="common-input mb-20 form-control"
+								   required="" type="text">
+
+							<span asp-validation-for="Subject" class="text-danger"></span>
+						</div>
+						<div class="col-lg-6 form-group">
+							<textarea asp-for="MessageContent"
+								   class="common-textarea form-control" name="MessageContent" placeholder="Enter Messege"
+									  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Messege'"
+									  required=""></textarea>
+							<span asp-validation-for="MessageContent" class="text-danger"></span>
+						</div>
+						<div class="col-lg-12 form-group">
+							<div class="alert-msg" style="text-align: left;"></div>
+							<input class="genric-btn primary" style="float: right;" type="submit" value="Send Message" />
+						</div>
+					</div>
+				</form>
+				<h3>@ViewBag.msg</h3>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<!-- End contact-page Area -->
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

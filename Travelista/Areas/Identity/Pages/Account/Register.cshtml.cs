@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
@@ -71,6 +72,21 @@ namespace Travelista.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            ////[Required(ErrorMessage = "First name is required")]
+            [StringLength(50, ErrorMessage = "First name must be between {2} and {1} characters long.", MinimumLength = 2)]
+            [RegularExpression(@"^[A-Za-z\s-]*$", ErrorMessage = "First name can only contain letters, spaces, and hyphens")]
+            public string FirstName { get; set; }
+
+            //[Required(ErrorMessage = "Last name is required")]
+            [StringLength(50, ErrorMessage = "Last name must be between {2} and {1} characters long.", MinimumLength = 2)]
+            [RegularExpression(@"^[A-Za-z\s-]*$", ErrorMessage = "Last name can only contain letters, spaces, and hyphens")]
+            public string LastName { get; set; }
+
+            [Required(ErrorMessage = "Phone number is required")]
+            [RegularExpression(@"^01\d{9}$", ErrorMessage = "Phone number must start with '01' and be 11 digits long.")]
+            public string PhoneNumber { get; set; }
+
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -113,10 +129,15 @@ namespace Travelista.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
+                var user = new ApplicationUser
+                {
+                    UserName = Input.Email /*new MailAddress(Input.Email).User*/,
+                    Email = Input.Email,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    PhoneNumber = Input.PhoneNumber
+                };
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

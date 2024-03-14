@@ -162,6 +162,7 @@ namespace Travelista.Areas.Identity.Pages.Account
                     }
                     else
                     {
+                        // create cookie for user
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }

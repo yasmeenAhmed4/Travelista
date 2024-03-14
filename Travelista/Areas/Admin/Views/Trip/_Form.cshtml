@@ -1,0 +1,60 @@
+﻿@model Travelista.Models.Trip
+@{
+    SelectList countries = new SelectList(ViewBag.countries,"Id","Name");
+    SelectList types = new SelectList(ViewBag.TripTypes, "Id", "Name");
+}
+
+
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input class="form-control" asp-for="Name">
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Cost"></label>
+    <input  asp-for="Cost"  class="form-control" >
+    <span asp-validation-for="Cost" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Duration"></label>
+    <input class="form-control" asp-for="Duration">
+    <span asp-validation-for="Duration" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Capacity"></label>
+    <input class="form-control" asp-for="Capacity">
+    <span asp-validation-for="Capacity" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="StartDate"></label>
+    <input class="form-control" asp-for="StartDate">
+    <span asp-validation-for="StartDate" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label>Type</label>
+    <select class="form-control" asp-for="TripTypeID" asp-items="@types">
+    </select>
+</div>
+<div class="form-group">
+    <label>Country</label>
+    <select class="form-control" asp-for="CountryId" asp-items="@countries">
+    </select>
+</div>
+
+
+<div class="form-group">
+    <label asp-for="Description"></label>
+    <textarea class="form-control" asp-for="Description" rows="5"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Program"></label>
+    <textarea class="form-control" asp-for="Program" rows="5"></textarea>
+    <span asp-validation-for="Program" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label for="imageFiles">Image upload</label>
+    <input type="file" name="imageFiles" class="form-control-file" multiple>
+</div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+

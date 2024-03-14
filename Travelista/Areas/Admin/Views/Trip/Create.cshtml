@@ -1,0 +1,28 @@
+﻿@model Travelista.Models.Trip
+
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="forms-sample" asp-action="Create" asp-controller="Trip" asp-area="Admin" enctype="multipart/form-data">
+                            <Partial name="_Form" model="Model"></Partial>
+                            <button type="submit" class="btn btn-primary mr-2">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

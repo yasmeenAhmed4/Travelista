@@ -34,7 +34,7 @@
 	<!-- Start Trips Area -->
 	<section class="destinations-area section-gap">
 		    @Html.Partial("_FilterPartial", Model)
-			<div class="row">
+		<div class="row">
 			@if (Model.trips.Any())
 			{
 				@Html.Partial("_TripsPartial", Model)
@@ -47,7 +47,9 @@
 				</div>
 			}
 			</div>
-			<div id="pagination" class="mt-3"></div>
+			<div id="pagination" class="mt-3">
+
+			</div>
 		</div>
 	</section>
 

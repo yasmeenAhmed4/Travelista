@@ -22,24 +22,22 @@ function generatePagination()
     var startRange = Math.max(1, currentPage - 1);
     var endRange = Math.min(totalPages, startRange + 2);
 
-    if (currentPage > 2)
-    {
-        paginationHtml += '<li class="page-item"><a href="#" class="page-link prev" style="font-size: 25px;">Previous</a></li>';
-    }
-               
-    for (var i = startRange; i <= endRange; i++)
-    {
-        paginationHtml += '<li class="page-item"><a href="#" class="page-link page-number'  + '" style="font-size: 25px;">' + i + '</a></li>';
+    if (currentPage > 2) {
+        paginationHtml += '<li class="page-item"><a href="#" class="page-link prev" style="font-size: 25px;" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>';
     }
 
-    if (currentPage < totalPages)
-    {
-        paginationHtml += '<li class="page-item"><a href="#" class="page-link next" style="font-size: 25px;">Next</a></li>';
+    for (var i = startRange; i <= endRange; i++) {
+        paginationHtml += '<li class="page-item"><a href="#" class="page-link page-number' + '" style="font-size: 25px;">' + i + '</a></li>';
     }
 
+    if (currentPage < totalPages) {
+        paginationHtml += '<li class="page-item"><a href="#" class="page-link next" style="font-size: 25px;" aria-label="Next"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>';
+    }
     paginationHtml += '</ul>';
-    $('#pagination').html(paginationHtml);
+    $('#pagination').empty().html(paginationHtml);
 }
+
+
 $(document).on('click', '.pagination .page-number', function (event)
 {
     event.preventDefault();
@@ -62,5 +60,6 @@ $(document).on('click', '.pagination .next', function (event)
     event.preventDefault();
     showPage(currentPage + 1);
 });
+
 
 showPage(1);

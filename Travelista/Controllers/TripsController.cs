@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.ViewModel;
@@ -64,7 +59,7 @@ namespace Travelista.Controllers
         {
             var displayInfo = new TripViewModel
             {
-                trips = await _tripsRepo.GetAllWithInclude(predicates, new Expression<Func<Trip, object>>[] { trip => trip.Country, trip => trip.Images, trip => trip.TripType }).ToListAsync(),
+                trips = await _tripsRepo.GetAllWithInclude(predicates, new Expression<Func<Trip, object?>>[] { trip => trip.Country, trip => trip.Images, trip => trip.TripType }).ToListAsync(),
                 tripTypes = await _tripTypeRepo.GetAll().ToListAsync(),
                 Countries = await _countryRepo.GetAll().ToListAsync()
             };

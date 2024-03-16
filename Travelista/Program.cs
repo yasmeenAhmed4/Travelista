@@ -9,7 +9,7 @@ using Travelista.Models;
 
 
 using Travelista.Helpers;
-using Travelista.Models;
+
 using Travelista.PayPalModels;
 
 

@@ -13,6 +13,8 @@
 	<meta name="keywords" content="">
 	<!-- meta character set -->
 	<meta charset="UTF-8">
+
+
 </head>
 
 <body>
@@ -33,11 +35,11 @@
 
 	<!-- Start Trips Area -->
 	<section class="destinations-area section-gap">
-		    @Html.Partial("_FilterPartial", Model)
+		@await Html.PartialAsync("_FilterPartial", Model)
 		<div class="row">
 			@if (Model.trips.Any())
 			{
-				@Html.Partial("_TripsPartial", Model)
+				@await Html.PartialAsync("_TripsPartial", Model)
 			}
 			else
 			{

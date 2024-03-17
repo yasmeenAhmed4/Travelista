@@ -1,0 +1,13 @@
+﻿@using Travelista.ViewModel
+@model RoleFormViewModel
+
+<form method="post" asp-controller="Role" asp-action="Add">
+    <div class="input-group" style="max-width: 250px;">
+        <input asp-for="Name" class="form-control" placeholder="Role name..." style="max-width: 180px;" />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary"> Add </button>
+        </div>
+    </div>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</form>
+

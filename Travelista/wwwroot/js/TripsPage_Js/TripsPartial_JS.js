@@ -46,15 +46,16 @@ window.addEventListener("load", (event) =>
         event.preventDefault();
         var pageNumber = parseInt($(this).text());
         showPage(pageNumber);
-        
+        var offsetTop = $('#pagination').offset().top - 600;
+        $('html, body').animate({ scrollTop: offsetTop });
     });
 
     $(document).on('click', '.pagination .prev', function (event)
     {
         event.preventDefault();
         showPage(currentPage - 1);
-        //var offsetTop = $('#pagination').offset().top - 600;
-        //$('html, body').animate({ scrollTop: offsetTop });
+        var offsetTop = $('#pagination').offset().top - 600;
+        $('html, body').animate({ scrollTop: offsetTop });
     });
 
     $(document).on('click', '.pagination .next', function (event)

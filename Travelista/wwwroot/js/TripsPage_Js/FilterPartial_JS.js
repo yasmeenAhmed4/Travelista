@@ -1,7 +1,4 @@
 
-window.addEventListener("load", (event) =>
-{
-
         //Save The Date Input In the Session Storage Because When call the action will load the page again
         function updateMinPriceValue()
         {
@@ -44,4 +41,3 @@ window.addEventListener("load", (event) =>
             updateMinPriceValue();
             updateMaxPriceValue();
             };
-});

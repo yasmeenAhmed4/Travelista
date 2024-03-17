@@ -34,11 +34,6 @@ namespace Travelista
 			//builder.Services.AddScoped<UserManager<ApplicationUser>>();
 			//builder.Services.AddScoped<SignInManager<ApplicationUser>>();
 
-			builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
-
-			builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
-
-			builder.Services.AddScoped<IGenericRepository<Wishlist>, GenericRepository<Wishlist>>();
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -51,7 +46,6 @@ namespace Travelista
             builder.Services.AddScoped<IGenericRepository<Image>, GenericRepository<Image>>();
             builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
 
-            var app = builder.Build();
 
 			builder.Services.AddSingleton(x =>
 			new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,

@@ -2,48 +2,58 @@
 
 
 
-@foreach (var trip in Model.trips)
-{
-	// Section One Card Trip Details
-	<div class="col-lg-4">
-		<div class="single-destinations">
-			<a asp-area="" asp-controller="Home" asp-action="Index">
-				<div class="thumb">
-					<img src="@trip.Images[0].ImageURL" alt="">
-				</div>
-			</a>
-			<div class="details">
-				<h4>@trip.Name</h4>
-				<p>
-					@trip.Country.Name
-				</p>
-				<ul class="package-list">
-					<li class="d-flex justify-content-between align-items-center">
-						<span>Duration</span>
-						<span>@trip.Duration Days</span>
-					</li>
-					<li class="d-flex justify-content-between align-items-center">
-						<span>Date</span>
-						<span>@trip.StartDate</span>
-					</li>
-					<li class="d-flex justify-content-between align-items-center">
-						<span>Capacity</span>
-						<span>@trip.Capacity</span>
-					</li>
-					<li class="d-flex justify-content-between align-items-center">
-						<span>Type</span>
-						<span>@trip.TripType.Name</span>
-					</li>
-					<li class="d-flex justify-content-between align-items-center">
-						<span>Price per person</span>
-						<a href="#" class="price-btn">EGP @trip.Cost</a>
-					</li>
 
-				</ul>
+	@foreach (var trip in Model.trips)
+	{
+		// Section One Card Trip Details
+		<div class="col-lg-4">
+			<div class="single-destinations">
+				<a asp-area="" asp-controller="Home" asp-action="Index">
+					<div class="thumb">
+						<img src="~/images/@trip.Images[0].ImageURL" alt="">
+					</div>
+				</a>
+				<div class="details">
+					<h4>@trip.Name</h4>
+					<p>
+						@trip.Country?.Name
+					</p>
+					<ul class="package-list">
+						<li class="d-flex justify-content-between align-items-center">
+							<span>Duration</span>
+							<span>@trip.Duration Days</span>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>Date</span>
+							<span>@trip.StartDate</span>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>Capacity</span>
+							<span>@trip.Capacity</span>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>Type</span>
+							<span>@trip.TripType?.Name</span>
+						</li>
+						<li class="d-flex justify-content-between align-items-center">
+							<span>Price per person</span>
+							<a href="#" class="price-btn">EGP @trip.Cost</a>
+						</li>
+
+					</ul>
+				</div>
 			</div>
+
 		</div>
 
-	</div>
+	}
 
-}
+
+
+
+
+
+
+
+
 

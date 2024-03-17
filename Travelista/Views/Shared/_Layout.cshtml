@@ -3,7 +3,9 @@
 @using Travelista.Areas.Identity.Data;
 @using Travelista.Data
 @using Travelista.Models;
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -89,33 +91,11 @@
 			top: -10px;
 			left: -10px;
 		}
-
 		
 	</style>
 </head>
 <body>
-	@* <header>
-	<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-	<div class="container-fluid">
-	<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Travelista</a>
-	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-	aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-	<ul class="navbar-nav flex-grow-1">
-	<li class="nav-item">
-	<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-	</li>
-	<li class="nav-item">
-	<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-	</li>
-	</ul>
-
-	</div>
-	</div>
-	</nav>
-	</header> *@
+	
 
 	<header id="header">
 		<div class="container main-menu">
@@ -128,20 +108,18 @@
 						<li class="hm-wishlist">
 							<a asp-area="" asp-controller="Wishlist" asp-action="Index">
 								<span class="cart-item-count wishlist-item-count">0</span>
-								<i style="color: #fed700;" class="fa fa-heart"></i>
+								<i class="fa fa-heart-o"></i>
 							</a>
 						</li>
 
 						<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
 						<li><a asp-area="" asp-controller="Contact" asp-action="SendMessage">Contact</a></li>
-						<li><a href="packages.html">Packages</a></li>
-																	
-						<li><a href="about.html">About</a></li>
 						<li><a asp-area="" asp-controller="Trips" asp-action="Index">Trips</a></li>
 
-						<li><a href="hotels.html">Hotels</a></li>
-						<partial name="_LoginPartial" />
-					</ul>				</nav><!-- #nav-menu-container -->
+
+						 <partial name="_LoginPartial" /> 
+					</ul>				
+				</nav><!-- #nav-menu-container -->
 			</div>
 		</div>
 	</header><!-- #header -->

@@ -27,20 +27,17 @@ namespace Travelista
 				options.UseSqlServer(connectionString));
 			builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-			//Adding data to database once it's created
-			//SeedData.Seed();
+			
 
 			builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 
-			//builder.Services.AddScoped<UserManager<ApplicationUser>>();
-			//builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+		
 
 			builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
 
 			builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
 
-			//builder.Services.AddScoped<IGenericRepository<Wishlist>, GenericRepository<Wishlist>>();
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -56,15 +53,7 @@ namespace Travelista
 
             var app = builder.Build();
 
-			//builder.Services.AddSingleton(x =>
-			//new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,
-			//builder.Configuration["PayPalOptions:ClientSecret"],
-			//builder.Configuration["PayPalOptions:Mode"])
-			//);
 			
-			//var app = builder.Build();
-
-
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
 			{

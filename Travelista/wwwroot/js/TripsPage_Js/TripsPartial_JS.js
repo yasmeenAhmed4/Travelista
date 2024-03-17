@@ -1,7 +1,4 @@
 
-
-window.addEventListener("load", (event) =>
-{
     const itemsPerPage = 3;
     let currentPage = 1;
 
@@ -25,11 +22,13 @@ window.addEventListener("load", (event) =>
         var startRange = Math.max(1, currentPage - 1);
         var endRange = Math.min(totalPages, startRange + 2);
 
-        if (currentPage > 2) {
+        if (currentPage > 2)
+        {
             paginationHtml += '<li class="page-item"><a href="#" class="page-link prev" style="font-size: 25px;" aria-label="Previous"><span aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a></li>';
         }
 
-        for (var i = startRange; i <= endRange; i++) {
+        for (var i = startRange; i <= endRange; i++)
+        {
             paginationHtml += '<li class="page-item"><a href="#" class="page-link page-number' + '" style="font-size: 25px;">' + i + '</a></li>';
         }
 
@@ -65,7 +64,6 @@ window.addEventListener("load", (event) =>
     });
 
     showPage(1);
-});
 
 
 

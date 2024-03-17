@@ -1,4 +1,28 @@
-﻿@model Trip
+
+@model Trip
+<style>
+	.disabled{
+		pointer-events: none;
+		cursor: not-allowed;
+		opacity: 0.65;
+	}
+</style>
+<section class="banner-area relative">
+	<div class=" overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">
+					CheckOut
+				</h1>
+				<p class="text-white link-nav">
+					<a asp-controller="Home" asp-action="Index">Home </a>  <span class="lnr lnr-arrow-right"></span>
+					<a asp-controller="" asp-action=""> CheckOut</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
 
 <main>
 	<div class="page-content">
@@ -7,7 +31,7 @@
 				<div class="checkout-discount">
 					
 				</div><!-- End .checkout-discount -->
-				<form asp-action="" asp-controller="" method="post">
+				@* <form asp-action="" asp-controller="" method="post"> *@
 					@* <input name="total" type="hidden" /> *@
 
 					<div class="row">
@@ -16,16 +40,16 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<label>First Name *</label>
-									<input type="text" class="form-control" name="ShipToAddress_FirstName" required>
+									<input type="text" class="form-control" name="ShipToAddress_FirstName" required value="@ViewBag.FirstName">
 								</div><!-- End .col-sm-6 -->
 
 								<div class="col-sm-6">
 									<label>Last Name *</label>
-									<input type="text" class="form-control" name="ShipToAddress_LastName" required>
+									<input type="text" class="form-control" name="ShipToAddress_LastName" required value="@ViewBag.LastName">
 								</div><!-- End .col-sm-6 -->
 							</div><!-- End .row -->
 							<label>Email address *</label>
-							<input type="email" class="form-control" name="BuyerEmail" required>
+							<input type="email" class="form-control" name="BuyerEmail" required value="@ViewBag.Email">
 
 							<div class="col-sm-6">
 								<label>Group Size *</label>
@@ -39,6 +63,10 @@
 
 								<table class="table table-summary">
 									<thead>
+										<tr>
+											<th>Trip</th>
+											<th>Total</th>
+										</tr>
 										
 									</thead>
 
@@ -61,17 +89,78 @@
 								</table><!-- End .table table-summary -->
 
 								<div id="paypal-btn" style="width:500px"></div>
+							@{
+								long amount = (long)@Model.Cost * 100;
+							}
+							@if(ViewBag.found == true)
+							{
+								<form asp-action="Charge" asp-controller="Booking" method="POST">
+									<input type="hidden" name="tripID" value="@Model.Id" />
+									<script src="//checkout.stripe.com/v2/checkout.js"
+											class="stripe-button"
+											data-key="pk_test_51OuA9E01LplHwmYAFdDJFp7jP6M8WsZuzDot3UMH2WXlnLfZ1GdkcRtcqx6peoSHhu9CshxN8MSwidf9b4fUEy7S00kW7WUlZT"
+											data-locale="auto"
+											data-description="Payment Details"
+											data-amount="@amount">
+									</script>
+								</form>
+							}
+							else
+							{
+								<button class="genric-btn primary text-uppercase disabled" style="margin:13px 20px 10px 0;">Already Booked</button>
+
+							}
+
 								<br>
 								
 								<br />
 							</div><!-- End .summary -->
 						</aside><!-- End .col-lg-3 -->
 					</div><!-- End .row -->
-				</form>
+				@* </form> *@
+				
+
 			</div><!-- End .container -->
 		</div><!-- End .checkout -->
 	</div><!-- End .page-content -->
 </main><!-- End .main -->
+
+@* Stripe *@
+
+
+@section Scripts {
+	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+	<script>
+		paypal.Button.render({
+			env: 'sandbox',
+			client: {
+				sandbox: 'AS--jTHyG8gQgZ0NmVSrb1uUq04PDFIdraHL_ois5SpkECywvTW6t78hA4lJEsa0gzK-Xxmy7tRIewp8'
+			},
+			locale: 'en_US',
+			style: {
+				size: 'small',
+				color: 'gold',
+				shape: 'pill'
+			},
+			commit: true,
+			// payment: function (data, actions) {
+			// 	return actions.payment.create({
+			// 		payment: {
+			// 			transactions: [{
+			// 				amount: {
+			// 					total: @Html.//Raw(),
+			// 					currency: 'USD'
+			// 				}
+			// 			}]
+			// 		}
+			// 	});
+			// },
+			onAuthorize: function (data, actions) {
+				return actions.payment.execute().then(function () {
+					var url = '@Url.Action("Index", "Home", new { })';
+					window.location.href = url;
+				});
+			}
 
 
 

@@ -6,6 +6,9 @@ using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.PayPalModels;
+using Stripe;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Travelista.Services;
 
 
 namespace Travelista
@@ -53,13 +56,15 @@ namespace Travelista
 		
 
 
-			builder.Services.AddControllersWithViews();
+			//builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             builder.Services.AddTransient<IEmailSender, EmailSender>();
 
+			//Stripe
+			StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
-
+			var app = builder.Build();
 			
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
@@ -94,3 +99,5 @@ namespace Travelista
 		}
 	}
 }
+
+

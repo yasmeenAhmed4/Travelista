@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
-using Travelista.Services;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.PayPalModels;
@@ -12,17 +10,17 @@ using Travelista.PayPalModels;
 
 namespace Travelista
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+	public class Program
+	{
+		public static void Main(string[] args)
+		{
+			var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+			// Add services to the container.
+			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+			builder.Services.AddDbContext<ApplicationDbContext>(options =>
+				options.UseSqlServer(connectionString));
+			builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -52,8 +50,7 @@ namespace Travelista
 			//SeedData.Seed();
 			
 
-			//builder.Services.AddScoped<UserManager<ApplicationUser>>();
-			//builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+		
 
 
 			builder.Services.AddControllersWithViews();
@@ -63,15 +60,7 @@ namespace Travelista
 
 
 
-			builder.Services.AddSingleton(x =>
-			new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,
-			builder.Configuration["PayPalOptions:ClientSecret"],
-			builder.Configuration["PayPalOptions:Mode"])
-			);
 			
-			var app = builder.Build();
-
-
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
 			{
@@ -84,12 +73,12 @@ namespace Travelista
 				app.UseHsts();
 			}
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+			app.UseHttpsRedirection();
+			app.UseStaticFiles();
 
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
+			app.UseRouting();
+			app.UseAuthentication();
+			app.UseAuthorization();
 
 			app.MapAreaControllerRoute(
 			name: "Admin",
@@ -101,7 +90,7 @@ namespace Travelista
 				pattern: "{controller=Home}/{action=Index}/{id?}");
 			app.MapRazorPages();
 
-            app.Run();
-        }
-    }
+			app.Run();
+		}
+	}
 }

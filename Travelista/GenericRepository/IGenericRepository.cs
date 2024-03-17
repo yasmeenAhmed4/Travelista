@@ -7,7 +7,7 @@ namespace Travelista.GenericRepository
         public IQueryable<TEntity> GetAll();
         public IQueryable<TEntity> GetAll(Func<TEntity, bool> Expression);
 
-        public IQueryable<TEntity> GetAllWithInclude(List<Expression<Func<TEntity, bool>>> predicates, params Expression<Func<TEntity, object>>[] includes);
+        public IQueryable<TEntity> GetAllWithInclude(List<Expression<Func<TEntity, bool>>> predicates, params Expression<Func<TEntity, object?>>[] includes);
 
         public TEntity Create(TEntity entity);
         public bool Delete(TEntity entity);

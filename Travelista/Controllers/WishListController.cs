@@ -43,7 +43,7 @@ namespace Travelista.Controllers
 				return Created();
 			}
 			else 
-				return BadRequest();
+				return NoContent();
 		}
 		public IActionResult RemoveFromWishList(int id) 
 		{

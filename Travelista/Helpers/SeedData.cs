@@ -30,7 +30,7 @@ namespace Travelista.Helpers
 					new Country(){Name = "Spain"},	         //2
 					new Country(){Name = "Turkey"},          //3
 					new Country(){Name = "Italy"},           //4
-					new Country(){Name = "Lebanon"},          //5
+					new Country(){Name = "Lebanon"},         //5
 				});
 			}
 

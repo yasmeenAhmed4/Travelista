@@ -58,7 +58,7 @@ namespace Travelista.GenericRepository
         }
 
 
-        public IQueryable<TEntity> GetAllWithInclude(List<Expression<Func<TEntity, bool>>> predicates, params Expression<Func<TEntity, object>>[] includes)
+        public IQueryable<TEntity> GetAllWithInclude(List<Expression<Func<TEntity, bool>>> predicates, params Expression<Func<TEntity, object?>>[] includes)
         {
             IQueryable<TEntity> query = _set;
             foreach (var include in includes)

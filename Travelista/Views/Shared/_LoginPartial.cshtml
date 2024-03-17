@@ -3,13 +3,37 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-@* <ul class="navbar-nav">*@
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+<!--
+CSS
+============================================= -->
+<link rel="stylesheet" href="~/css/linearicons.css">
+<link rel="stylesheet" href="~/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/css/bootstrap.css">
+<link rel="stylesheet" href="~/css/magnific-popup.css">
+<link rel="stylesheet" href="~/css/jquery-ui.css">
+<link rel="stylesheet" href="~/css/nice-select.css">
+<link rel="stylesheet" href="~/css/animate.min.css">
+<link rel="stylesheet" href="~/css/owl.carousel.css">
+<link rel="stylesheet" href="~/css/main.css">
+
+
+
+
+
+
+
+
+
 @if (SignInManager.IsSignedIn(User))
 {
     <li @* class="nav-item" *@>
         <a class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
-    <li @* class="nav-item" *@>
+    <li>
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button type="submit" class="nav-link btn btn-link" style="color: #ffffff; font-size: 14px; border: none; transition: color 0.3s;"
                 onmouseover="this.style.color='#f8b600'" onmouseout="this.style.color='#ffffff'">Logout</button>
@@ -19,12 +43,38 @@
 }
 else
 {
-    <li @* class="nav-item" *@>
+    <li>
         <a asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
-    <li @* class="nav-item" *@>
+    <li>
         <a asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
 }
-@* </ul>
- *@
+
+
+
+
+
+
+<script src="~/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/vendor/bootstrap.min.js"></script>
+<script src="~/js/jquery-ui.js"></script>
+<script src="~/js/easing.min.js"></script>
+<script src="~/js/hoverIntent.js"></script>
+<script src="~/js/superfish.min.js"></script>
+<script src="~/js/jquery.ajaxchimp.min.js"></script>
+<script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="~/js/jquery.nice-select.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/mail-script.js"></script>
+<script src="~/js/main.js"></script>
+
+
+
+
+
+
+
+
+ 

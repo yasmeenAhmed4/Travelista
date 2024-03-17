@@ -14,6 +14,7 @@ using Travelista.Models;
 using Travelista.Helpers;
 using Travelista.Models;
 using Travelista.PayPalModels;
+using Stripe;
 
 
 namespace Travelista
@@ -57,19 +58,19 @@ namespace Travelista
 			//Adding data to database once it's created
 			//SeedData.Seed();
 
-			builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+			//builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+			//	.AddEntityFrameworkStores<ApplicationDbContext>();
 
-			//builder.Services.AddScoped<UserManager<ApplicationUser>>();
-			//builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+			////builder.Services.AddScoped<UserManager<ApplicationUser>>();
+			////builder.Services.AddScoped<SignInManager<ApplicationUser>>();
 
-			builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
+			//builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
 
-			builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
+			//builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
 
-			builder.Services.AddScoped<IGenericRepository<Wishlist>, GenericRepository<Wishlist>>();
+			//builder.Services.AddScoped<IGenericRepository<Wishlist>, GenericRepository<Wishlist>>();
 
-			builder.Services.AddControllersWithViews();
+			//builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 
@@ -77,7 +78,10 @@ namespace Travelista
 
             builder.Services.AddTransient<IEmailSender, EmailSender>();
 
-            var app = builder.Build();
+			//Stripe
+			StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -90,33 +94,33 @@ namespace Travelista
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            builder.Services.AddScoped<IGenericRepository<TripType>, GenericRepository<TripType>>();
-            builder.Services.AddScoped<IGenericRepository<Country>, GenericRepository<Country>>();
-            builder.Services.AddScoped<IGenericRepository<Image>, GenericRepository<Image>>();
-            builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
+            //builder.Services.AddScoped<IGenericRepository<TripType>, GenericRepository<TripType>>();
+            //builder.Services.AddScoped<IGenericRepository<Country>, GenericRepository<Country>>();
+            //builder.Services.AddScoped<IGenericRepository<Image>, GenericRepository<Image>>();
+            //builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
 
-            var app = builder.Build();
+            //var app = builder.Build();
 
-			builder.Services.AddSingleton(x =>
-			new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,
-			builder.Configuration["PayPalOptions:ClientSecret"],
-			builder.Configuration["PayPalOptions:Mode"])
-			);
+			//builder.Services.AddSingleton(x =>
+			//new PayPalClient(builder.Configuration["PayPalOptions:ClientId"] ,
+			//builder.Configuration["PayPalOptions:ClientSecret"],
+			//builder.Configuration["PayPalOptions:Mode"])
+			//);
 			
-			var app = builder.Build();
+			//var app = builder.Build();
 
 
-			// Configure the HTTP request pipeline.
-			if (app.Environment.IsDevelopment())
-			{
-				app.UseMigrationsEndPoint();
-			}
-			else
-			{
-				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+			//// Configure the HTTP request pipeline.
+			//if (app.Environment.IsDevelopment())
+			//{
+			//	app.UseMigrationsEndPoint();
+			//}
+			//else
+			//{
+			//	app.UseExceptionHandler("/Home/Error");
+			//	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+			//	app.UseHsts();
+			//}
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -125,10 +129,10 @@ namespace Travelista
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-            app.MapRazorPages();
+            //app.MapControllerRoute(
+            //    name: "default",
+            //    pattern: "{controller=Home}/{action=Index}/{id?}");
+            //app.MapRazorPages();
 
 			app.MapAreaControllerRoute(
 			name: "Admin",
@@ -144,3 +148,5 @@ namespace Travelista
         }
     }
 }
+
+

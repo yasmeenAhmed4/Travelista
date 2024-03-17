@@ -1,16 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Travelista.GenericRepository;
+using Travelista.Models;
 
 namespace Travelista.Controllers
 {
     public class BookingController : Controller
     {
-        public IActionResult Index()
+        private readonly IGenericRepository<Trip> tripRepo;
+		public BookingController(IGenericRepository<Trip> tripRepo)
+		{
+			this.tripRepo = tripRepo;
+		}
+		public IActionResult Index()
         {
             return View();
         }
-        public IActionResult CheckOut()
+        public IActionResult CheckOut(int id)
         {
-            return View();
+            var trip = tripRepo.GetById(id);
+            return View(trip);
         }
 
     }

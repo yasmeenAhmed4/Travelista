@@ -1,15 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Models;
-
-
-using Travelista.Helpers;
-
 using Travelista.PayPalModels;
 
 
@@ -27,31 +22,43 @@ namespace Travelista
 				options.UseSqlServer(connectionString));
 			builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
+
+            builder.Services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "772354289034-g46j7pn553arv79nj8218sf44chpr69c.apps.googleusercontent.com";
+                    options.ClientSecret = "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";
+
+                })
+                .AddFacebook(options =>
+                {
+                    options.ClientId ="763692572369800";
+                    options.ClientSecret ="368629d482c449c8bc16b064f9839086";
+                })
+                .AddMicrosoftAccount(options =>
+                {
+                	options.ClientId = "6449bac4-c6aa-47c5-9a0c-9a35bd642724";
+                	options.ClientSecret = "wlm8Q~XLe4C7Un9deZN8XA75itDAeDdLsDGx3alm";
+
+        		});
+
+			//Adding data to database once it's created
+			//SeedData.Seed();
 			
 
-			builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
-
 		
-
-			builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
-
-			builder.Services.AddScoped<IGenericRepository<Contact>, GenericRepository<Contact>>();
 
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
 
-            builder.Services.AddControllersWithViews();
 
-
-            builder.Services.AddScoped<IGenericRepository<TripType>, GenericRepository<TripType>>();
-            builder.Services.AddScoped<IGenericRepository<Country>, GenericRepository<Country>>();
-            builder.Services.AddScoped<IGenericRepository<Image>, GenericRepository<Image>>();
-            builder.Services.AddScoped<IGenericRepository<Trip>, GenericRepository<Trip>>();
-
-            var app = builder.Build();
 
 			
 			// Configure the HTTP request pipeline.
@@ -72,7 +79,6 @@ namespace Travelista
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
-
 
 			app.MapAreaControllerRoute(
 			name: "Admin",

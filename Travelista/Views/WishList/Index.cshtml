@@ -30,6 +30,20 @@
 	<link rel="stylesheet" href="css/animate.min.css">
 	<link rel="stylesheet" href="css/owl.carousel.css">
 	<link rel="stylesheet" href="css/main.css">
+	<style>
+		a{
+			text-decoration: none;
+			color:dimgrey;
+		}
+		a.x-icon{
+			color:grey;
+			font-size:large;
+			margin-left:200px;
+		}
+		a:hover{
+			color:orange;
+		}
+	</style>
 </head>
 <body>
 	
@@ -42,7 +56,6 @@
 					<h1 class="text-white">
 						WishList
 					</h1>
-					<p class="text-white link-nav"><a href="#">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> WishList</a></p>
 				</div>
 			</div>
 		</div>
@@ -50,27 +63,30 @@
 	<!-- End banner Area -->
 	
 	<div class="section-top-border">
-		<h3 class="mb-30">WishList Items</h3>
 		<div class="progress-table-wrap">
 			<div class="progress-table">
 				<div class="table-head">
 					<div class="serial">#</div>
-					<div class="country">Trip</div>
-					<div class="visit">Country</div>
-					<div class="percentage">Cost</div>
+					<div class="country">Country</div>
+					<div class="visit">Trip</div>
+					
 				</div>
+				@{
+					var i = 1;
+				}
 				@foreach (var item in Model)
 				{
 					<div class="table-row">
-						<div class="serial">01</div>
-						<div class="country"> <img src="img/elements/f1.jpg" alt="flag">@item.Trip?.Name</div>
-						<div class="visit">@item.Trip?.Country?.Name</div>
+						<div class="serial">@i</div>
+						<div class="country"> <img src="~/img/elements/@item.Trip?.Country?.Name .png" alt="flag" width="100" height="70"></div>
+						<div class="visit"><a href="/Trip/Details/@item.TripId">@item.Trip?.Name</a></div>
 						<div class="percentage">
 							<div class="progress">
-								<div class="progress-bar color-1" role="progressbar" style="width: 80%" aria-valuenow="@item.Cost" aria-valuemin="0" aria-valuemax="100"></div>
+								<div class="visit"><a href="/WishList/RemoveFromWishList/@item.TripId" class="x-icon"><i class="fa fa-times" aria-hidden="true"></i></a></div>
 							</div>
 						</div>
 					</div>
+					i++;
 				}
 				
 			

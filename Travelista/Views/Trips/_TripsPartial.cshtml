@@ -7,13 +7,13 @@
 		{
 		    // Section One Card Trip Details
 			//<div class="col-lg-3 ml-5 mr-5" onclick='location.href="@Url.Action("Details", "Trip")?tripId=@trip.Id";'>
-			<div class="col-lg-3 ml-5 mr-5" onclick='location.href="@Url.Action("Index", "Home")";'>
+			<div class="col-lg-3 ml-5 mr-5" onclick='location.href="@Url.Action("Details", "Trip" , new {id = trip.Id})";'>
 				<div class="single-destinations">
 					<div class="thumb">
 						<!--Check exist Images in Trip-->
 						@if (trip.Images.Count > 0)
 						{
-							<img src="@trip.Images[0].ImageURL" alt="TripImage">
+							<img src="~/images/@trip.Images[0].ImageURL" alt="TripImage">
 						}
 					</div>
 					<div class="details">
@@ -35,7 +35,7 @@
 							<!--Trip Date-->
 							<li class="d-flex justify-content-between align-items-center">
 								<span>Date</span>
-								<span>@trip?.StartDate</span>
+								<span>@trip?.StartDate.ToString("MM / dd / yyyy")</span>
 							</li>
 
 							<!--Trip Capacity-->

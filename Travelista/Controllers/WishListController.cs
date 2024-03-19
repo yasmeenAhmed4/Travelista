@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -9,6 +10,7 @@ using Travelista.Models;
 
 namespace Travelista.Controllers
 {
+	[Authorize]
 	public class WishListController : Controller
 	{
 		private readonly IGenericRepository<WishlistItem> wishlistRepo;
@@ -40,7 +42,8 @@ namespace Travelista.Controllers
 				item.TripId = id;
 				item.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 				wishlistRepo.Create(item);
-				return Created();
+				//return Created();
+				return RedirectToAction("Index", "Home");
 			}
 			else 
 				return NoContent();

@@ -54,10 +54,14 @@
 							<input type="number" min="1" max="@Model.Capacity" value="1" class="form-control" name="Group-Size" required>
 						</div>
 
-					</div><!-- End .col-lg-9 -->
-					<aside class="col-lg-3">
-						<div class="summary">
-							<h3 class="summary-title"></h3><!-- End .summary-title -->
+								<table class="table table-summary">
+									<thead>
+										<tr>
+											@* <th>Trip</th>
+											<th>Total</th> *@
+										</tr>
+										
+									</thead>
 
 							<table class="table table-summary">
 								<thead>
@@ -89,7 +93,8 @@
 							@{
 								long amount = (long)@Model.Cost * 100;
 							}
-							@if (ViewBag.found == true)
+							<br/>
+							@if(ViewBag.found == true)
 							{
 								<form asp-action="Charge" asp-controller="Booking" method="POST">
 									<input type="hidden" name="tripID" value="@Model.Id" />
@@ -125,24 +130,24 @@
 
 
 @section Scripts {
-	<script>
-		var subtotal = document.getElementsByName("subtotal")[0];
-		var total = document.getElementsByName("total")[0];
-		var groupSizeInput = document.getElementsByName("Group-Size")[0];
-		var cost = Number(subtotal.textContent.trim().replace(/[^0-9.-]+/g, ""));
+<script>
+	var subtotal = document.getElementsByName("subtotal")[0];
+	var total = document.getElementsByName("total")[0];
+	var groupSizeInput = document.getElementsByName("Group-Size")[0];
+	var cost = Number(subtotal.textContent.trim().replace(/[^0-9.-]+/g, ""));
 
-		groupSizeInput.addEventListener('change', function () {
-			var groupSize = parseInt(this.value);
-			if (groupSize == 0) {
-				cost = Number(cost); // Convert cost back to a number if it's formatted as a string
-				cost = cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-				total.textContent = cost;
-			} else {
-				var newTotal = cost * groupSize;
-				newTotal = newTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-				total.textContent = newTotal;
-			}
-		});
-	</script>
+	groupSizeInput.addEventListener('change', function () {
+		var groupSize = parseInt(this.value);
+		if (groupSize == 0) {
+			cost = Number(cost); // Convert cost back to a number if it's formatted as a string
+			cost = cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+			total.textContent = cost;
+		} else {
+			var newTotal = cost * groupSize;
+			newTotal = newTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+			total.textContent = newTotal;
+		}
+	});
+</script>
 }
 

@@ -1781,14 +1781,16 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block; }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #a7afb7;
-  text-align: left;
-  background-color: #fff; }
+    padding: 0; /*added*/
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: black;   /* #a7afb7;*/
+    text-align: left;
+    background-color: #fff;
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -10627,8 +10629,10 @@ address p {
 /* Miscellanoeous */
 body,
 html {
-  overflow-x: hidden;
-  padding-right: 0 !important; }
+    overflow-x: hidden;
+  
+    padding-right: 0 !important;
+}
 
 *:-moz-full-screen,
 *:-webkit-full-screen,
@@ -13485,16 +13489,18 @@ dl {
 
 /* Sidebar */
 .sidebar {
-  min-height: calc(100vh - 64px);
-  background: #181824;
-  font-family: "nunito-medium", sans-serif;
-  padding: 0;
-  width: 271px;  /*258px*/
-  z-index: 11;
-  transition: width 0.25s ease, background 0.25s ease;
-  -webkit-transition: width 0.25s ease, background 0.25s ease;
-  -moz-transition: width 0.25s ease, background 0.25s ease;
-  -ms-transition: width 0.25s ease, background 0.25s ease; }
+    height: 100vh; /*i add this*/
+    min-height: calc(100vh - 64px);
+    background: #181824;
+    font-family: "nunito-medium", sans-serif;
+    padding: 0;
+    width: 258px; /*258px*/
+    z-index: 11;
+    transition: width 0.25s ease, background 0.25s ease;
+    -webkit-transition: width 0.25s ease, background 0.25s ease;
+    -moz-transition: width 0.25s ease, background 0.25s ease;
+    -ms-transition: width 0.25s ease, background 0.25s ease;
+}
   .sidebar .nav {
     overflow: hidden;
     -ms-flex-wrap: nowrap;
@@ -13805,7 +13811,11 @@ dl {
 
 /* Layouts */
 .navbar.fixed-top + .page-body-wrapper {
-  padding-top: 64px; }
+    padding-top: 64px;
+    display: flex; /*i add this*/
+    flex-direction: column; /*i add this*/
+    min-height: 100vh; /*i add this*/
+}
 
 @media (min-width: 992px) {
   .sidebar-mini .navbar .navbar-brand-wrapper {
@@ -14289,20 +14299,24 @@ dl {
     color: #b1b1b1; }
 
 main {
-    position: absolute;
-    left: 245px;  
-    top: 59px;  
-    width: 100%; 
-    height: 100%; 
-   /* overflow-y: auto; */ 
-    padding: 20px;  
-    box-sizing: border-box;   
+    position: fixed;
+    left: 250px;
+    top: 59px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
 }
-.btnLf
+
+/*.btnLf
 {
     position:relative;
     left:590px;
-}
+}*/
 
 
 

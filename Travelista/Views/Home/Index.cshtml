@@ -88,25 +88,6 @@
 							<h4 class="title">@trip.Cost S
 								<span style="display:inline-block;float:right;margin-right:50px;color:red">@trip.Discount %</span>
 							</h4>
-
-							<h6 class="date">@trip.StartDate</h6>
-							<a class="genric-btn primary text-uppercase" style="margin:13px 20px 10px 0" asp-area="" asp-controller="Booking" asp-action="CheckOut" asp-route-id="@trip.Id">Book Now</a>
-							
-							 @if (User.Identity.IsAuthenticated)
-                            {
-									@if (DB.WishlistItems.Any(w => w.TripId == trip.Id && w.UserId == User.Claims.FirstOrDefault().Value))
-									{
-										<a asp-area="" asp-controller="WishList" asp-action="RemoveFromWishList" asp-route-id="@trip.Id">
-											<i style="color: #fed700;font-size:25px;padding:7px;" class="fa fa-heart"></i>
-										</a>
-									}
-									else
-									{
-										<a asp-area="" asp-controller="WishList" asp-action="AddToWishList" asp-route-id="@trip.Id">
-											<i style="color: #fed700;font-size:25px;padding:7px;" class="fa fa-heart"></i>
-										</a>
-									}
-							}
 							
 							<div style="display:flex;justify-content:space-between;">
 								<h6 class="date">@trip.StartDate.ToString("MM/dd/yyyy")</h6>

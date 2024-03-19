@@ -35,14 +35,16 @@
 </section>
 <!-- End banner Area -->
 
-<div class="video" style="position:relative;left:50%;transform:translateX(-50%);text-align: center;">
-	<video width="1000" height="700" autoplay muted  loop controls>
-		<source src="~/img/DiscoverEgypt.mp4" type="video/mp4">
-		Your browser does not support the video tag.
-</video>
+	<div class="video" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;">
 
-	<a class="genric-btn primary text-uppercase" style="padding:20px" asp-controller="" asp-action=""><h1>Discover Egypt</h1></a>
-</div>
+		<video width="1000" height="700" autoplay muted loop controls>
+			<source src="~/img/DiscoverEgypt.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+
+		<a class="genric-btn primary text-uppercase" style="padding:20px" asp-controller="" asp-action=""><h3>Discover Egypt</h3></a>
+	</div>
+
 @* Disounted Trip *@
 
 <!-- Start blog Area -->
@@ -65,37 +67,30 @@
 					<div class="single-recent-blog-post item">
 						<div class="thumb">
 							<a asp-controller="Trip" asp-action="Details" asp-route-id="@trip.Id">
-								<img class="img-fluid" src="~/img/@trip.Images[0].ImageURL" alt="pic">
+								<img class="img-fluid" src="~/images/@trip.Images[0].ImageURL" alt="pic">
 							</a>
 						</div>
 						<div class="details">
 							<div class="tags">
 								<ul>
 									<li>
-										@trip.Country.Name
+										@trip.Country?.Name
 									</li>
-									@* <li>
-								<a href="#">@trip.Name</a>
-								</li>
-								<li>
-								<a href="#">@trip.Cost</a>
-								</li> *@
+								
 								</ul>
 							</div>
 							<a asp-controller="Trip" asp-action="Details" asp-route-id="@trip.Id"><h4 class="title">@trip.Name</h4></a>
 
-							<h4 class="title">@trip.Cost EGP
+							<h4 class="title">@trip.Cost S
 								<span style="display:inline-block;float:right;margin-right:50px;color:red">@trip.Discount %</span>
 							</h4>
 
-							<p>
-								@trip.Description
-							</p>
-							<h6 class="date">@trip.StartDate</h6>
-							<a class="genric-btn primary text-uppercase" style="margin:13px 20px 10px 0" asp-area="" asp-controller="Booking" asp-action="CheckOut" asp-route-id="@trip.Id">Book Now</a>
-							<a asp-area="" asp-controller="WishList" asp-action="AddToWishlist" asp-route-id="@trip.Id">
-								<i style="color: #fed700;font-size:25px;padding:7px;" class="fa fa-heart"></i>
-							</a>
+							<div style="display:flex;justify-content:space-between;">
+								<h6 class="date">@trip.StartDate.ToString("MM/dd/yyyy")</h6>
+								<a asp-area="" asp-controller="WishList" asp-action="AddToWishlist" asp-route-id="@trip.Id">
+									<i style="color: #fed700;font-size:25px;padding:7px;" class="fa fa-heart"></i>
+								</a>
+							</div>
 
 						</div>
 					</div>
@@ -131,14 +126,14 @@
 						<div class="single-recent-blog-post item">
 							<div class="thumb">
 							<a asp-controller="Trip" asp-action="Details" asp-route-id="@trip.Id">
-								<img class="img-fluid" src="~/img/@trip.Images[0].ImageURL" alt="pic">
+								<img class="img-fluid" src="~/images/@trip.Images[0].ImageURL" alt="pic">
 							</a>
 							</div>
 							<div class="details">
 								<div class="tags">
 									<ul>
 										<li>
-											@trip.Country.Name
+											@trip.Country?.Name
 										</li>
 										@* <li>
 											<a href="#">@trip.Name</a>
@@ -150,17 +145,16 @@
 								</div>
 							<a asp-controller="Trip" asp-action="Details" asp-route-id="@trip.Id"><h4 class="title">@trip.Name</h4></a>
 
-								<h4 class="title">@trip.Cost EGP
+								<h4 class="title">@trip.Cost $
 								</h4>
 
-								<p>
-									@trip.Description
-								</p>
-								<h6 class="date">@trip.StartDate</h6>
-							<a class="genric-btn primary text-uppercase" style="margin:13px 20px 10px 0" asp-area="" asp-controller="Booking" asp-action="CheckOut" asp-route-id="@trip.Id">Book Now</a>
+							<div style="display:flex;justify-content:space-between;">
+								<h6 class="date">@trip.StartDate.ToString("MM/dd/yyyy")</h6>
 								<a asp-area="" asp-controller="WishList" asp-action="AddToWishlist" asp-route-id="@trip.Id">
 									<i style="color: #fed700;font-size:25px;padding:7px;" class="fa fa-heart"></i>
 								</a>
+							</div>
+							
 								
 							</div>
 						</div>

@@ -129,41 +129,6 @@
 
 
 @section Scripts {
-	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-	<script>
-		paypal.Button.render({
-			env: 'sandbox',
-			client: {
-				sandbox: 'AS--jTHyG8gQgZ0NmVSrb1uUq04PDFIdraHL_ois5SpkECywvTW6t78hA4lJEsa0gzK-Xxmy7tRIewp8'
-			},
-			locale: 'en_US',
-			style: {
-				size: 'small',
-				color: 'gold',
-				shape: 'pill'
-			},
-			commit: true,
-			// payment: function (data, actions) {
-			// 	return actions.payment.create({
-			// 		payment: {
-			// 			transactions: [{
-			// 				amount: {
-			// 					total: @Html.//Raw(),
-			// 					currency: 'USD'
-			// 				}
-			// 			}]
-			// 		}
-			// 	});
-			// },
-			onAuthorize: function (data, actions) {
-				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("Index", "Home", new { })';
-					window.location.href = url;
-				});
-			}
-
-
-
 <script>
 	var subtotal = document.getElementsByName("subtotal")[0];
 	var total = document.getElementsByName("total")[0];
@@ -183,57 +148,5 @@
 		}
 	});
 </script>
-
-
-
-
-
-
-
-
-
-
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script>
-	paypal.Button.render({
-		env: 'sandbox',
-		client: {
-			sandbox: 'AS--jTHyG8gQgZ0NmVSrb1uUq04PDFIdraHL_ois5SpkECywvTW6t78hA4lJEsa0gzK-Xxmy7tRIewp8'
-		},
-		locale: 'en_US',
-		style: {
-			size: 'small',
-			color: 'gold',
-			shape: 'pill'
-		},
-		commit: true,
-		payment: function (data, actions) {
-			var totalElement = document.getElementsByName("total")[0];
-			var totalValue = parseFloat(totalElement.textContent.trim().replace(/[^0-9.-]+/g, ""));
-
-			return actions.payment.create({
-				payment: {
-					transactions: [{
-						amount: {
-							total: totalValue,
-							currency: 'USD'
-						}
-					}]
-				}
-			});
-		},
-		onAuthorize: function (data, actions) {
-			return actions.payment.execute().then(function () {
-				var url = '@Url.Action("Index", "Home", new { })';
-				window.location.href = url;
-			});
-		}
-
-
-
-	}, '#paypal-btn');
-
-
-</script>
-	}
+}
 

@@ -49,12 +49,20 @@ namespace Travelista.Areas.Admin.Controllers
         [Area("Admin")]
         public ActionResult Create()
         {
-            ViewBag.countries = _countryRepository.GetAll().ToList();
-            ViewBag.TripTypes = _tripTypeRepository.GetAll().ToList();
+            var countries = _countryRepository.GetAll().ToList();
+            var types = _tripTypeRepository.GetAll().ToList();
+            ViewBag.countries = countries;
+            ViewBag.TripTypes = types;
+
+            if (countries.Count == 0 || types.Count == 0)
+            {
+                TempData["ErrorMessage"] = "There are no countries or trip types available to add a trip.";
+                return RedirectToAction("Index");
+            }
             return View();
         }
 
-        
+
         [HttpPost]
         [Area("Admin")]
        

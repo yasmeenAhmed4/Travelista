@@ -1,7 +1,6 @@
-
 @model Trip
 <style>
-	.disabled{
+	.disabled {
 		pointer-events: none;
 		cursor: not-allowed;
 		opacity: 0.65;
@@ -29,70 +28,68 @@
 		<div class="checkout">
 			<div class="container" style="margin:100px;">
 				<div class="checkout-discount">
-					
 				</div><!-- End .checkout-discount -->
 				@* <form asp-action="" asp-controller="" method="post"> *@
-					@* <input name="total" type="hidden" /> *@
+				@* <input name="total" type="hidden" /> *@
 
-					<div class="row">
-						<div class="col-lg-9">
-							<h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
-							<div class="row">
-								<div class="col-sm-6">
-									<label>First Name *</label>
-									<input type="text" class="form-control" name="ShipToAddress_FirstName" required value="@ViewBag.FirstName">
-								</div><!-- End .col-sm-6 -->
-
-								<div class="col-sm-6">
-									<label>Last Name *</label>
-									<input type="text" class="form-control" name="ShipToAddress_LastName" required value="@ViewBag.LastName">
-								</div><!-- End .col-sm-6 -->
-							</div><!-- End .row -->
-							<label>Email address *</label>
-							<input type="email" class="form-control" name="BuyerEmail" required value="@ViewBag.Email">
+				<div class="row">
+					<div class="col-lg-9">
+						<h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
+						<div class="row">
+							<div class="col-sm-6">
+								<label>First Name *</label>
+								<input type="text" class="form-control" name="ShipToAddress_FirstName" required value="@ViewBag.FirstName">
+							</div><!-- End .col-sm-6 -->
 
 							<div class="col-sm-6">
-								<label>Group Size *</label>
-								<input type="number" min="1" max="@Model.Capacity" value="1" class="form-control" name="Group-Size" required>
-							</div>
+								<label>Last Name *</label>
+								<input type="text" class="form-control" name="ShipToAddress_LastName" required value="@ViewBag.LastName">
+							</div><!-- End .col-sm-6 -->
+						</div><!-- End .row -->
+						<label>Email address *</label>
+						<input type="email" class="form-control" name="BuyerEmail" required value="@ViewBag.Email">
 
-						</div><!-- End .col-lg-9 -->
-						<aside class="col-lg-3">
-							<div class="summary">
-								<h3 class="summary-title"></h3><!-- End .summary-title -->
+						<div class="col-sm-6">
+							<label>Group Size *</label>
+							<input type="number" min="1" max="@Model.Capacity" value="1" class="form-control" name="Group-Size" required>
+						</div>
 
-								<table class="table table-summary">
-									<thead>
-										<tr>
-											<th>Trip</th>
-											<th>Total</th>
-										</tr>
-										
-									</thead>
+					</div><!-- End .col-lg-9 -->
+					<aside class="col-lg-3">
+						<div class="summary">
+							<h3 class="summary-title"></h3><!-- End .summary-title -->
 
-									<tbody>
-										
-										<tr class="summary-subtotal">
-											<td>Subtotal: </td>
-											<td name="subtotal"> @Model.Cost.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
-											
-										</tr><!-- End .summary-subtotal -->
-										<tr>
-											
-										</tr>
-										<tr class="summary-total">
-											<td>Total : </td>
-											<td name="total"> @Model.Cost.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
-											
-										</tr><!-- End .summary-total -->
-									</tbody>
-								</table><!-- End .table table-summary -->
+							<table class="table table-summary">
+								<thead>
+									<tr>
+										<th>Trip</th>
+										<th>Total</th>
+									</tr>
 
-								<div id="paypal-btn" style="width:500px"></div>
+								</thead>
+
+								<tbody>
+
+									<tr class="summary-subtotal">
+										<td>Subtotal: </td>
+										<td name="subtotal"> @Model.Cost.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
+
+									</tr><!-- End .summary-subtotal -->
+									<tr>
+									</tr>
+									<tr class="summary-total">
+										<td>Total : </td>
+										<td name="total"> @Model.Cost.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
+
+									</tr><!-- End .summary-total -->
+								</tbody>
+							</table><!-- End .table table-summary -->
+
+							<div id="paypal-btn" style="width:500px"></div>
 							@{
 								long amount = (long)@Model.Cost * 100;
 							}
-							@if(ViewBag.found == true)
+							@if (ViewBag.found == true)
 							{
 								<form asp-action="Charge" asp-controller="Booking" method="POST">
 									<input type="hidden" name="tripID" value="@Model.Id" />
@@ -111,129 +108,41 @@
 
 							}
 
-								<br>
-								
-								<br />
-							</div><!-- End .summary -->
-						</aside><!-- End .col-lg-3 -->
-					</div><!-- End .row -->
+							<br>
+
+							<br />
+						</div><!-- End .summary -->
+					</aside><!-- End .col-lg-3 -->
+				</div><!-- End .row -->
 				@* </form> *@
-				
+
 
 			</div><!-- End .container -->
 		</div><!-- End .checkout -->
 	</div><!-- End .page-content -->
 </main><!-- End .main -->
-
 @* Stripe *@
 
 
 @section Scripts {
-	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 	<script>
-		paypal.Button.render({
-			env: 'sandbox',
-			client: {
-				sandbox: 'AS--jTHyG8gQgZ0NmVSrb1uUq04PDFIdraHL_ois5SpkECywvTW6t78hA4lJEsa0gzK-Xxmy7tRIewp8'
-			},
-			locale: 'en_US',
-			style: {
-				size: 'small',
-				color: 'gold',
-				shape: 'pill'
-			},
-			commit: true,
-			// payment: function (data, actions) {
-			// 	return actions.payment.create({
-			// 		payment: {
-			// 			transactions: [{
-			// 				amount: {
-			// 					total: @Html.//Raw(),
-			// 					currency: 'USD'
-			// 				}
-			// 			}]
-			// 		}
-			// 	});
-			// },
-			onAuthorize: function (data, actions) {
-				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("Index", "Home", new { })';
-					window.location.href = url;
-				});
+		var subtotal = document.getElementsByName("subtotal")[0];
+		var total = document.getElementsByName("total")[0];
+		var groupSizeInput = document.getElementsByName("Group-Size")[0];
+		var cost = Number(subtotal.textContent.trim().replace(/[^0-9.-]+/g, ""));
+
+		groupSizeInput.addEventListener('change', function () {
+			var groupSize = parseInt(this.value);
+			if (groupSize == 0) {
+				cost = Number(cost); // Convert cost back to a number if it's formatted as a string
+				cost = cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+				total.textContent = cost;
+			} else {
+				var newTotal = cost * groupSize;
+				newTotal = newTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+				total.textContent = newTotal;
 			}
-
-
-
-<script>
-	var subtotal = document.getElementsByName("subtotal")[0];
-	var total = document.getElementsByName("total")[0];
-	var groupSizeInput = document.getElementsByName("Group-Size")[0];
-	var cost = Number(subtotal.textContent.trim().replace(/[^0-9.-]+/g, ""));
-
-	groupSizeInput.addEventListener('change', function () {
-		var groupSize = parseInt(this.value);
-		if (groupSize == 0) {
-			cost = Number(cost); // Convert cost back to a number if it's formatted as a string
-			cost = cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-			total.textContent = cost;
-		} else {
-			var newTotal = cost * groupSize;
-			newTotal = newTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-			total.textContent = newTotal;
-		}
-	});
-</script>
-
-
-
-
-
-
-
-
-
-
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script>
-	paypal.Button.render({
-		env: 'sandbox',
-		client: {
-			sandbox: 'AS--jTHyG8gQgZ0NmVSrb1uUq04PDFIdraHL_ois5SpkECywvTW6t78hA4lJEsa0gzK-Xxmy7tRIewp8'
-		},
-		locale: 'en_US',
-		style: {
-			size: 'small',
-			color: 'gold',
-			shape: 'pill'
-		},
-		commit: true,
-		payment: function (data, actions) {
-			var totalElement = document.getElementsByName("total")[0];
-			var totalValue = parseFloat(totalElement.textContent.trim().replace(/[^0-9.-]+/g, ""));
-
-			return actions.payment.create({
-				payment: {
-					transactions: [{
-						amount: {
-							total: totalValue,
-							currency: 'USD'
-						}
-					}]
-				}
-			});
-		},
-		onAuthorize: function (data, actions) {
-			return actions.payment.execute().then(function () {
-				var url = '@Url.Action("Index", "Home", new { })';
-				window.location.href = url;
-			});
-		}
-
-
-
-	}, '#paypal-btn');
-
-
-</script>
-	}
+		});
+	</script>
+}
 

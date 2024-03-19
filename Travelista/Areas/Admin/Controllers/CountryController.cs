@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Travelista.GenericRepository;
 using Travelista.Models;
 
@@ -20,11 +21,6 @@ namespace Travelista.Areas.Admin.Controllers
             return View(_countryRepository.GetAll().ToList());
         }
 
-       
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
 
 
         [Area("Admin")]
@@ -74,8 +70,22 @@ namespace Travelista.Areas.Admin.Controllers
         [Area("Admin")]
         public ActionResult Delete(int id)
         {
-            var type = _countryRepository.GetById(id);
-            _countryRepository.Delete(type);
+            var country = _countryRepository.GetAll()
+            .Include(t => t.Trips)
+            .FirstOrDefault(t => t.Id == id);
+
+
+            if (country.Trips != null && country.Trips.Any())
+            {
+                
+                TempData["ErrorMessage"] = "Cannot delete the country because it has associated trips.";
+            }
+            else
+            {
+               
+                _countryRepository.Delete(country);
+            }
+
             return RedirectToAction("Index");
         }
     }

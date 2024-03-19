@@ -64,8 +64,8 @@
 								<table class="table table-summary">
 									<thead>
 										<tr>
-											<th>Trip</th>
-											<th>Total</th>
+											@* <th>Trip</th>
+											<th>Total</th> *@
 										</tr>
 										
 									</thead>
@@ -92,6 +92,7 @@
 							@{
 								long amount = (long)@Model.Cost * 100;
 							}
+							<br/>
 							@if(ViewBag.found == true)
 							{
 								<form asp-action="Charge" asp-controller="Booking" method="POST">

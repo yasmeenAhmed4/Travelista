@@ -6,6 +6,14 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject ApplicationDbContext DB;
+@{
+	int WishlistCount = 0;
+	if (User.Identity.IsAuthenticated)
+	{
+		WishlistCount = DB.WishlistItems.Where(w => w.UserId == User.Claims.FirstOrDefault().Value).ToList().Count();
+	}
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +115,7 @@
 					<ul class="nav-menu">
 						<li class="hm-wishlist">
 							<a asp-area="" asp-controller="Wishlist" asp-action="Index">
-								<span class="cart-item-count wishlist-item-count">0</span>
+								<span class="cart-item-count wishlist-item-count">@WishlistCount</span>
 								<i class="fa fa-heart-o"></i>
 							</a>
 						</li>

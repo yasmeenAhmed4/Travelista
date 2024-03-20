@@ -100,7 +100,16 @@
 			Your browser does not support the video tag.
 		</video>
 
-	<h3 class="genric-btn primary text-uppercase" style="padding:20px">Discover Egypt</h3>
+
+
+	<!--Discover Egypt-->
+	<form asp-action="Index" asp-controller="Trips" method="post">
+		<input type="hidden" name="Country" value="Egypt" />
+		<input type="hidden" name="Category" value="ALL" />
+		<button  class="genric-btn primary text-uppercase" style="padding:20px" onclick="UpdateSessionStorage()">
+			<h3>Discover Egypt</h3>
+		</button>
+	</form>
 	</div>
 	<!--end video area-->
 
@@ -192,5 +201,21 @@
 		});
 
 	}
+
 </script>
+</section>
+<!-- End recent-blog Area -->
+
+
+<!--Scripts Area-->
+@section Scripts
+{
+	<script>
+		function UpdateSessionStorage()
+		{
+			sessionStorage.clear();
+			sessionStorage.setItem("Country",'1');
+		}
+	</script>
+}
 

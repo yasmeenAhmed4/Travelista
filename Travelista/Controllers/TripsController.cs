@@ -37,16 +37,16 @@ namespace Travelista.Controllers
 
 
         [HttpPost]
-		public async Task<IActionResult> Index([FromForm] FilterFormViewModel filterForm)
-		{
-			var additionalConditions = new List<Expression<Func<Trip, bool>>>();
+        public async Task<IActionResult> Index([FromForm] FilterFormViewModel filterForm)
+        {
+            var additionalConditions = new List<Expression<Func<Trip, bool>>>();
 
-			additionalConditions.AddRange(_intialPredicates);
+            additionalConditions.AddRange(_intialPredicates);
 
-			additionalConditions.AddRange(new List<Expression<Func<Trip, bool>>>
-	        {
-		        trip => trip.Cost >= filterForm.MinPrice,
-		        trip => trip.Cost <= filterForm.MaxPrice,
+            additionalConditions.AddRange(new List<Expression<Func<Trip, bool>>>
+            {
+                trip => filterForm.MinPrice==null || trip.Cost >= filterForm.MinPrice,
+		        trip => filterForm.MaxPrice==null||trip.Cost <= filterForm.MaxPrice,
 		        trip => filterForm.Country == "ALL" || (trip.Country != null && trip.Country.Name == filterForm.Country),
 		        trip => filterForm.Category == "ALL" || (trip.TripType != null && trip.TripType.Name == filterForm.Category),
 		        trip => filterForm.Date == null || trip.StartDate >= filterForm.Date

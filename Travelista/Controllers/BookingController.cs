@@ -64,18 +64,23 @@ namespace Travelista.Controllers
 		}
 		
 		[HttpPost]
-		public IActionResult Charge(int tripID ,string stripeEmail, string stripeToken)
+		public IActionResult Charge(int tripID , long Amount, string stripeEmail, string stripeToken)
 		{
 
 			Booking order = new();
 			order.TripID = tripID;
 			order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 			order.BookDate = DateTime.Now;
-			order.Cost = TripRepository1.GetById(tripID).Cost;
+
+			var discountAmount = (TripRepository1.GetById(tripID).Discount / 100) * Amount;
+
+			var finalCost = Amount - discountAmount;
+
+			order.Cost = finalCost /*TripRepository1.GetById(tripID).Cost*/;
 
 			var myCharge = new Stripe.ChargeCreateOptions();
 			// always set these properties
-			myCharge.Amount = (long)(order.Cost * 100);
+			myCharge.Amount = (long)(finalCost);
 			myCharge.Currency = "USD";
 			myCharge.ReceiptEmail = stripeEmail;
 			myCharge.Description = "Sample Charge";

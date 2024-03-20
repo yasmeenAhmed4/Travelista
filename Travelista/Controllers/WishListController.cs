@@ -35,19 +35,20 @@ namespace Travelista.Controllers
 		}
 		public IActionResult AddToWishList(int id)
 		{
-			var existingitem = wishlistRepo.GetAll().AsEnumerable().Where(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).FirstOrDefault();
-			if(existingitem == null)
+			var existingItem = wishlistRepo.GetAll().AsEnumerable().FirstOrDefault(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+			if (existingItem == null)
 			{
-				WishlistItem item = new();
+				WishlistItem item = new WishlistItem();
 				item.TripId = id;
 				item.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 				wishlistRepo.Create(item);
-				//return Created();
-				return RedirectToAction("Index", "Home");
+				return Ok(new { status = 200});
 			}
-			else 
-				return NoContent();
+			else
+				return NoContent(); 
 		}
+
 		public IActionResult RemoveFromWishList(int id) 
 		{
 			var item = wishlistRepo.GetAll().AsEnumerable().Where(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).FirstOrDefault();

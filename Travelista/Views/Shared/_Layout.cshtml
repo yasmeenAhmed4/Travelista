@@ -24,7 +24,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="~/img/favi.png">
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
 	<!-- Meta Description -->
@@ -123,6 +123,10 @@
 						<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
 						<li><a asp-area="" asp-controller="Contact" asp-action="SendMessage">Contact</a></li>
 						<li><a asp-area="" asp-controller="Trips" asp-action="Index">Trips</a></li>
+						@if (@User.IsInRole("Admin"))
+						{
+							<li><a asp-area="Admin" asp-controller="Admin" asp-action="Index">DashBoard</a></li>
+						}
 
 
 						 <partial name="_LoginPartial" /> 
@@ -250,5 +254,7 @@
 	<script src="~/js/site.js" asp-append-version="true"></script> *@
 	@await RenderSectionAsync("Scripts", required: false)
 	@await RenderSectionAsync("Styles", required: false)
+	
+
 </body>
 </html>

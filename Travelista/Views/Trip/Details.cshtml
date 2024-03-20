@@ -91,7 +91,7 @@
 					<div class="single-post row">
 						<div class="col-lg-12">
 							<div class="feature-img" style="position:relative">
-								<a href="/WishList/AddToWishList/@Model.Id" class="wishlist">
+								<a class="wishlist" onclick="addToWishList(event , @Model.Id)">
 									<i class="fa fa-heart"></i>
 								</a>
 								<img class="img-fluid" src="~/images/@Model.Images[0].ImageURL" alt="first  image">
@@ -249,7 +249,30 @@
 				} , 1000)
 			};
 	</script>
+	<script>
+		function addToWishList(event, id) {
+			event.preventDefault();
+			$.ajax({
+				url: '@Url.Action("AddToWishList", "WishList")' + '?id=' + id,
+				type: 'POST',
+				contentType: 'application/json',
+				data: JSON.stringify({ id: id }), // Convert data to JSON format
+				success: function (response) {
+					if (response && response.status === 200) {
+						location.reload(); // Reload the page
+					} else {
+						console.error("Unexpected response:", response);
+					}
 
+
+				},
+				error: function (xhr, textStatus, errorThrown) {
+					console.error("AJAX error:", textStatus, errorThrown);
+				}
+			});
+
+		}
+	</script>
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>

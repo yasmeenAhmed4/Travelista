@@ -1,31 +1,46 @@
-﻿@using Travelista.ViewModel
-@Model IEnumerable<IdentityRole>
+﻿@using Microsoft.AspNetCore.Identity
+@using Travelista.ViewModel;
+
+@model IEnumerable<IdentityRole>;
 
     @{
         ViewData["Title"] = "Roles";
     }
 
-    <h1>Roles</h1>
+  
 
-    <partial name="_RoleForm" model="new RoleFormViewModel()"></partial>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Roles</h1>
+                            <partial name="_RoleForm" model="new RoleFormViewModel()"></partial>
+                            <table class="table table-striped mt-3">
+                                <thead class="bg-primary text-white">
+                                    <tr>
+                                        <th style="width: 20%;">ID</th>
+                                        <th style="width: 20%;">Role Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var role in Model)
+                                    {
+                                        <tr>
+                                            <td>@role.Id</td>
+                                            <td>@role.Name</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                      </div>
+                   </div>
+               </div>
+          </div>
+      </div>
+</div>
 
-    <table class="table table-striped mt-3">
-        <thead class="bg-primary text-white">
-            <tr>
-                <th style="width: 20%;">ID</th>
-                <th style="width: 20%;">Role Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var role in Model)
-            {
-                <tr>
-                    <td>@role.Id</td>
-                    <td>@role.Name</td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />

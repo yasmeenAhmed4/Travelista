@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Travelista.Areas.Admin.Controllers
 {
@@ -77,8 +78,22 @@ namespace Travelista.Areas.Admin.Controllers
          [Area("Admin")]
         public ActionResult Delete(int id)
         {
-            var type = _tripTypeRepository.GetById(id);
-            _tripTypeRepository.Delete(type);
+            var type = _tripTypeRepository.GetAll()
+            .Include(t => t.Trips)
+            .FirstOrDefault(t => t.Id == id);
+
+
+            if (type.Trips != null && type.Trips.Any())
+            {
+
+                TempData["ErrorMessage"] = "Cannot delete the type because it has associated trips.";
+            }
+            else
+            {
+
+                _tripTypeRepository.Delete(type);
+            }
+
             return RedirectToAction("Index");
         }
     }

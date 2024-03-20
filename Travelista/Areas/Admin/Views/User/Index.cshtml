@@ -5,7 +5,7 @@
     ViewData["Title"] = "Users";
 }
 
-<h1>Users</h1>
+
 
 <style>
     .table {
@@ -13,30 +13,42 @@
     }
 </style>
 
-<table class="table table-striped">
-    <thead>
-        <tr class="bg-primary text-white">
-            <th style="width: 20%;">Name</th>
-            <th style="width: 20%;">Email</th>
-            <th style="width: 10%;">Roles</th> 
-            <th style="width: 20%;">Actions</th> 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            <tr>
-                <td>@($"{user.FirstName} {user.LastName}")</td>
-                <td>@user.Email</td>
-                <td>@string.Join(" , ", user.Roles.ToList())</td>
-                <td>
-                    <a class="btn btn-outline-primary" asp-area="Admin" asp-controller="User" asp-action="ManageRoles"
-                       asp-route-userId="@user.Id">Manage Roles</a>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Users</h1>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th style="width: 20%;">Name</th>
+                                    <th style="width: 20%;">Email</th>
+                                    <th style="width: 10%;">Roles</th>
+                                    <th style="width: 20%;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model)
+                                {
+                                    <tr>
+                                        <td>@($"{user.FirstName} {user.LastName}")</td>
+                                        <td>@user.Email</td>
+                                        <td>@string.Join(" , ", user.Roles.ToList())</td>
+                                        <td>
+                                            <a class="btn btn-outline-primary" asp-area="Admin" asp-controller="User" asp-action="ManageRoles"
+                                               asp-route-userId="@user.Id">Manage Roles</a>
 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

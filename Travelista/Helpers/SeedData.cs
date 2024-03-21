@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography.Xml;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Security.Cryptography.Xml;
+using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -12,7 +14,7 @@ namespace Travelista.Helpers
 			using var context = new ApplicationDbContext();
 			context.Database.EnsureCreated();
 
-			if(!context.TripTypes.Any())
+			if (!context.TripTypes.Any())
 			{
 				context.TripTypes.AddRange(new List<TripType>()
 				{
@@ -34,7 +36,7 @@ namespace Travelista.Helpers
 				});
 			}
 
-			if(!context.Trips.Any())
+			if (!context.Trips.Any())
 			{
 				context.Trips.AddRange(new List<Trip>()
 				{
@@ -289,7 +291,7 @@ namespace Travelista.Helpers
 							new TripReView() { Username = "LiamHistoricalWanderlust", Email = "liam.historicalwanderlust@hotmail.com", Message = "Lebanon's historical wonders came to life! Anjar, Baalbek, and Douris offered a journey through time, unraveling the rich tapestry of the region's cultural heritage."},
 							new TripReView() { Username = "SophiaScenicAdventures", Email = "sophia.scenicadventures@gmail.com", Message = "The scenic drive through Beqaa Valley was an adventure! Anjar and Baalbek provided glimpses of historical wonders against the backdrop of Lebanon's picturesque landscapes. A perfect blend of adventure and history."},
 							new TripReView() { Username = "EthanCulturalDiscovery", Email = "ethan.culturaldiscovery@yahoo.com", Message = "Douris' Lunch Stop allowed for cultural discovery! Engaging with local cuisine added a personal touch to the historical exploration. A connection with Lebanon's rich culinary traditions."},
-							new TripReView() { Username = "MiaWineTastingEscape", Email = "mia.winetastingescape@gmail.com", Message = "Chateau Ksara's wine tasting was a delightful escape! The oldest winery in Lebanon provided a perfect setting for exploring history and savoring local wines. A memorable escape for wine lovers."},								
+							new TripReView() { Username = "MiaWineTastingEscape", Email = "mia.winetastingescape@gmail.com", Message = "Chateau Ksara's wine tasting was a delightful escape! The oldest winery in Lebanon provided a perfect setting for exploring history and savoring local wines. A memorable escape for wine lovers."},
 						}
 					},	  //5
 					new Trip()
@@ -379,7 +381,7 @@ namespace Travelista.Helpers
 					},	  //7
 					new Trip()
 					{
-						Name="Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour",
+						Name="Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour",
 						Cost = 150.00,
 						StartDate=new DateTime().Date,
 						Description="Prepare to be awed by Istanbul’s magnificent architecture, rich history, and eclectic bazaars as you discover the unmissable highlights of the Old City on this 1-, 2-, or 3-day private tour. Marvel over the glorious Hagia Sophia, learn how the Blue Mosque earned its famous nickname, and see the ancient Basilica Cistern. Tour Topkapi Palace to gain an insight into the lavish lifestyles of the Ottoman sultans and their harem, and browse the legendary Grand Bazaar, where you find everything from carpets to Turkish delight. Flexible daily itineraries: Day 1 - Hagia Sophia, Hippodrome Square, German Fountain, Blue Mosque, Basilica Cistern, Topkapi Palace, Grand Bazaar. Day 2 - Bosphorus Cruise by Public Ferry, Dolmabahce Palace, Taksim Square, Istiklal Street, Cicek Passage, Galata Tower (from outside), Spice Market. Day 3 - Suleymaniye Mosque, Fener and Balat Districts, St. Stephen Church (Iron Church), Pierre Lotti Panoramic Hill by Cable Car, Rahmi Koc Museum (or alternative sites). Exclusive Istanbul tour led by a private guide Comprehensive tour of the city over one, two, or three days Explore the local streets on a walking tour of the city Customize the itinerary according to your schedule\r\n\r\nRead more about Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour ",
@@ -390,10 +392,10 @@ namespace Travelista.Helpers
 						Duration = 3,
 						Images = new List<Image>()
 						{
-							new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+1+".jpg"},
-							new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+2+".jpg"},
-							new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+3+".jpg"},
-							new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+4+".jpg"},
+							new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+1+".jpg"},
+							new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+2+".jpg"},
+							new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+3+".jpg"},
+							new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+4+".jpg"},
 
 						},
 						TripReviews = new List<TripReView>()
@@ -465,10 +467,10 @@ namespace Travelista.Helpers
 						Duration = 1,
 						Images = new List<Image>()
 						{
-							new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +1+".jpg"},
-							new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +2+".jpg"},
-							new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +3+".jpg"},
-							new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +4+".jpg"},
+							new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +1+".jpg"},
+							new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +2+".jpg"},
+							new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +3+".jpg"},
+							new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +4+".jpg"},
 
 						},
 						TripReviews = new List<TripReView>()
@@ -497,9 +499,20 @@ namespace Travelista.Helpers
 						}
 					},    //10
 
-				}) ;
-			}
+				});
 
+
+
+			}
+			
+			
+			context.SaveChanges();
 		}
+
+		
+
 	}
 }
+
+
+

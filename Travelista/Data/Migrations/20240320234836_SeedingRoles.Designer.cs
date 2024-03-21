@@ -12,8 +12,8 @@ using Travelista.Data;
 namespace Travelista.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240314221620_seedRoles")]
-    partial class seedRoles
+    [Migration("20240320234836_SeedingRoles")]
+    partial class SeedingRoles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

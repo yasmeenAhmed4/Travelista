@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography.Xml;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Security.Cryptography.Xml;
+using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -12,11 +14,11 @@ namespace Travelista.Helpers
             using var context = new ApplicationDbContext();
             context.Database.EnsureCreated();
 
-            if (!context.TripTypes.Any())
-            {
-                context.TripTypes.AddRange(new List<TripType>()
-                {
-                    new TripType(){Name = "Group Trip"}, //id = 1
+			if (!context.TripTypes.Any())
+			{
+				context.TripTypes.AddRange(new List<TripType>()
+				{
+					new TripType(){Name = "Group Trip"}, //id = 1
 					new TripType(){Name = "One Day Trip"}, //id = 2
 					new TripType(){Name = "Honey Moon Package"}, //id = 3
 				});
@@ -30,7 +32,7 @@ namespace Travelista.Helpers
 					new Country(){Name = "Spain"},	         //2
 					new Country(){Name = "Turkey"},          //3
 					new Country(){Name = "Italy"},           //4
-					new Country(){Name = "Lebanon"},          //5
+					new Country(){Name = "Lebanon"},         //5
 				});
             }
 
@@ -270,33 +272,33 @@ namespace Travelista.Helpers
                             new Image(){ImageURL = "Baalbek - Anjar - Ksara Trip From Beirut "+4+".jpg"},
 
 
-                        },
-                        TripReviews = new List<TripReView>()
-                        {
-                            new TripReView() { Username = "SarahAdventures", Email = "sarah.adventures@gmail.com", Message = "Anjar Citadel was a historical gem! The Umayyad site in Lebanon offered a captivating journey through time. A must-visit for history enthusiasts."},
-                            new TripReView() { Username = "SarahAdventures", Email = "sarah.adventures@gmail.com", Message = "Anjar Citadel was a historical gem! The Umayyad site in Lebanon offered a captivating journey through time. A must-visit for history enthusiasts."},
-                            new TripReView() { Username = "AlexTraveler", Email = "alex.traveler@hotmail.com", Message = "The Temples of Baalbek were awe-inspiring! Dedicated to Bacchus, Jupiter, and Venus, the intricate architecture and historical significance made it a memorable experience."},
-                            new TripReView() { Username = "OliviaExplorer", Email = "olivia.explorer@yahoo.com", Message = "Douris provided a delightful lunch stop! The break allowed us to recharge and enjoy local cuisine. A perfect pause in the midst of historical exploration."},
-                            new TripReView() { Username = "CharlieWineConnoisseur", Email = "charlie.wineconnoisseur@gmail.com", Message = "Chateau Ksara, the oldest winery in Lebanon, was a treat for the senses! The roman caves and local wine tasting added a unique touch to the journey. Highly recommended for wine enthusiasts."},
-                            new TripReView() { Username = "ZoeHistoricalJourney", Email = "zoe.historicaljourney@hotmail.com", Message = "The journey through the Beqaa Valley was a scenic delight! Exploring Anjar, Baalbek, and Douris showcased the rich history of Lebanon. A perfect blend of culture and nature."},
-                            new TripReView() { Username = "MaxCulturalExplorer", Email = "max.culturalexplorer@yahoo.com", Message = "Anjar's Umayyad site was a hidden treasure! The historical significance and architecture were fascinating. A journey through Lebanon's cultural heritage."},
-                            new TripReView() { Username = "MiaNatureEnthusiast", Email = "mia.natureenthusiast@gmail.com", Message = "The Temples of Baalbek offered a glimpse into ancient wonders! Surrounded by nature, the historical journey was complemented by breathtaking views. A trip for both history and nature lovers."},
-                            new TripReView() { Username = "LeoCulinaryAdventures", Email = "leo.culinaryadventures@hotmail.com", Message = "Lunch Stop at Douris was a culinary delight! The local cuisine was a perfect match for the historical exploration. A satisfying break in the midst of cultural discoveries."},
-                            new TripReView() { Username = "EllaWineTasting", Email = "ella.winetasting@gmail.com", Message = "Chateau Ksara's wine tasting was a sensory experience! Exploring the roman caves and savoring local wines added a delightful twist to the trip. A must-visit for wine connoisseurs."},
-                            new TripReView() { Username = "OscarHistoricalWanderer", Email = "oscar.historicalwanderer@yahoo.com", Message = "The journey through Lebanon's historical sites was enriching! Anjar, Baalbek, and Douris provided a comprehensive understanding of the region's cultural heritage. A captivating historical wander."},
-                            new TripReView() { Username = "AvaScenicDrive", Email = "ava.scenicdrive@gmail.com", Message = "The drive through Beqaa Valley offered picturesque landscapes! Anjar and Baalbek showcased the beauty of Lebanon's historical wonders against the backdrop of nature. A scenic journey through time."},
-                            new TripReView() { Username = "NoahCulturalExchange", Email = "noah.culturalexchange@yahoo.com", Message = "Lunch Stop at Douris allowed for cultural exchange! Engaging with local cuisine added a personal touch to the historical exploration. A connection with Lebanon's rich culinary traditions."},
-                            new TripReView() { Username = "EmmaWineAdventure", Email = "emma.wineadventure@gmail.com", Message = "Chateau Ksara's wine adventure was delightful! The oldest winery in Lebanon offered a perfect blend of history and wine tasting. A memorable journey for wine enthusiasts."},
-                            new TripReView() { Username = "LiamHistoricalDiscovery", Email = "liam.historicaldiscovery@hotmail.com", Message = "Anjar's Umayyad site revealed historical treasures! The exploration of Baalbek and Douris added depth to the historical discovery. A journey filled with intriguing stories."},
-                            new TripReView() { Username = "AriaNatureEscape", Email = "aria.natureescape@gmail.com", Message = "Nature's escape through Beqaa Valley was refreshing! The temples of Baalbek immersed us in ancient history amidst natural beauty. An ideal escape for those seeking history and tranquility."},
-                            new TripReView() { Username = "EthanCulinaryJourney", Email = "ethan.culinaryjourney@yahoo.com", Message = "Douris' Lunch Stop was a culinary journey! The flavors of local cuisine were a delightful addition to the historical exploration. A satisfying break with a taste of Lebanon."},
-                            new TripReView() { Username = "AvaWineAfficionado", Email = "ava.wineafficionado@gmail.com", Message = "Chateau Ksara's wine experience was exquisite! Exploring the oldest winery and tasting local wines provided a unique perspective on Lebanon's cultural heritage. A must-visit for wine aficionados."},
-                            new TripReView() { Username = "LiamHistoricalWanderlust", Email = "liam.historicalwanderlust@hotmail.com", Message = "Lebanon's historical wonders came to life! Anjar, Baalbek, and Douris offered a journey through time, unraveling the rich tapestry of the region's cultural heritage."},
-                            new TripReView() { Username = "SophiaScenicAdventures", Email = "sophia.scenicadventures@gmail.com", Message = "The scenic drive through Beqaa Valley was an adventure! Anjar and Baalbek provided glimpses of historical wonders against the backdrop of Lebanon's picturesque landscapes. A perfect blend of adventure and history."},
-                            new TripReView() { Username = "EthanCulturalDiscovery", Email = "ethan.culturaldiscovery@yahoo.com", Message = "Douris' Lunch Stop allowed for cultural discovery! Engaging with local cuisine added a personal touch to the historical exploration. A connection with Lebanon's rich culinary traditions."},
-                            new TripReView() { Username = "MiaWineTastingEscape", Email = "mia.winetastingescape@gmail.com", Message = "Chateau Ksara's wine tasting was a delightful escape! The oldest winery in Lebanon provided a perfect setting for exploring history and savoring local wines. A memorable escape for wine lovers."},
-                        }
-                    },	  //5
+						},
+						TripReviews = new List<TripReView>()
+						{
+							new TripReView() { Username = "SarahAdventures", Email = "sarah.adventures@gmail.com", Message = "Anjar Citadel was a historical gem! The Umayyad site in Lebanon offered a captivating journey through time. A must-visit for history enthusiasts."},
+							new TripReView() { Username = "SarahAdventures", Email = "sarah.adventures@gmail.com", Message = "Anjar Citadel was a historical gem! The Umayyad site in Lebanon offered a captivating journey through time. A must-visit for history enthusiasts."},
+							new TripReView() { Username = "AlexTraveler", Email = "alex.traveler@hotmail.com", Message = "The Temples of Baalbek were awe-inspiring! Dedicated to Bacchus, Jupiter, and Venus, the intricate architecture and historical significance made it a memorable experience."},
+							new TripReView() { Username = "OliviaExplorer", Email = "olivia.explorer@yahoo.com", Message = "Douris provided a delightful lunch stop! The break allowed us to recharge and enjoy local cuisine. A perfect pause in the midst of historical exploration."},
+							new TripReView() { Username = "CharlieWineConnoisseur", Email = "charlie.wineconnoisseur@gmail.com", Message = "Chateau Ksara, the oldest winery in Lebanon, was a treat for the senses! The roman caves and local wine tasting added a unique touch to the journey. Highly recommended for wine enthusiasts."},
+							new TripReView() { Username = "ZoeHistoricalJourney", Email = "zoe.historicaljourney@hotmail.com", Message = "The journey through the Beqaa Valley was a scenic delight! Exploring Anjar, Baalbek, and Douris showcased the rich history of Lebanon. A perfect blend of culture and nature."},
+							new TripReView() { Username = "MaxCulturalExplorer", Email = "max.culturalexplorer@yahoo.com", Message = "Anjar's Umayyad site was a hidden treasure! The historical significance and architecture were fascinating. A journey through Lebanon's cultural heritage."},
+							new TripReView() { Username = "MiaNatureEnthusiast", Email = "mia.natureenthusiast@gmail.com", Message = "The Temples of Baalbek offered a glimpse into ancient wonders! Surrounded by nature, the historical journey was complemented by breathtaking views. A trip for both history and nature lovers."},
+							new TripReView() { Username = "LeoCulinaryAdventures", Email = "leo.culinaryadventures@hotmail.com", Message = "Lunch Stop at Douris was a culinary delight! The local cuisine was a perfect match for the historical exploration. A satisfying break in the midst of cultural discoveries."},
+							new TripReView() { Username = "EllaWineTasting", Email = "ella.winetasting@gmail.com", Message = "Chateau Ksara's wine tasting was a sensory experience! Exploring the roman caves and savoring local wines added a delightful twist to the trip. A must-visit for wine connoisseurs."},
+							new TripReView() { Username = "OscarHistoricalWanderer", Email = "oscar.historicalwanderer@yahoo.com", Message = "The journey through Lebanon's historical sites was enriching! Anjar, Baalbek, and Douris provided a comprehensive understanding of the region's cultural heritage. A captivating historical wander."},
+							new TripReView() { Username = "AvaScenicDrive", Email = "ava.scenicdrive@gmail.com", Message = "The drive through Beqaa Valley offered picturesque landscapes! Anjar and Baalbek showcased the beauty of Lebanon's historical wonders against the backdrop of nature. A scenic journey through time."},
+							new TripReView() { Username = "NoahCulturalExchange", Email = "noah.culturalexchange@yahoo.com", Message = "Lunch Stop at Douris allowed for cultural exchange! Engaging with local cuisine added a personal touch to the historical exploration. A connection with Lebanon's rich culinary traditions."},
+							new TripReView() { Username = "EmmaWineAdventure", Email = "emma.wineadventure@gmail.com", Message = "Chateau Ksara's wine adventure was delightful! The oldest winery in Lebanon offered a perfect blend of history and wine tasting. A memorable journey for wine enthusiasts."},
+							new TripReView() { Username = "LiamHistoricalDiscovery", Email = "liam.historicaldiscovery@hotmail.com", Message = "Anjar's Umayyad site revealed historical treasures! The exploration of Baalbek and Douris added depth to the historical discovery. A journey filled with intriguing stories."},
+							new TripReView() { Username = "AriaNatureEscape", Email = "aria.natureescape@gmail.com", Message = "Nature's escape through Beqaa Valley was refreshing! The temples of Baalbek immersed us in ancient history amidst natural beauty. An ideal escape for those seeking history and tranquility."},
+							new TripReView() { Username = "EthanCulinaryJourney", Email = "ethan.culinaryjourney@yahoo.com", Message = "Douris' Lunch Stop was a culinary journey! The flavors of local cuisine were a delightful addition to the historical exploration. A satisfying break with a taste of Lebanon."},
+							new TripReView() { Username = "AvaWineAfficionado", Email = "ava.wineafficionado@gmail.com", Message = "Chateau Ksara's wine experience was exquisite! Exploring the oldest winery and tasting local wines provided a unique perspective on Lebanon's cultural heritage. A must-visit for wine aficionados."},
+							new TripReView() { Username = "LiamHistoricalWanderlust", Email = "liam.historicalwanderlust@hotmail.com", Message = "Lebanon's historical wonders came to life! Anjar, Baalbek, and Douris offered a journey through time, unraveling the rich tapestry of the region's cultural heritage."},
+							new TripReView() { Username = "SophiaScenicAdventures", Email = "sophia.scenicadventures@gmail.com", Message = "The scenic drive through Beqaa Valley was an adventure! Anjar and Baalbek provided glimpses of historical wonders against the backdrop of Lebanon's picturesque landscapes. A perfect blend of adventure and history."},
+							new TripReView() { Username = "EthanCulturalDiscovery", Email = "ethan.culturaldiscovery@yahoo.com", Message = "Douris' Lunch Stop allowed for cultural discovery! Engaging with local cuisine added a personal touch to the historical exploration. A connection with Lebanon's rich culinary traditions."},
+							new TripReView() { Username = "MiaWineTastingEscape", Email = "mia.winetastingescape@gmail.com", Message = "Chateau Ksara's wine tasting was a delightful escape! The oldest winery in Lebanon provided a perfect setting for exploring history and savoring local wines. A memorable escape for wine lovers."},
+						}
+					},	  //5
 					new Trip()
                     {
                         Name="Connemara Day Trip Including Leenane Village and Kylemore Abbey from Galway",
@@ -383,14 +385,13 @@ namespace Travelista.Helpers
                         }
                     },	  //7
 					new Trip()
-                    {
-                        Name="Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour",
-                        Cost = 150.00,
-                        StartDate=new DateTime(02/04/2024).Date,
-                        Description="Prepare to be awed by Istanbul’s magnificent architecture, rich history, and eclectic bazaars as you discover the unmissable highlights of the Old City on this 1-, 2-, or 3-day private tour. Marvel over the glorious Hagia Sophia, learn how the Blue Mosque earned its famous nickname, and see the ancient Basilica Cistern. Tour Topkapi Palace to gain an insight into the lavish lifestyles of the Ottoman sultans and their harem, and browse the legendary Grand Bazaar, where you find everything from carpets to Turkish delight. Flexible daily itineraries: Day 1 - Hagia Sophia, Hippodrome Square, German Fountain, Blue Mosque, Basilica Cistern, Topkapi Palace, Grand Bazaar. Day 2 - Bosphorus Cruise by Public Ferry, Dolmabahce Palace, Taksim Square, Istiklal Street, Cicek Passage, Galata Tower (from outside), Spice Market. Day 3 - Suleymaniye Mosque, Fener and Balat Districts, St. Stephen Church (Iron Church), Pierre Lotti Panoramic Hill by Cable Car, Rahmi Koc Museum (or alternative sites). Exclusive Istanbul tour led by a private guide Comprehensive tour of the city over one, two, or three days Explore the local streets on a walking tour of the city Customize the itinerary according to your schedule\r\n\r\nRead more about Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour ",
-                        Program = "When booking this immersive, private tour of Istanbul, choose a duration that works best for your schedule. See many of the city’s most important attractions and monuments, all in one day—or extend to a two- or three-day experience for a complete introduction to the city. On the first day, meet your guide directly at your centrally located Istanbul hotel. This experience is tailored to your schedule and interests, and you can pick from numerous departure times and customize your itinerary. Set off on foot to really soak in the city’s ambiance, and visit numerous landmarks in the Historic Areas of Istanbul UNESCO World Heritage Site, including the Hagia Sophia and Blue Mosque or Basilica Cistern. Then, visit the lavish Topkapi Palace (entry own expense) before finishing at the Grand Bazaar. With your guide’s in-depth storytelling, you’ll learn more about the sights than you’d discover on your own. If you choose to extend to the second day, enhance your visit with a Bosphorus cruise by public ferry and a trip to Dolmabahce Palace. Follow your guide through the crowds to see Taksim Square, Istiklal Street, Cicek Passage, and the exterior of the Galata Tower. And if you explore on a third day, more sights await discovery, including the Suleymaniye Mosque, the evocative Fener and Balat neighborhoods and the Bulgarian St. Stephen Church. Cap off your experience with a cable car ride to the Pierre Loti Hill.\r\n\r\nRead more about Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour - https://www.viator.com/tours/Istanbul/Istanbul-Full-Day-Private-Guided-Old-City-Tour/d585-11522P1?mcid=56757",
-                        Capacity = 70,
-						Discount = 10,
+					{
+						Name="Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour",
+						Cost = 150.00,
+						StartDate=new DateTime().Date,
+						Description="Prepare to be awed by Istanbul’s magnificent architecture, rich history, and eclectic bazaars as you discover the unmissable highlights of the Old City on this 1-, 2-, or 3-day private tour. Marvel over the glorious Hagia Sophia, learn how the Blue Mosque earned its famous nickname, and see the ancient Basilica Cistern. Tour Topkapi Palace to gain an insight into the lavish lifestyles of the Ottoman sultans and their harem, and browse the legendary Grand Bazaar, where you find everything from carpets to Turkish delight. Flexible daily itineraries: Day 1 - Hagia Sophia, Hippodrome Square, German Fountain, Blue Mosque, Basilica Cistern, Topkapi Palace, Grand Bazaar. Day 2 - Bosphorus Cruise by Public Ferry, Dolmabahce Palace, Taksim Square, Istiklal Street, Cicek Passage, Galata Tower (from outside), Spice Market. Day 3 - Suleymaniye Mosque, Fener and Balat Districts, St. Stephen Church (Iron Church), Pierre Lotti Panoramic Hill by Cable Car, Rahmi Koc Museum (or alternative sites). Exclusive Istanbul tour led by a private guide Comprehensive tour of the city over one, two, or three days Explore the local streets on a walking tour of the city Customize the itinerary according to your schedule\r\n\r\nRead more about Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour ",
+						Program = "When booking this immersive, private tour of Istanbul, choose a duration that works best for your schedule. See many of the city’s most important attractions and monuments, all in one day—or extend to a two- or three-day experience for a complete introduction to the city. On the first day, meet your guide directly at your centrally located Istanbul hotel. This experience is tailored to your schedule and interests, and you can pick from numerous departure times and customize your itinerary. Set off on foot to really soak in the city’s ambiance, and visit numerous landmarks in the Historic Areas of Istanbul UNESCO World Heritage Site, including the Hagia Sophia and Blue Mosque or Basilica Cistern. Then, visit the lavish Topkapi Palace (entry own expense) before finishing at the Grand Bazaar. With your guide’s in-depth storytelling, you’ll learn more about the sights than you’d discover on your own. If you choose to extend to the second day, enhance your visit with a Bosphorus cruise by public ferry and a trip to Dolmabahce Palace. Follow your guide through the crowds to see Taksim Square, Istiklal Street, Cicek Passage, and the exterior of the Galata Tower. And if you explore on a third day, more sights await discovery, including the Suleymaniye Mosque, the evocative Fener and Balat neighborhoods and the Bulgarian St. Stephen Church. Cap off your experience with a cable car ride to the Pierre Loti Hill.\r\n\r\nRead more about Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour - https://www.viator.com/tours/Istanbul/Istanbul-Full-Day-Private-Guided-Old-City-Tour/d585-11522P1?mcid=56757",
+						Capacity = 70,
 						CountryId = 3 ,
                         TripTypeID = 1 ,
                         Duration = 3,
@@ -918,7 +919,12 @@ namespace Travelista.Helpers
 					}    //19
 				});
             }
+			context.SaveChanges();
 
         }
     }
 }
+
+
+
+

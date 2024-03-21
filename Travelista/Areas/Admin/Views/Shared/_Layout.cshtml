@@ -13,29 +13,31 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Travel</title>
+	<title>Travelista</title>
     <link rel="stylesheet" href="~/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="~/assets/images/favicon.png" />
+    <style>
+        .form-logout {
+            border: none;
+            background-color: none; 
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+   
 </head>
 
 <body>
 
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="index.html"><img src="~/img/footer and logo/logo.png" alt="logo" /></a>
-            <a class="navbar-brand brand-logo-mini" href="~/Areas/Views/Admin/index.html"><img src="~/assets/images/logo-mini.svg" alt="logo" /></a>
-        </div>
-        <div class="navbar-menu-wrapper d-flex align-items-stretch">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                <span class="mdi mdi-menu"></span>
-            </button>
+            <a class="navbar-brand brand-logo" asp-action="Index" asp-controller="Home" asp-area=""><img src="~/img/logo.png" alt="logo" /></a>
         </div>
     </nav>
-    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
@@ -59,12 +61,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="Admin" asp-controller="Image" asp-action="Index">
-                        <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                        <span class="menu-title">Image</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" asp-area="Admin" asp-controller="Trip" asp-action="Index">
                         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                         <span class="menu-title">Trip</span>
@@ -84,17 +80,9 @@
                 </li>
                 <li class="nav-item sidebar-user-actions">
                     <div class="sidebar-user-menu">
-                        <a href="#" class="nav-link">
-                            <i class="mdi mdi-settings menu-icon"></i>
-                            <span class="menu-title">Settings</span>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item sidebar-user-actions">
-                    <div class="sidebar-user-menu">
-                        <a href="#" class="nav-link">
-                            <i class="mdi mdi-logout menu-icon"></i>
-                            <span class="menu-title">Log Out</span>
+                        <a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="">
+                            <i class="mdi mdi mdi-home-variant menu-icon"></i>
+                            <span class="menu-title">Home</span>
                         </a>
                     </div>
                 </li>
@@ -107,14 +95,14 @@
         </main>
 
 	<!-- start footer Area -->
-	<footer class="footer">
+	@* <footer class="footer">
 		<div class="footer-inner-wraper">
 			<div class="d-sm-flex justify-content-center justify-content-sm-between">
 				<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
 				<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
 			</div>
 		</div>
-	</footer>
+	</footer> *@
 	<!-- End footer Area -->
     <script src="~/assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="~/assets/js/off-canvas.js"></script>

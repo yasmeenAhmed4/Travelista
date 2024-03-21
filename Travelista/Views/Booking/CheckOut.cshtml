@@ -1,4 +1,4 @@
-﻿@model Trip
+@model Trip
 <style>
 	.disabled {
 		pointer-events: none;
@@ -54,10 +54,14 @@
 							<input type="number" min="1" max="@Model.Capacity" value="1" class="form-control" name="Group-Size" required>
 						</div>
 
-					</div><!-- End .col-lg-9 -->
-					<aside class="col-lg-3">
-						<div class="summary">
-							<h3 class="summary-title"></h3><!-- End .summary-title -->
+								<table class="table table-summary">
+									<thead>
+										<tr>
+											@* <th>Trip</th>
+											<th>Total</th> *@
+										</tr>
+										
+									</thead>
 
 							<table class="table table-summary">
 								<thead>
@@ -86,19 +90,21 @@
 							</table><!-- End .table table-summary -->
 
 							<div id="paypal-btn" style="width:500px"></div>
-							@{
-								long amount = (long)@Model.Cost * 100;
-							}
-							@if (ViewBag.found == true)
+							
+														
+							<br/>
+							@if(ViewBag.found == true)
 							{
 								<form asp-action="Charge" asp-controller="Booking" method="POST">
 									<input type="hidden" name="tripID" value="@Model.Id" />
+									<input type="hidden" name="Amount" value="@Model.Cost" />
 									<script src="//checkout.stripe.com/v2/checkout.js"
 											class="stripe-button"
 											data-key="pk_test_51OuA9E01LplHwmYAFdDJFp7jP6M8WsZuzDot3UMH2WXlnLfZ1GdkcRtcqx6peoSHhu9CshxN8MSwidf9b4fUEy7S00kW7WUlZT"
 											data-locale="auto"
 											data-description="Payment Details"
-											data-amount="@amount">
+											data-amount="">
+									
 									</script>
 								</form>
 							}
@@ -123,26 +129,51 @@
 </main><!-- End .main -->
 @* Stripe *@
 
+@section Scripts{
+<script>
+	var subtotal = document.querySelector('[name="subtotal"]');
+	var total = document.querySelector('[name="total"]');
+	var groupSizeInput = document.querySelector('[name="Group-Size"]');
+	var amountInput = document.querySelector('[name="Amount"]');
+	var stripeButton = document.querySelector('.stripe-button');
 
-@section Scripts {
-	<script>
-		var subtotal = document.getElementsByName("subtotal")[0];
-		var total = document.getElementsByName("total")[0];
-		var groupSizeInput = document.getElementsByName("Group-Size")[0];
-		var cost = Number(subtotal.textContent.trim().replace(/[^0-9.-]+/g, ""));
+	function updateStripeAmount(newAmount) {
+		if (stripeButton) {
+				console.log("Updating stripe amount: " + newAmount);
+			stripeButton.setAttribute('data-amount', Math.round(newAmount * 100));
+			amountInput.value = newAmount;
+		}
+	}
 
-		groupSizeInput.addEventListener('change', function () {
-			var groupSize = parseInt(this.value);
-			if (groupSize == 0) {
-				cost = Number(cost); // Convert cost back to a number if it's formatted as a string
-				cost = cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-				total.textContent = cost;
-			} else {
-				var newTotal = cost * groupSize;
-				newTotal = newTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-				total.textContent = newTotal;
-			}
-		});
-	</script>
+	function updateTotalAndStripeAmount() {
+		var groupSize = parseInt(groupSizeInput.value);
+		var cost = parseFloat(subtotal.textContent.trim().replace(/[^0-9.-]+/g, ""));
+		if (groupSize == 0) {
+			cost = cost.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+			total.textContent = cost;
+		} else {
+			var newTotal = cost * groupSize;
+			total.textContent = newTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+				console.log("Updating stripe amount: lllllllllllllllllllllllllll" );
+			updateStripeAmount(newTotal);
+		}
+	}
+
+	groupSizeInput.addEventListener('input', function () {
+		updateTotalAndStripeAmount();
+
+	});
+
+	document.addEventListener('DOMContentLoaded', function () {
+		updateTotalAndStripeAmount();
+
+	});
+
+	stripeButton.addEventListener('click', function () {
+		var currentTotal = parseFloat(total.textContent.trim().replace(/[^0-9.-]+/g, ""));
+		updateStripeAmount(currentTotal);
+	});
+
+</script>
 }
 

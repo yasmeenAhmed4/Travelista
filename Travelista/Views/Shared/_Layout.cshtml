@@ -6,6 +6,14 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject ApplicationDbContext DB;
+@{
+	int WishlistCount = 0;
+	if (User.Identity.IsAuthenticated)
+	{
+		WishlistCount = DB.WishlistItems.Where(w => w.UserId == User.Claims.FirstOrDefault().Value).ToList().Count();
+	}
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +24,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="~/img/favi.png">
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
 	<!-- Meta Description -->
@@ -55,6 +63,7 @@
 		}
 
 		.hm-wishlist > a {
+			/* border: 1px solid #e1e1e1; */
 			font-size: 20px;
 			color: #242424;
 			width: 45px;
@@ -106,7 +115,7 @@
 					<ul class="nav-menu">
 						<li class="hm-wishlist">
 							<a asp-area="" asp-controller="Wishlist" asp-action="Index">
-								<span class="cart-item-count wishlist-item-count">0</span>
+								<span class="cart-item-count wishlist-item-count">@WishlistCount</span>
 								<i class="fa fa-heart-o"></i>
 							</a>
 						</li>
@@ -114,6 +123,10 @@
 						<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
 						<li><a asp-area="" asp-controller="Contact" asp-action="SendMessage">Contact</a></li>
 						<li><a asp-area="" asp-controller="Trips" asp-action="Index">Trips</a></li>
+						@if (@User.IsInRole("Admin"))
+						{
+							<li><a asp-area="Admin" asp-controller="Admin" asp-action="Index">DashBoard</a></li>
+						}
 
 
 						 <partial name="_LoginPartial" /> 
@@ -241,5 +254,7 @@
 	<script src="~/js/site.js" asp-append-version="true"></script> *@
 	@await RenderSectionAsync("Scripts", required: false)
 	@await RenderSectionAsync("Styles", required: false)
+	
+
 </body>
 </html>

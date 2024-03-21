@@ -7,17 +7,20 @@ using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.PayPalModels;
+using Stripe;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Travelista.Services;
+using Travelista.Helpers;
 
 
 namespace Travelista
 {
 	public class Program
 	{
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
-
+			
 			// Add services to the container.
 			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 			builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -51,6 +54,8 @@ namespace Travelista
 
             builder.Services.AddTransient<IEmailSender, EmailSender>();
 
+			//Stripe
+			StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 			var app = builder.Build();
 			
@@ -87,3 +92,5 @@ namespace Travelista
 		}
 	}
 }
+
+

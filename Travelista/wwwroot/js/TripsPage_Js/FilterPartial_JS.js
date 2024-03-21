@@ -40,4 +40,4 @@
             $('#Date').val(sessionStorage.getItem("Date"));
             updateMinPriceValue();
             updateMaxPriceValue();
-            };
+        };

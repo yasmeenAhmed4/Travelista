@@ -23,7 +23,7 @@ namespace Travelista.Controllers
                                             .Include(i => i.Images)
                                             .Include(i=>i.Country)
 										    .AsEnumerable()
-										    .Where(i => i.IsAvailable())
+										    .Where(i => i.IsTrend == true)
 										    .ToList();
 
 			ViewBag.Reviews = reviewRepo.GetAll().AsEnumerable().Where(i => i.TripId == id).ToList();

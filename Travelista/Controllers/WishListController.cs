@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -9,6 +10,7 @@ using Travelista.Models;
 
 namespace Travelista.Controllers
 {
+	[Authorize]
 	public class WishListController : Controller
 	{
 		private readonly IGenericRepository<WishlistItem> wishlistRepo;
@@ -33,18 +35,20 @@ namespace Travelista.Controllers
 		}
 		public IActionResult AddToWishList(int id)
 		{
-			var existingitem = wishlistRepo.GetAll().AsEnumerable().Where(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).FirstOrDefault();
-			if(existingitem == null)
+			var existingItem = wishlistRepo.GetAll().AsEnumerable().FirstOrDefault(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+			if (existingItem == null)
 			{
-				WishlistItem item = new();
+				WishlistItem item = new WishlistItem();
 				item.TripId = id;
 				item.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 				wishlistRepo.Create(item);
-				return Created();
+				return Ok(new { status = 200});
 			}
-			else 
-				return BadRequest();
+			else
+				return NoContent(); 
 		}
+
 		public IActionResult RemoveFromWishList(int id) 
 		{
 			var item = wishlistRepo.GetAll().AsEnumerable().Where(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).FirstOrDefault();

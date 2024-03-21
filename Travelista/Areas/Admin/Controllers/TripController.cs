@@ -82,7 +82,7 @@ namespace Travelista.Areas.Admin.Controllers
                     {
                         // Generate a unique file name
                         var fileName = $"{trip.Name.Replace(" ", "-")}_{imageCount}{Path.GetExtension(file.FileName)}";
-                        var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", fileName);
+                        var filePath = Path.Combine(_webHostEnvironment.WebRootPath,"images", fileName);
 
                         // Save the file to the server
                         using (var stream = new FileStream(filePath, FileMode.Create))
@@ -150,7 +150,7 @@ namespace Travelista.Areas.Admin.Controllers
                         {
                             // Generate a unique file name
                             var fileName = $"{trip.Name.Replace(" ", "-")}_{imageCount}{Path.GetExtension(file.FileName)}";
-                            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", fileName);
+                            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", fileName);
 
                            
                             // Save the file to the server
@@ -204,7 +204,7 @@ namespace Travelista.Areas.Admin.Controllers
         private void DeleteImageFile(string imageUrl)
         {
             // Construct the file path from the imageUrl
-            var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "assets", "images", imageUrl);
+            var filePath = Path.Combine(_webHostEnvironment.WebRootPath,"images", imageUrl);
 
             // Check if the file exists and delete it
             if (System.IO.File.Exists(filePath))

@@ -50,7 +50,7 @@ namespace Travelista.Helpers
 						TripTypeID = 1,
 						Duration = 4,
 						Capacity = 100,
-						StartDate = new DateTime(12/4/2024).Date,
+						StartDate = new DateTime(2024,04,25),
 						Images = new List<Image>()
 						{
 							new Image()
@@ -113,7 +113,7 @@ namespace Travelista.Helpers
 						TripTypeID = 2,
 						Duration = 1,
 						Capacity = 50,
-						StartDate = new DateTime(20/5/2024).Date,
+						StartDate = new DateTime(2024,05,20),
 						Images = new List<Image>()
 						{
 							new Image()
@@ -164,7 +164,7 @@ namespace Travelista.Helpers
 						Description = "The Siwa oasis is one of the Western Desert’s most magical areas, but it’s more than an 8-hour drive from Cairo. Say no to hellish bus journeys and yes to the comfort of your own private vehicle with rest stops, snack breaks, and a guide. Explore the Great Sand Sea by 4WD, with dune bashing, sandboarding, and a desert sunset; see salt lakes, ancient ruins, Fatnis Island, and more. See Siwa and the Great Sand Sea direct from your central Cairo or Giza hotel Great choice for active travelers—includes sandboarding and a lake swim Enjoy a night in a desert camp and another in an oasis lodge Make memories for a lifetime on a private tour just for your group",
 						Duration = 3,
 						Capacity = 70,
-						StartDate = new DateTime(1/4/2024).Date,
+						StartDate = new DateTime(2024,04,20),
 						TripTypeID = 1,
 						CountryId = 1,
 						Cost = 315.00,
@@ -209,7 +209,7 @@ namespace Travelista.Helpers
 						TripTypeID = 1,
 						Duration = 2 ,
 						Capacity = 20,
-						StartDate = new DateTime(15/4/2014).Date,
+						StartDate = new DateTime(2024,04,29),
 						Description = "This (Semi-Private) Small Group Tour is for 9 Travelers and less. WE DO NOT CANCEL ANY SOLO TRAVELER BOOKING. Save time and money. This group-tour is extremely convenient for any traveler wanting to add it to their itinerary. Taste traditional. Full day-trip to Jeita Grottos, Byblos, Harissa from Beirut. Explore Jeita Grottos site by riding the mini cable-car and the boat inside one of the caves and returning back by the mini train. Explore Virgin Mary Statue in HARISSA by riding the cable-car and the panoramic view of Jounieh bay or by vehicle. Visit the UNESCO World Heritage Site and its fascinating Marina, Souk and the Castle in Byblos. Complimentary pickup and drop off from all Beirut district hotels and apartments. Option to include the entrance fees and lunch at the seaside of Byblos.",
 						Program = "Certainly! Here's the provided text in paragraph form:Jeita Grotto NEW (LLT Genuine Product). From your hotel in Beirut, with a smile, you are picked up in the morning at 08:15 am for a drive to your first must-see stop. You will have almost 1.15 hours to explore the famous JEITA GROTTOS, which is a system of two separate but interconnected karstic limestone caves spanning an overall length of nearly 10 kilometers. The admission ticket is not included for this 1 hour 15 minutes exploration.\r\n\r\nNext, you continue to your next important visit, the significant amazing Virgin Mary Statue in HARISSA. By car throughout the mountain, you will explore the panoramic view of JOUNIEH bay and lots of beautiful scenery. This visit takes approximately 30 minutes, and the admission ticket is free.\r\n\r\nFollowing that, you'll enjoy riding the main cable-car from Harissa to Jounieh. The experienced driver will wait for you to continue to your next important visit to Byblos. If the cable car is closed, you will continue by vehicle. This cable-car ride lasts for about 20 minutes, and the admission ticket is not included.\r\n\r\nYour 1.5-hour tour of the significant location at the UNESCO World Heritage Site of the beautiful Phoenician city of BYBLOS starts. This is one of the oldest continuously inhabited cities in the world. You'll enjoy a walk at the Marina side shedding to the castle and the souk. The admission ticket is included for this 15 minutes visit.\r\n\r\nYou'll then have the option to enter the Crusader castle in Byblos, known as the castle of Gibelet, which is adjacent to the Phoenician archaeological site. The castle was built by the Crusaders in the 12th century and has a rich history. This visit takes approximately 45 minutes, and the admission ticket is not included.\r\n\r\nAfter the castle, you'll enter the old souk of Byblos, an old market where you can buy from a lot of local shops, including antiques, souvenirs, local crafts, and various other merchandise. It's one of the best spots in Lebanon for activity. The souk is never empty of people, and there are also cozy bars and cafes along the walk. This part of town is a collection of old walls (some medieval), overlapping properties, and intriguing half-ruins. The admission ticket is included for this 30 minutes visit.\r\n\r\nFinally, you'll head to a traditional restaurant to have your Mediterranean Lebanese food, which will take about 1 hour, and the admission ticket is free. After your lunch, your experienced driver will head to Beirut, where he will drop you off at your location." ,
 						Images = new List<Image>()
@@ -252,7 +252,7 @@ namespace Travelista.Helpers
 					{
 						Name="Baalbek - Anjar - Ksara Trip From Beirut",
 						Cost = 45.00,
-						StartDate=new DateTime(10/5/2024).Date,
+						StartDate=new DateTime(2024 , 04 , 10),
 						Description="History and archeology enthusiasts won’t want to miss this exciting full-day tour from Beirut. You’ll visit a number of the most important historic sites in Lebanon. Explore Roman ruins at Baalbek, the palaces and souks of 8th-century Anjar, and taste wine in the Lebanese wine-making center of Ksara. Learn about Lebanon’s diverse and long history while having fun and seeing the sights. Hotel transfers are included Get personalized attention on a small-group tour Cover a lot of ground in a single day An easy trip around Lebanon for travelers staying in Beirut",
 						Program = "Beirut (Pass By) Pickup From Beirut Bekaa Valley (Pass By) We will drive through the bekaa valley to all the sites 1 Anjar Citadel Arrive Anjar: 9:30 – Explore The city of Anjar which stands as the single Umayyad site in Lebanon. (1 Hour Duration) Depart Anjar to Baalbek: 10:30 1 hour • Admission Ticket Not Included 2 Temples of Baalbek Arrive Baalbek: 11:30 – Get to explore the 3 temples dedicated to Bacchus, Jupiter, and Venus (2 Hours Duration) Depart Baalbek – Lunch Stop: 13:30 2 hours • Admission Ticket Not Included 3 Douris Arrive to Lunch Stop: 13:45 – Lunch Stop 1 Hour Depart Lunch Stop by: 14:45 1 hour • Admission Ticket Free 4 Chateau Ksara Arrive Chateau Ksara: 15:15 – Explore the oldest winery in lebanon, get to visit the roman caves, and taste local wine. (1 Hour 15 min) Depart Chateau Ksara 16:30 1 hour • Admission Ticket Not Included Beirut (Pass By) Arrive to Beirut: 17:30 – 18:00",
 						Capacity = 100,
@@ -298,7 +298,7 @@ namespace Travelista.Helpers
 					{
 						Name="Connemara Day Trip Including Leenane Village and Kylemore Abbey from Galway",
 						Cost = 55.72,
-						StartDate=new DateTime().Date,
+						StartDate=new DateTime(2024 , 04 , 21),
 						Description="Discover top attractions including Leenane Village and Kylemore Abbey on this day trip to Connemara from Galway. Travel to Connemara as your guide sheds light on the region’s rich heritage and spectacular natural scenery. Take in fine views over the Twelve Pins mountain range and enjoy free time to explore Leenane Village at your leisure. Visit attractive landmarks such as Killary Fjord and Kylemore Abbey, and gain insight into Ireland’s heritage. Stop in the Irish-speaking village of Spiddal and perhaps try chatting to the locals, then head back to Galway. Comprehensive tour by bus/coach Excellent value for money Get inside tips from a local Hotel pickup included Led by a local guide Instant Confirmation\r\n\r\nRead more about Connemara Day Trip Including Leenane Village and Kylemore Abbey from Galway - https://www.viator.com/tours/Galway/Connemara-Day-Trip-Including-Leenane-Village-and-Kylemore-Abbey-from-Galway/d5156-8625P2?mcid=56757",
 						Program = "Oughterard (Pass By) Oughterard is a small town on the banks of the Owenriff River close to the western shore of Lough Corrib in County Galway, Ireland. The population of the town in 2016 was 1,318. It is located about 26 km northwest of Galway on the N59 road. Twelve Bens of Connemara (Pass By) Tallest mountain range in the west of Ireland Maam Cross (Pass By) DescriptionMaam Cross is a crossroads in Connemara, County Galway, Ireland. It lies within the townland of Shindilla, at the junction of the R59 from Galway to Clifden and the R336 from Galway to the Maam Valley which runs from Maum or Maam to Leenaun or Leenane 1 Leenane DescriptionLeenaun, also Leenane, is a village and 1,845 acre townland in northern County Galway, Ireland, on the southern shore of Killary Harbour, on the northern edge of Connemara 30 minutes • Admission Ticket Free 2 Killary Fjord Killary Harbour is a fjord located in the west of Ireland, in northern Connemara, and the border between counties Galway and Mayo runs down its centre 15 minutes • Admission Ticket Free 3 Kylemore Abbey & Victorian Walled Garden Kylemore Abbey is a Benedictine monastery founded in 1920 on the grounds of Kylemore Castle, in Connemara, County Galway, Ireland. The abbey was founded for Benedictine Nuns who fled Belgium in World War I. 2 hours • Admission Ticket Included Connemara National Park & Visitor Centre (Pass By) Connemara National Park is one of six national parks in Ireland that are managed by the National Parks and Wildlife Service of the Department of Culture, Heritage and the Gaeltacht. It is located in the west of Ireland within County Galway. 4 Spiddal Gorgeous seaside village in South Connemara\r\n\r\nRead more about Connemara Day Trip Including Leenane Village and Kylemore Abbey from Galway - https://www.viator.com/tours/Galway/Connemara-Day-Trip-Including-Leenane-Village-and-Kylemore-Abbey-from-Galway/d5156-8625P2?mcid=56757",
 						Capacity = 30,
@@ -337,12 +337,12 @@ namespace Travelista.Helpers
 					{
 						Name="5-Day Lebanon Sightseeing Tour from Beirut",
 						Cost = 590.00,
-						StartDate=new DateTime(16/5/2024).Date,
+						StartDate=new DateTime(2024, 05 ,01),
 						Description="Lebanon has some of the most beautiful sights to offer. Explore the highlights of the Phoenician cities, walk along the forests, discover grottoes and archeological sites and enjoy tasting the Lebanese food and wine. We take our time to marvel around the tourist sites. As we added several stops that show you a bit about Lebanon's cultural and geological history. This tour package is the perfect mixture between adventure and sightseeing.\r\n\r\n",
 						Program = "Jeita Grotto, Harissa & Byblos\r\n6 Stops\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nDay 3\r\nBaalbek, Anjar & Ksara\r\n3 Stops\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nDay 4\r\nQadisha valley, Bcharre & Cedars\r\n4 Stops\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nDay 5\r\nThe Departure\r\n2 Stops",
 						Capacity = 50,
 						CountryId = 5 ,
-						TripTypeID = 2 ,
+						TripTypeID = 1,
 						Duration = 5,
 						Images = new List<Image>()
 						{
@@ -383,7 +383,7 @@ namespace Travelista.Helpers
 					{
 						Name="Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour",
 						Cost = 150.00,
-						StartDate=new DateTime().Date,
+						StartDate= new DateTime(2024,04,25),
 						Description="Prepare to be awed by Istanbul’s magnificent architecture, rich history, and eclectic bazaars as you discover the unmissable highlights of the Old City on this 1-, 2-, or 3-day private tour. Marvel over the glorious Hagia Sophia, learn how the Blue Mosque earned its famous nickname, and see the ancient Basilica Cistern. Tour Topkapi Palace to gain an insight into the lavish lifestyles of the Ottoman sultans and their harem, and browse the legendary Grand Bazaar, where you find everything from carpets to Turkish delight. Flexible daily itineraries: Day 1 - Hagia Sophia, Hippodrome Square, German Fountain, Blue Mosque, Basilica Cistern, Topkapi Palace, Grand Bazaar. Day 2 - Bosphorus Cruise by Public Ferry, Dolmabahce Palace, Taksim Square, Istiklal Street, Cicek Passage, Galata Tower (from outside), Spice Market. Day 3 - Suleymaniye Mosque, Fener and Balat Districts, St. Stephen Church (Iron Church), Pierre Lotti Panoramic Hill by Cable Car, Rahmi Koc Museum (or alternative sites). Exclusive Istanbul tour led by a private guide Comprehensive tour of the city over one, two, or three days Explore the local streets on a walking tour of the city Customize the itinerary according to your schedule\r\n\r\nRead more about Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour ",
 						Program = "When booking this immersive, private tour of Istanbul, choose a duration that works best for your schedule. See many of the city’s most important attractions and monuments, all in one day—or extend to a two- or three-day experience for a complete introduction to the city. On the first day, meet your guide directly at your centrally located Istanbul hotel. This experience is tailored to your schedule and interests, and you can pick from numerous departure times and customize your itinerary. Set off on foot to really soak in the city’s ambiance, and visit numerous landmarks in the Historic Areas of Istanbul UNESCO World Heritage Site, including the Hagia Sophia and Blue Mosque or Basilica Cistern. Then, visit the lavish Topkapi Palace (entry own expense) before finishing at the Grand Bazaar. With your guide’s in-depth storytelling, you’ll learn more about the sights than you’d discover on your own. If you choose to extend to the second day, enhance your visit with a Bosphorus cruise by public ferry and a trip to Dolmabahce Palace. Follow your guide through the crowds to see Taksim Square, Istiklal Street, Cicek Passage, and the exterior of the Galata Tower. And if you explore on a third day, more sights await discovery, including the Suleymaniye Mosque, the evocative Fener and Balat neighborhoods and the Bulgarian St. Stephen Church. Cap off your experience with a cable car ride to the Pierre Loti Hill.\r\n\r\nRead more about Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour - https://www.viator.com/tours/Istanbul/Istanbul-Full-Day-Private-Guided-Old-City-Tour/d585-11522P1?mcid=56757",
 						Capacity = 70,
@@ -426,7 +426,7 @@ namespace Travelista.Helpers
 					{
 						Name= "Best of Istanbul private tour pick up and drop off included",
 						Cost = 72.44,
-						StartDate= new DateTime().Date,
+						StartDate= new DateTime(2024,04 ,11),
 						Description="Step into the golden ages of the Ottoman, Byzantine and Roman empires with a full-day, private tour through Istanbul’s Old City. See the monuments and historic sites of Hippodrome Square, where Roman charioteers raced in ancient times, then explore St. Sophia's stunning architecture and museum. See the iconic tiles, mosaics and slender minarets of the Blue Mosque and browse traditional handicrafts inside the Grand Bazaar. Learn about the lives of sultans and courtiers at Topkapi Palace, which contains a remarkable collection of Turkey's greatest holy relics, imperial treasures and artwork. Full-day, private tour of Istanbul See the city's most important sites Enjoy the flexibility of a private tour Learn about local history and culture Hotel Pick up and Drop off included What's Included\r\n\r\nRead more about Best of Istanbul private tour pick up and drop off included - https://www.viator.com/tours/Istanbul/Old-City-Private-Day-Tour-From-Istanbul/d585-21011P2?mcid=56757",
 						Program = "Blue Mosque interior visit of the Blue Mosque 30 minutes • Admission Ticket Free 2 Kapali Carsi visit the famous grand bazaar the biggest shopping mall of the europe 45 minutes • Admission Ticket Free 3 Hagia Sophia Mosque interior visit with your guide between 45 up to 90 min time 45 minutes • Admission Ticket Not Included 4 Hippodrome walk on the streets of ancient hipoddrome and see the ancient Columns and obelis 30 minutes • Admission Ticket Free 5 Topkapi Palace the largest museum of the city and house of sultans for 300 years Closed on Tuesday replaced with Underground Basilica Cistern 2 hours • Admission Ticket Not Included Sultanahmet District (Pass By) walk on the old streets of the area Blue Mosque (Pass By) Visit the ancient Roman Hippodrome in front of Blue Mosque\r\n\r\nRead more about Best of Istanbul private tour pick up and drop off included - https://www.viator.com/tours/Istanbul/Old-City-Private-Day-Tour-From-Istanbul/d585-21011P2?mcid=56757",
 						Capacity = 40,
@@ -458,7 +458,7 @@ namespace Travelista.Helpers
 					{
 						Name="Faraya Ski Resort Lebanon",
 						Cost = 60.00,
-						StartDate=new DateTime(20/5/2024).Date,
+						StartDate=new DateTime(2024 , 04 , 05),
 						Description="Lebanon’s Mzaar Kfardebian offers the largest ski area in the Middle East, with 25 chairlifts, 50 runs, and around 50 miles (80 kilometers) of slopes. There’s no public transport but you can save yourself the expense of a taxi or car hire with this small-group shuttle service. Your driver will collect you from your Beirut hotel or rental in the morning, drive you to the resort, then bring you back. Spend the day at the Mzaar Kfardebian ski resort in Faraya Enjoy lively bars, interesting restaurants, and your choice of ski runs Numbers are capped at 15 travelers, so there won’t be too many stops Picks up and drops direct to hotels, homes, and rentals all over Beirut\r\n\r\nRead more about Faraya Ski Resort Lebanon - https://www.viator.com/tours/Beirut/Faraya-Ski-Resort-Lebanon/d4215-72500P30?mcid=56757",
 						Program = "You will be picked up from your Hotel or Airbnb Address in Beirut Between 8:30am - 9:00am, brought to the departing point, and we will head to Mzaar Ski Resort which is widely known as the Middle East’s largest ski resort. With a legacy of ski culture and mountain energy and a spirit of adventure, Mzaar has driven locals and tourists to call it home. Beyond it’s 25 chairlifts, 50 runs and 100km of terrain, Mzaar is home to an entertainment scene with eclectic restaurants, boisterous bars, topping the list of things to do. Everyone will find no shortage of way to create lasting memories during a day, weekend or holiday. By 4:00 PM everyone has to be back in the Bus to head back to beirut.\r\n\r\nRead more about Faraya Ski Resort Lebanon - https://www.viator.com/tours/Beirut/Faraya-Ski-Resort-Lebanon/d4215-72500P30?mcid=56757",
 						Capacity = 60,

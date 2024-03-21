@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Travelista.Areas.Identity.Data;
 using Travelista.Data;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.PayPalModels;
+using Travelista.Services;
 
 
 namespace Travelista
@@ -27,31 +29,22 @@ namespace Travelista
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
-            builder.Services.AddAuthentication()
-                .AddGoogle(options =>
-                {
-                    options.ClientId = "772354289034-g46j7pn553arv79nj8218sf44chpr69c.apps.googleusercontent.com";
-                    options.ClientSecret = "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";
-
-                })
-                .AddFacebook(options =>
-                {
-                    options.ClientId ="763692572369800";
-                    options.ClientSecret ="368629d482c449c8bc16b064f9839086";
-                })
-                .AddMicrosoftAccount(options =>
-                {
-                	options.ClientId = "6449bac4-c6aa-47c5-9a0c-9a35bd642724";
-                	options.ClientSecret = "wlm8Q~XLe4C7Un9deZN8XA75itDAeDdLsDGx3alm";
-
-        		});
+			builder.Services.AddAuthentication()
+				.AddGoogle(options =>
+				{
+					builder.Configuration.Bind("Authentication:Google", options);
+				})
+				.AddFacebook(options =>
+				{
+					builder.Configuration.Bind("Authentication:Facebook", options);
+				})
+				.AddMicrosoftAccount(options =>
+				{
+					builder.Configuration.Bind("Authentication:Microsoft", options);
+				});
 
 			//Adding data to database once it's created
 			//SeedData.Seed();
-			
-
-		
-
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -59,7 +52,7 @@ namespace Travelista
             builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 
-
+			var app = builder.Build();
 			
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())

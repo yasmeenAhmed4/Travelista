@@ -9,8 +9,8 @@ namespace Travelista.Services
     {
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var fromMail = "Travelistaco@outlook.com";
-            var fromPassword = "Travelista";
+            var fromMail = "Travelistaco1@outlook.com";
+            var fromPassword = "Travelistaco";
 
             var message = new MailMessage();
             message.From = new MailAddress(fromMail);

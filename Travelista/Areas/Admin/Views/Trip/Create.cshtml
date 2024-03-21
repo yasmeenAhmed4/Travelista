@@ -10,6 +10,11 @@
                     <div class="card-body">
                         <form class="forms-sample" asp-action="Create" asp-controller="Trip" asp-area="Admin" enctype="multipart/form-data">
                             <Partial name="_Form" model="Model"></Partial>
+                            <div class="form-group">
+                                <label for="imageFiles">Image upload</label>
+                                <input type="file" name="imageFiles" class="form-control-file" multiple>
+                            </div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <button type="submit" class="btn btn-primary mr-2">Add</button>
                         </form>
                     </div>

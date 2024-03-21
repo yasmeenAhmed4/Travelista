@@ -11,7 +11,7 @@
 						<!--Check exist Images in Trip-->
 						@if (trip.Images.Count > 0)
 						{
-							<img src="~/images/@trip.Images[0].ImageURL" alt="TripImage">
+							<img src="~/images/5-Day Lebanon Sightseeing Tour from Beirut 1.jpg" alt="TripImage">
 						}
 					</div>
 					<div class="details">
@@ -23,28 +23,15 @@
 							@trip?.Country?.Name
 						</p>
 						<ul class="package-list">
-							<!--Trip Duration-->
-
-							<li class="d-flex justify-content-between align-items-center">
-								<span>Duration</span>
-								<span>@trip?.Duration Days</span>
-							</li>
-							
 							<!--Trip Date-->
 							<li class="d-flex justify-content-between align-items-center">
 								<span>Date</span>
 								<span>@trip?.StartDate.ToString("MM / dd / yyyy")</span>
 							</li>
 
-							<!--Trip Capacity-->
-							<li class="d-flex justify-content-between align-items-center">
-								<span>Available Seats</span>
-								<span>@trip?.Capacity</span>
-							</li>
-
 							<!--Trip Types-->
 							<li class="d-flex justify-content-between align-items-center">
-								<span>Type</span>
+								<span>Trip Type</span>
 								<span>@trip?.TripType?.Name</span>
 							</li>
 							

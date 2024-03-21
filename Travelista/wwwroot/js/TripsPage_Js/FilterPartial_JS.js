@@ -13,8 +13,8 @@
         //Reset All Data To the Default value
         function resetFilters()
         {
-            $('#minPrice').val(100);
-            $('#maxPrice').val(10000);
+            $('#minPrice').val($('#minPrice').attr('min'));
+            $('#maxPrice').val($('#maxPrice').attr('max'));
             $('#Category').prop('selectedIndex', 0);
             $('#Country').prop('selectedIndex', 0);
             $('#Date').val('');
@@ -33,6 +33,7 @@
         // OnLoad Page-->Load the Filter Data
         window.onload = function ()
         {
+           
             $('#minPrice').val(sessionStorage.getItem("minPrice"));
             $('#maxPrice').val(sessionStorage.getItem("maxPrice"));
             $('#Category').prop('selectedIndex', sessionStorage.getItem("Category"));

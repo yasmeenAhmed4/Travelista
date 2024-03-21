@@ -40,70 +40,6 @@ namespace Travelista.Helpers
             {
                 context.Trips.AddRange(new List<Trip>()
                 {
-                    new Trip()
-                    {
-                        Name = "Nile Cruise From Aswan To Luxor",
-                        Program = "Sail down one of the world's most famous waterways as you discover top attractions in southern Egypt. During this multi-day cruise from Aswan to Luxor, you'll disembark for guided visits to the region's most iconic sites, including Kom Ombo, the Valley of Kings, and Philae Temple. Tasty onboard meals are included, plus a personalized pickup from the airport, train station, or your Aswan hotel. A multi-day,five-star Nile cruise from Aswan to Luxor Tick off the region's top attractions in just a few days Listen to in-depth histories from your Egyptologist guide during tours Sleep comfortably with onboard luxury accommodation and enjoy VIP meals",
-                        Description = "3 nights’ accommodation on board 5\r\n* Nile cruise – based on FB basis. Meet and assist by English-speaking representatives. Egyptology English-speaking tour guide. All transfers by A-C vehicles with qualified driver (s) All local taxes and services. Hot Air Balloon Ride Over Luxor Sky Sharing a small group to Abu Simbel with English Speaking tour guide. Dinner (3) Breakfast (3) Lunch (3)",
-                        Cost =  349.00,
-                        IsTrend = true,
-                        Discount = 10,
-                        CountryId = 1,
-                        TripTypeID = 1,
-                        Duration = 4,
-                        Capacity = 100,
-                        StartDate = new DateTime(12/4/2024).Date,
-                        Images = new List<Image>()
-                        {
-                            new Image()
-                            {
-                                ImageURL = "Nile Cruise From Aswan To Luxor "+1+".jpg"
-                            },
-                            new Image()
-                            {
-                                ImageURL = "Nile Cruise From Aswan To Luxor "+2+".jpg"
-                            },
-                            new Image()
-                            {
-                                ImageURL = "Nile Cruise From Aswan To Luxor "+3+".jpg"
-                            },
-                            new Image()
-                            {
-                                ImageURL = "Nile Cruise From Aswan To Luxor "+4+".jpg"
-                            },
-                            new Image()
-                            {
-                                ImageURL = "Nile Cruise From Aswan To Luxor "+5+".jpg"
-                            },
-                            new Image()
-                            {
-                                ImageURL = "Nile Cruise From Aswan To Luxor "+6+".jpg"
-                            }
-                        },
-                        TripReviews = new List<TripReView>()
-                        {
-                            new TripReView() { Username = "John Wick" , Email = "john@yahoo.com" , Message = "Had an absolutely wonderful trip! The scenic views, friendly locals, and delicious food made it an unforgettable experience. Would definitely recommend it to others."},
-                            new TripReView() { Username = "Elsa Shite" , Email = "elsa@gmail.com" , Message = "The landscapes on this trip were simply breathtaking. From majestic mountains to serene beaches, every stop was a feast for the eyes. Couldn't have asked for a better getaway."},
-                            new TripReView() { Username = "Sarah Stones" , Email = "sarah123@email.com" , Message = "Stayed at a charming bed and breakfast during my trip. The cozy atmosphere, friendly hosts, and delicious homemade breakfast added a delightful touch to the overall experience."},
-                            new TripReView() { Username = "Bruce Wayne" , Email = "WayneBruce@yahoo.com" , Message = "This trip was a cultural delight! Explored museums, historical sites, and local markets. Learning about the rich history of the region was both educational and enjoyable."},
-                            new TripReView() { Username = "Jenifer Adams" , Email = "jeniferadams@gmail.com" , Message = "For the adventure seekers, this trip is a must! From thrilling hikes to exciting water activities, there's no shortage of adrenaline-pumping experiences."},
-                            new TripReView() { Username = "Ahmad Khalid" , Email = "khalidahmad@yahoo.com" , Message = "A culinary journey awaits anyone on this trip. Indulged in the local cuisine and discovered new flavors. The variety of food options catered to every palate."},
-                            new TripReView() { Username = "Mohamed Elsaied" , Email = "elsaied@yahoo.com" , Message = "Found the perfect spot for a relaxing retreat. The tranquil surroundings, soothing spa, and peaceful ambiance provided the ideal escape from the hustle and bustle of daily life."},
-                            new TripReView() { Username = "Rana Tarek" , Email = "rana@yahoo.com" , Message = "The locals were incredibly friendly and welcoming. Their warmth added a special touch to the trip, making it feel like home away from home."},
-                            new TripReView() { Username = "Arwa Hassan" , Email = "arwa@gmail.com" , Message = "Kudos to the tour organizers for a well-planned itinerary. Every day was filled with exciting activities, and I felt like I made the most out of my time."},
-                            new TripReView() { Username = "Aya Waled" , Email = "aya@yahoo.com" , Message = "This trip created memories that will last a lifetime. From sunrise at a scenic lookout to stargazing by the beach, each moment was special and unforgettable. Can't wait to plan the next adventure!"},
-                            new TripReView() { Username = "Mohamed Ali", Email = "mohamed.ali@gmail.com", Message = "Explored vibrant markets and local stalls. The hustle and bustle of the markets added an exciting flair to the trip. Bargaining for unique finds was a memorable experience."},
-                            new TripReView() { Username = "Laila Mahmoud", Email = "laila.mahmoud@hotmail.com", Message = "Cruise along picturesque rivers and canals. The serene boat rides through scenic waterways were a peaceful way to appreciate the beauty of the surroundings."},
-                            new TripReView() { Username = "Amr Hossam", Email = "amr.hossam@yahoo.com", Message = "Stunning architecture and historic landmarks. Visited iconic structures and learned about the rich history behind each monument. The blend of old and new was captivating."},
-                            new TripReView() { Username = "Yara Samy", Email = "yara.samy@gmail.com", Message = "Camping under the stars in the wilderness. The clear night sky and crackling campfire created a magical atmosphere. Sleeping under the stars was an unforgettable experience."},
-                            new TripReView() { Username = "Ahmed Tarek", Email = "ahmed.tarek@hotmail.com", Message = "Local music and dance performances. The rhythmic beats and colorful performances added a cultural touch to the trip. Enjoyed every moment of the lively entertainment."},
-                            new TripReView() { Username = "Fatma Hassan", Email = "fatma.hassan@yahoo.com", Message = "Hot air balloon ride at sunrise. Soaring above the landscapes as the sun painted the sky with warm hues. The panoramic views were simply breathtaking."},
-                            new TripReView() { Username = "Tamer Hany", Email = "tamer.hany@gmail.com", Message = "Visited artisan workshops and witnessed traditional craftsmanship. Interacted with skilled artisans and appreciated the dedication put into crafting unique handmade items."},
-                            new TripReView() { Username = "Salma Hesham", Email = "salma.hesham@hotmail.com", Message = "Local folklore and storytelling sessions. Listened to captivating tales and legends passed down through generations. The storytelling added a magical touch to the evenings."},
-                            new TripReView() { Username = "Kareem Mahmoud", Email = "kareem.mahmoud@yahoo.com", Message = "Scenic train journeys through picturesque landscapes. The rhythmic sound of the train wheels and the changing scenery outside the window made the journey an adventure in itself."},
-                            new TripReView() { Username = "Nada Salah", Email = "nada.salah@gmail.com", Message = "Attended local festivals and celebrations. Participated in the joyous atmosphere of vibrant festivals. The lively music, colorful decorations, and festive spirit were infectious."},
-                        }
-                    },    //1
 					new Trip()
 					{
 						Name = "Nile Cruise From Aswan To Luxor",
@@ -114,6 +50,7 @@ namespace Travelista.Helpers
 						TripTypeID = 1,
 						Duration = 4,
 						Capacity = 100,
+                        IsTrend = true,
 						StartDate = new DateTime(2024,04,25),
 						Images = new List<Image>()
 						{
@@ -176,6 +113,7 @@ namespace Travelista.Helpers
 						CountryId = 1,
 						TripTypeID = 2,
 						Duration = 1,
+                        Discount = 5,
 						Capacity = 50,
 						StartDate = new DateTime(2024,05,20),
 						Images = new List<Image>()
@@ -231,6 +169,7 @@ namespace Travelista.Helpers
 						StartDate = new DateTime(2024,04,20),
 						TripTypeID = 1,
 						CountryId = 1,
+                        IsTrend = true,
 						Cost = 315.00,
 						Images = new List<Image>()
 						{
@@ -273,6 +212,7 @@ namespace Travelista.Helpers
 						TripTypeID = 1,
 						Duration = 2 ,
 						Capacity = 20,
+                        Discount = 7, 
 						StartDate = new DateTime(2024,04,29),
 						Description = "This (Semi-Private) Small Group Tour is for 9 Travelers and less. WE DO NOT CANCEL ANY SOLO TRAVELER BOOKING. Save time and money. This group-tour is extremely convenient for any traveler wanting to add it to their itinerary. Taste traditional. Full day-trip to Jeita Grottos, Byblos, Harissa from Beirut. Explore Jeita Grottos site by riding the mini cable-car and the boat inside one of the caves and returning back by the mini train. Explore Virgin Mary Statue in HARISSA by riding the cable-car and the panoramic view of Jounieh bay or by vehicle. Visit the UNESCO World Heritage Site and its fascinating Marina, Souk and the Castle in Byblos. Complimentary pickup and drop off from all Beirut district hotels and apartments. Option to include the entrance fees and lunch at the seaside of Byblos.",
 						Program = "Certainly! Here's the provided text in paragraph form:Jeita Grotto NEW (LLT Genuine Product). From your hotel in Beirut, with a smile, you are picked up in the morning at 08:15 am for a drive to your first must-see stop. You will have almost 1.15 hours to explore the famous JEITA GROTTOS, which is a system of two separate but interconnected karstic limestone caves spanning an overall length of nearly 10 kilometers. The admission ticket is not included for this 1 hour 15 minutes exploration.\r\n\r\nNext, you continue to your next important visit, the significant amazing Virgin Mary Statue in HARISSA. By car throughout the mountain, you will explore the panoramic view of JOUNIEH bay and lots of beautiful scenery. This visit takes approximately 30 minutes, and the admission ticket is free.\r\n\r\nFollowing that, you'll enjoy riding the main cable-car from Harissa to Jounieh. The experienced driver will wait for you to continue to your next important visit to Byblos. If the cable car is closed, you will continue by vehicle. This cable-car ride lasts for about 20 minutes, and the admission ticket is not included.\r\n\r\nYour 1.5-hour tour of the significant location at the UNESCO World Heritage Site of the beautiful Phoenician city of BYBLOS starts. This is one of the oldest continuously inhabited cities in the world. You'll enjoy a walk at the Marina side shedding to the castle and the souk. The admission ticket is included for this 15 minutes visit.\r\n\r\nYou'll then have the option to enter the Crusader castle in Byblos, known as the castle of Gibelet, which is adjacent to the Phoenician archaeological site. The castle was built by the Crusaders in the 12th century and has a rich history. This visit takes approximately 45 minutes, and the admission ticket is not included.\r\n\r\nAfter the castle, you'll enter the old souk of Byblos, an old market where you can buy from a lot of local shops, including antiques, souvenirs, local crafts, and various other merchandise. It's one of the best spots in Lebanon for activity. The souk is never empty of people, and there are also cozy bars and cafes along the walk. This part of town is a collection of old walls (some medieval), overlapping properties, and intriguing half-ruins. The admission ticket is included for this 30 minutes visit.\r\n\r\nFinally, you'll head to a traditional restaurant to have your Mediterranean Lebanese food, which will take about 1 hour, and the admission ticket is free. After your lunch, your experienced driver will head to Beirut, where he will drop you off at your location." ,
@@ -322,6 +262,7 @@ namespace Travelista.Helpers
 						Capacity = 100,
 						CountryId = 5 ,
                         TripTypeID = 2 ,
+                        IsTrend = true,
                         Duration = 1,
                         Images = new List<Image>()
                         {
@@ -369,6 +310,7 @@ namespace Travelista.Helpers
 						CountryId = 5 ,
 						Duration = 1,
 						TripTypeID = 2 ,
+                        Discount = 5,
 						Images = new List<Image>()
 						{
 							new Image(){ ImageURL = "Connemara Day Trip Including Leenane Village and Kylemore Abbey from Galway "+1+".jpg"},
@@ -408,6 +350,7 @@ namespace Travelista.Helpers
 						CountryId = 5 ,
 						TripTypeID = 1,
 						Duration = 5,
+                        IsTrend = true,
 						Images = new List<Image>()
 						{
 							new Image() { ImageURL = "5-Day Lebanon Sightseeing Tour from Beirut "+1+".jpg"},
@@ -453,6 +396,7 @@ namespace Travelista.Helpers
 						CountryId = 3 ,
                         TripTypeID = 1 ,
                         Duration = 3,
+                        Discount = 9,
                         Images = new List<Image>()
                         {
                             new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+1+".jpg"},
@@ -496,6 +440,7 @@ namespace Travelista.Helpers
                         Duration = 2,
                         CountryId = 3 ,
                         TripTypeID = 1,
+                        IsTrend = true,
                         Images = new List<Image>()
                         {
                             new Image(){ ImageURL = "Best of Istanbul private tour pick up and drop off included "+1+".jpg"},
@@ -528,6 +473,7 @@ namespace Travelista.Helpers
                         CountryId = 5 ,
                         TripTypeID = 2 ,
                         Duration = 1,
+                        Discount = 2,
                         Images = new List<Image>()
                         {
                             new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +1+".jpg"},
@@ -571,6 +517,7 @@ namespace Travelista.Helpers
                         TripTypeID = 1,
                         Duration = 4,
                         Capacity = 100,
+                        IsTrend = true,
                         StartDate = new DateTime(2024/09/02).Date,
                         Images = new List<Image>()
                         {
@@ -647,7 +594,7 @@ namespace Travelista.Helpers
                         }
 
                     },    //12
-                     new Trip()
+                    new Trip()
                      {
                         Name = "Barcelona 3-day Private Tours with Transfers",
                         Program = "Day 1: Arrival in Barcelona\r\n\r\nArrive at Barcelona Airport and transfer to your hotel in the city center\r\nCheck-in and freshen up\r\nOptional: Evening stroll along La Rambla, Barcelona's famous pedestrian street\r\nDinner at a local restaurant featuring Catalan cuisine\r\nDay 2: Barcelona City Tour\r\n\r\nMorning: Guided tour of Barcelona's iconic landmarks, including Sagrada Familia, Park Güell, and Casa Batlló\r\nLunch at a traditional Spanish restaurant\r\nAfternoon: Visit the Gothic Quarter and explore the narrow streets, historic buildings, and charming squares\r\nEvening: Enjoy a sunset cruise along the Mediterranean coast\r\nDay 3: Day Trip to Montserrat\r\n\r\nMorning: Depart for Montserrat, a stunning mountain range located just outside Barcelona\r\nVisit the Benedictine monastery of Santa Maria de Montserrat and see the Black Madonna\r\nOptional: Ride the funicular to the top of the mountain for panoramic views\r\nLunch at a local restaurant serving regional specialties\r\nAfternoon: Return to Barcelona and explore the vibrant neighborhood of Barceloneta\r\nFarewell dinner featuring traditional Catalan dishes\r\nDay 4: Departure from Barcelona\r\n\r\nCheck out of your hotel and transfer to Barcelona Airport for your departure flight\r\nEnd of tour\r\n",
@@ -689,7 +636,7 @@ namespace Travelista.Helpers
                         }
 
                     },    //13
-                     new Trip()
+                    new Trip()
                      {
                         Name = "4-Day Italian Lakes Tour from Milan",
                         Program = "Day 1: Arrival in Milan - Transfer to Lake Como\r\n\r\nArrive at Milan Malpensa Airport and meet your tour guide\r\nTransfer to Lake Como, one of Italy's most picturesque lakes\r\nCheck into your hotel overlooking Lake Como\r\nRelax and enjoy the scenic views\r\nEvening stroll along the lake promenade\r\nWelcome dinner featuring local cuisine at a restaurant overlooking the lake\r\nDay 2: Lake Como Exploration\r\n\r\nBreakfast at the hotel\r\nGuided tour of Lake Como's charming towns and villages, including Bellagio, Varenna, and Como\r\nVisit Villa del Balbianello, a stunning lakeside villa with beautiful gardens\r\nLunch at a traditional trattoria in Bellagio\r\nAfternoon boat cruise on Lake Como to admire the scenery from the water\r\nFree time to explore the lakeside cafes, shops, and gelaterias\r\nReturn to the hotel in the evening\r\nDay 3: Day Trip to Lake Maggiore\r\n\r\nBreakfast at the hotel\r\nDepart for Lake Maggiore, located to the west of Lake Como\r\nVisit the Borromean Islands, including Isola Bella with its magnificent Baroque palace and gardens\r\nLunch at a lakeside restaurant on Isola dei Pescatori (Fishermen's Island)\r\nExplore the charming town of Stresa and its lakeside promenade\r\nReturn to Lake Como in the evening\r\nDinner at a local restaurant in Como\r\nDay 4: Lake Como - Departure from Milan\r\n\r\nBreakfast at the hotel\r\nOptional: Morning visit to a local market in Como to sample regional delicacies and buy souvenirs\r\nTransfer back to Milan Malpensa Airport for departure",
@@ -734,7 +681,7 @@ namespace Travelista.Helpers
                         }
 
                     },    //14
-                      new Trip()
+                    new Trip()
                      {
                         Name = "7 Days Venice, Florence and Rome - Travel by Train",
                         Program = "Day 1: Arrival in Venice\r\n\r\nArrive in Venice, the \"City of Canals,\" by train from your previous destination\r\nCheck into your hotel and freshen up\r\nExplore the enchanting streets and canals of Venice at your leisure\r\nOptional: Take a gondola ride along the Grand Canal or enjoy a sunset walk in St. Mark's Square\r\nDinner at a local trattoria to savor Venetian cuisine\r\nOvernight stay in Venice\r\nDay 2: Venice Sightseeing\r\n\r\nBreakfast at the hotel\r\nGuided walking tour of Venice's iconic landmarks, including St. Mark's Basilica, Doge's Palace, and the Rialto Bridge\r\nVisit the lively Rialto Market to experience Venetian daily life\r\nLunch at a traditional bacaro (wine bar) for cicchetti (Venetian tapas) and local wine\r\nAfternoon visit to the picturesque islands of Murano and Burano by vaporetto (water bus)\r\nDinner at a waterfront restaurant on Burano to enjoy fresh seafood\r\nReturn to Venice for overnight stay\r\nDay 3: Travel from Venice to Florence\r\n\r\nBreakfast at the hotel\r\nCheck out from the hotel and transfer to Venice Santa Lucia Train Station\r\nTravel by train to Florence, the \"Cradle of the Renaissance\"\r\nCheck into your hotel upon arrival and freshen up\r\nGuided walking tour of Florence's historic center, including the Florence Cathedral (Duomo), Giotto's Bell Tower, and the Ponte Vecchio\r\nDinner at a trattoria in the Oltrarno district, known for its authentic Tuscan cuisine\r\nOvernight stay in Florence\r\nDay 4: Florence Exploration\r\n\r\nBreakfast at the hotel\r\nVisit the world-renowned Uffizi Gallery to admire masterpieces by Botticelli, Michelangelo, and Leonardo da Vinci\r\nLunch at a local osteria to taste Florentine specialties such as bistecca alla fiorentina (Florentine steak) and ribollita (Tuscan soup)\r\nExplore the Boboli Gardens and enjoy panoramic views of Florence from Piazzale Michelangelo\r\nFree time for shopping on Via de' Tornabuoni or visiting artisan workshops\r\nDinner at a rooftop restaurant overlooking the city skyline\r\nOvernight stay in Florence\r\nDay 5: Travel from Florence to Rome\r\n\r\nBreakfast at the hotel\r\nCheck out from the hotel and transfer to Florence Santa Maria Novella Train Station\r\nTravel by train to Rome, the \"Eternal City\"\r\nCheck into your hotel upon arrival and freshen up\r\nEvening stroll to explore Rome's charming streets and squares\r\nDinner at a traditional Roman trattoria to taste classic Roman dishes\r\nOvernight stay in Rome\r\nDay 6: Rome Sightseeing\r\n\r\nBreakfast at the hotel\r\nGuided tour of ancient Rome's landmarks, including the Colosseum, Roman Forum, and Palatine Hill\r\nVisit the Vatican City to see St. Peter's Basilica and the Vatican Museums, home to the Sistine Chapel\r\nLunch at a nearby trattoria serving Roman cuisine\r\nAfternoon visit to the Trevi Fountain and the Spanish Steps\r\nOptional: Explore the vibrant neighborhood of Trastevere and sample Roman street food\r\nFarewell dinner at a restaurant in Rome's historic center\r\nOvernight stay in Rome\r\nDay 7: Departure from Rome\r\n\r\nBreakfast at the hotel\r\nFree time for last-minute souvenir shopping or exploring Rome independently\r\nCheck out from the hotel and transfer to Rome Termini Train Station\r\nDeparture from Rome by train or continue your journey to your next destination",
@@ -781,7 +728,7 @@ namespace Travelista.Helpers
                         }
 
                     },    //15
-                      new Trip()
+                    new Trip()
                      {
                         Name = "4-Day Amalfi Coast, Pompeii & Positano - Small group Tour",
                         Program = "Day 1: Arrival in Venice\r\n\r\nArrive in Venice, the \"City of Canals,\" by train from your previous destination\r\nCheck into your hotel and freshen up\r\nExplore the enchanting streets and canals of Venice at your leisure\r\nOptional: Take a gondola ride along the Grand Canal or enjoy a sunset walk in St. Mark's Square\r\nDinner at a local trattoria to savor Venetian cuisine\r\nOvernight stay in Venice\r\nDay 2: Venice Sightseeing\r\n\r\nBreakfast at the hotel\r\nGuided walking tour of Venice's iconic landmarks, including St. Mark's Basilica, Doge's Palace, and the Rialto Bridge\r\nVisit the lively Rialto Market to experience Venetian daily life\r\nLunch at a traditional bacaro (wine bar) for cicchetti (Venetian tapas) and local wine\r\nAfternoon visit to the picturesque islands of Murano and Burano by vaporetto (water bus)\r\nDinner at a waterfront restaurant on Burano to enjoy fresh seafood\r\nReturn to Venice for overnight stay\r\nDay 3: Travel from Venice to Florence\r\n\r\nBreakfast at the hotel\r\nCheck out from the hotel and transfer to Venice Santa Lucia Train Station\r\nTravel by train to Florence, the \"Cradle of the Renaissance\"\r\nCheck into your hotel upon arrival and freshen up\r\nGuided walking tour of Florence's historic center, including the Florence Cathedral (Duomo), Giotto's Bell Tower, and the Ponte Vecchio\r\nDinner at a trattoria in the Oltrarno district, known for its authentic Tuscan cuisine\r\nOvernight stay in Florence\r\nDay 4: Florence Exploration\r\n\r\nBreakfast at the hotel\r\nVisit the world-renowned Uffizi Gallery to admire masterpieces by Botticelli, Michelangelo, and Leonardo da Vinci\r\nLunch at a local osteria to taste Florentine specialties such as bistecca alla fiorentina (Florentine steak) and ribollita (Tuscan soup)\r\nExplore the Boboli Gardens and enjoy panoramic views of Florence from Piazzale Michelangelo\r\nFree time for shopping on Via de' Tornabuoni or visiting artisan workshops\r\nDinner at a rooftop restaurant overlooking the city skyline\r\n",
@@ -824,7 +771,7 @@ namespace Travelista.Helpers
                         }
 
                     },    //16
-                        new Trip()
+                    new Trip()
 					 {
 						Name = "Best of Turkey Tour - 10 Days",
 						Program = "Day 1: Arrival in Venice\r\n\r\nArrive in Venice, the \"City of Canals,\" by train from your previous destination\r\nCheck into your hotel and freshen up\r\nExplore the enchanting streets and canals of Venice at your leisure\r\nOptional: Take a gondola ride along the Grand Canal or enjoy a sunset walk in St. Mark's Square\r\nDinner at a local trattoria to savor Venetian cuisine\r\nOvernight stay in Venice\r\nDay 2: Venice Sightseeing\r\n\r\nBreakfast at the hotel\r\nGuided walking tour of Venice's iconic landmarks, including St. Mark's Basilica, Doge's Palace, and the Rialto Bridge\r\nVisit the lively Rialto Market to experience Venetian daily life\r\nLunch at a traditional bacaro (wine bar) for cicchetti (Venetian tapas) and local wine\r\nAfternoon visit to the picturesque islands of Murano and Burano by vaporetto (water bus)\r\nDinner at a waterfront restaurant on Burano to enjoy fresh seafood\r\nReturn to Venice for overnight stay\r\nDay 3: Travel from Venice to Florence\r\n\r\nBreakfast at the hotel\r\nCheck out from the hotel and transfer to Venice Santa Lucia Train Station\r\nTravel by train to Florence, the \"Cradle of the Renaissance\"\r\nCheck into your hotel upon arrival and freshen up\r\nGuided walking tour of Florence's historic center, including the Florence Cathedral (Duomo), Giotto's Bell Tower, and the Ponte Vecchio\r\nDinner at a trattoria in the Oltrarno district, known for its authentic Tuscan cuisine\r\nOvernight stay in Florence\r\nDay 4: Florence Exploration\r\n\r\nBreakfast at the hotel\r\nVisit the world-renowned Uffizi Gallery to admire masterpieces by Botticelli, Michelangelo, and Leonardo da Vinci\r\nLunch at a local osteria to taste Florentine specialties such as bistecca alla fiorentina (Florentine steak) and ribollita (Tuscan soup)\r\nExplore the Boboli Gardens and enjoy panoramic views of Florence from Piazzale Michelangelo\r\nFree time for shopping on Via de' Tornabuoni or visiting artisan workshops\r\nDinner at a rooftop restaurant overlooking the city skyline\r\n",
@@ -867,7 +814,7 @@ namespace Travelista.Helpers
 						}
 
 					},    //17
-                          new Trip()
+                    new Trip()
 					 {
 						Name = "4-Day Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel",
                         Program = "Day 1: Arrival in Aswan\r\n\r\nArrive in Aswan, known for its beautiful Nile River scenery and ancient monuments\r\nTransfer to your Nile cruise ship and check-in\r\nVisit the majestic Philae Temple dedicated to the goddess Isis, situated on an island in the Nile\r\nExplore the Aswan High Dam, an impressive feat of modern engineering\r\nEnjoy a leisurely sail on a felucca, a traditional Egyptian sailboat, around Elephantine Island and the Botanical Gardens\r\nDinner and overnight onboard the Nile cruise ship in Aswan\r\nDay 2: Abu Simbel Excursion and Sail to Kom Ombo\r\n\r\nEarly morning departure for a visit to the iconic Abu Simbel Temples, built by Ramses II\r\nMarvel at the colossal statues and intricate carvings of these ancient temples, which were relocated to higher ground to avoid being submerged by Lake Nasser\r\nReturn to the Nile cruise ship for breakfast and continue sailing towards Kom Ombo\r\nLunch onboard the cruise\r\nVisit the Temple of Kom Ombo, dedicated to the gods Sobek and Horus, and admire its unique double design\r\nSail to Edfu\r\nDinner and overnight onboard the Nile cruise ship in Edfu\r\nDay 3: Edfu Temple and Sail to Luxor\r\n\r\nAfter breakfast, visit the Temple of Horus in Edfu, one of the best-preserved ancient temples in Egypt\r\nExplore the grand halls, sanctuaries, and courtyards of this impressive temple dedicated to the falcon god Horus\r\nReturn to the cruise ship and sail towards Luxor\r\nLunch onboard the cruise\r\nRelax and enjoy the breathtaking views of the Nile River as you sail towards Luxor\r\nDinner and overnight onboard the Nile cruise ship in Luxor\r\nDay 4: Luxor West Bank, Hot Air Balloon Ride, and Karnak Temple\r\n\r\nEarly morning optional hot air balloon ride over the West Bank of Luxor, offering panoramic views of the sunrise and the ancient monuments below (optional activity, subject to weather conditions)\r\nAfter breakfast, cross the Nile to the West Bank and visit the Valley of the Kings, where many pharaohs were buried in elaborate tombs\r\nExplore the Temple of Hatshepsut, dedicated to the female pharaoh Hatshepsut, and admire its stunning architecture\r\nVisit the Colossi of Memnon, two massive stone statues of Pharaoh Amenhotep III\r\nReturn to the cruise ship for lunch\r\nVisit the Karnak Temple Complex, a vast open-air museum and one of the largest religious sites in the world\r\nExplore the Hypostyle Hall, the Sacred Lake, and various temples dedicated to different gods and pharaohs\r\nDisembarkation and transfer to Luxor Airport or your onward destination",
@@ -927,7 +874,7 @@ namespace Travelista.Helpers
 						}
 
 					},    //18
-                            new Trip()
+                    new Trip()
 					{
 						Name = "5-Day Beirut vacation Tour",
                         Program = "Day 1: Arrival in Beirut\r\n\r\nArrive in Beirut, the vibrant capital city of Lebanon\r\nTransfer to your hotel and check-in\r\nDepending on your arrival time, explore the city at your leisure\r\nOvernight stay in Beirut\r\nDay 2: Beirut City Tour\r\n\r\nEnjoy a guided city tour of Beirut, starting with a visit to the National Museum of Beirut to explore Lebanon's rich history and heritage\r\nExplore the vibrant neighborhoods of Hamra and Gemmayzeh, known for their bustling streets, cafes, and nightlife\r\nVisit the iconic Pigeon Rocks in Raouche and stroll along the Corniche, Beirut's picturesque seaside promenade\r\nDiscover the historic Downtown area, known for its elegant French-colonial architecture and vibrant souks\r\nOptional visit to the Mohammad Al-Amin Mosque and the Roman Baths\r\nReturn to the hotel for overnight stay in Beirut\r\nDay 3: Trip to Baalbek and Anjar\r\n\r\nDepart from Beirut for a full-day excursion to the ancient cities of Baalbek and Anjar\r\nExplore the magnificent ruins of Baalbek, including the Temple of Bacchus, the Temple of Jupiter, and the Temple of Venus\r\nMarvel at the impressive columns and intricate carvings of these Roman temples, some of the best-preserved in the world\r\nContinue to the UNESCO-listed archaeological site of Anjar, built by the Umayyad Caliphate in the 8th century\r\nExplore the well-preserved ruins of this ancient trading city, including the Great Palace, Grand Mosque, and public baths\r\nReturn to Beirut for overnight stay\r\nDay 4: Byblos and Harissa\r\n\r\nDepart from Beirut for a day trip to the ancient city of Byblos, one of the oldest continuously inhabited cities in the world\r\nExplore the UNESCO-listed ruins of Byblos, including the Crusader Castle, Phoenician temples, and Roman amphitheater\r\nStroll through the charming streets of the Old Souk and browse for souvenirs and handicrafts\r\nVisit the Shrine of Our Lady of Lebanon in Harissa, a popular pilgrimage site with panoramic views of the Mediterranean coastline\r\nReturn to Beirut for overnight stay\r\nDay 5: Departure from Beirut\r\n\r\nDepending on your departure time, enjoy some free time for shopping or leisure activities in Beirut\r\nTransfer to Beirut-Rafic Hariri International Airport for your onward journey or departure",
@@ -974,7 +921,7 @@ namespace Travelista.Helpers
 							new TripReView() { Username = "Mahmoud Ali", Email = "mahmoud.ali@example.com", Message = "Indulged in luxurious spa treatments and wellness retreats. The pampering and relaxation rejuvenated both body and soul."},
 						}
 
-					}    //19
+					}     //19
 				});
             }
 			context.SaveChanges();

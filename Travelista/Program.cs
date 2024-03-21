@@ -46,7 +46,7 @@ namespace Travelista
 				});
 
 			//Adding data to database once it's created
-			//SeedData.Seed();
+			SeedData.Seed();
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

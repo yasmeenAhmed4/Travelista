@@ -1,18 +1,21 @@
 ﻿@model Travelista.ViewModel.TripViewModel
 
+
+
+
 <div class="container mt-5">
     <form id="filterForm" asp-action="Index" asp-controller="Trips" method="post">
         <div class="filter-container">
             <!-- Min Price-->
             <div class="form-group">
                 <label id="minLabel" for="MinPrice">Min Price:</label>
-                <input type="range" class="form-control-range" id="minPrice" name="MinPrice" min="100" max="10000" step="100" oninput="updateMinPriceValue()">
+                <input type="range" class="form-control-range" id="minPrice" value="20"  name="MinPrice" min="20" max="10000" step="100" oninput="updateMinPriceValue()">
             </div>
 
             <!-- Max price Area -->
             <div class="form-group">
                 <label id="maxLabel" for="MaxPrice">Max Price:</label>
-                <input type="range" class="form-control-range" id="maxPrice" name="MaxPrice" min="300" max="10000" step="200" oninput="updateMaxPriceValue()">
+                <input type="range" class="form-control-range" id="maxPrice" value="10000" name="MaxPrice" min="100" max="10000" step="200" oninput="updateMaxPriceValue()">
             </div>
 
             <!-- Trip Type Area -->
@@ -58,3 +61,6 @@
 </div>
 
 
+
+<link rel="stylesheet" href="css/TripsPage_CSS/FilterPartial.css">
+<script src="~/js/TripsPage_Js/FilterPartial_JS.js"></script>

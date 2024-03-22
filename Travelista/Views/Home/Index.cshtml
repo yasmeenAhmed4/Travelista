@@ -93,9 +93,9 @@
 
 	<!--start video area-->
 
-	<div class="video" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;">
+	<div class="video" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;overflow:hidden">
 
-		<video height="700" autoplay muted loop controls style="margin-bottom:50px;">
+	<video height="700" autoplay muted loop style="margin-bottom:50px;object-fit: cover;">
 			<source src="~/img/Egypt.mp4" type="video/mp4">
 			Your browser does not support the video tag.
 		</video>
@@ -150,7 +150,7 @@
 							</div>
 							<a asp-controller="Trip" asp-action="Details" asp-route-id="@trip.Id"><h4 class="title">@trip.Name</h4></a>
 
-							<h4 class="title">@trip.Cost S
+							<h4 class="title">@trip.Cost $
 								<span style="display:inline-block;float:right;margin-right:50px;color:red">@trip.Discount %</span>
 							</h4>
 							

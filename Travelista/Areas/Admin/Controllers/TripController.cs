@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Travelista.GenericRepository;
 using Travelista.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Travelista.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TripController : Controller
     {
         private readonly IGenericRepository<Trip> _tripRepository;

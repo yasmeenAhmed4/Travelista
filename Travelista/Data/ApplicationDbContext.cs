@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 using Travelista.Areas.Identity.Data;
 using Travelista.Models;
 
@@ -33,8 +35,47 @@ namespace Travelista.Data
                 entity.Property(e => e.FirstName).HasDefaultValue("DefaultFirstName");
                 entity.Property(e => e.LastName).HasDefaultValue("DefaultLastName");
             });
+
+            builder.Entity<IdentityRole>().HasData(
+              new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
+              new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
+            );
+
+            // Seed initial users
+            ApplicationUser adminUser = new ApplicationUser
+            {
+                Id = "1",
+                FirstName = "Mohamed",
+                LastName = "Raafat",
+                UserName = "Travelistaco",
+                NormalizedUserName = "TRAVELISTACO",
+                Email = "Travelistaco@outlook.com",
+                NormalizedEmail = "TRAVELISTACO@OUTLOOK.COM",
+                EmailConfirmed = true
+            };
+
+            PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
+            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Abc123!"); // Replace with actual password
+
+            builder.Entity<ApplicationUser>().HasData(adminUser);
+
+
+            builder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string> { UserId = adminUser.Id, RoleId = "1" } // Admin user assigned Admin role
+            );
+
+
+
+
+
+
+
+
+
+
+
             base.OnModelCreating(builder);
-		}
+        }
 
 		public DbSet<Trip> Trips { get; set; }
 		public DbSet<TripType> TripTypes { get; set; }

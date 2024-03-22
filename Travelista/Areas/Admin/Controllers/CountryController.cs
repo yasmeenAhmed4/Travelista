@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Travelista.GenericRepository;
 using Travelista.Models;
 
 namespace Travelista.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CountryController : Controller
     {
         private readonly IGenericRepository<Country> _countryRepository;

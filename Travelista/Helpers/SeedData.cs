@@ -399,10 +399,10 @@ namespace Travelista.Helpers
                         Discount = 9,
                         Images = new List<Image>()
                         {
-                            new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+1+".jpg"},
-                            new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+2+".jpg"},
-                            new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+3+".jpg"},
-                            new Image() {ImageURL = "Best of Istanbul: 1, 2 or 3-Day Private Guided Istanbul Tour "+4+".jpg"},
+                            new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+1+".jpg"},
+                            new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+2+".jpg"},
+                            new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+3+".jpg"},
+                            new Image() {ImageURL = "Best of Istanbul 1 2 or 3-Day Private Guided Istanbul Tour "+4+".jpg"},
 
                         },
                         TripReviews = new List<TripReView>()
@@ -476,10 +476,10 @@ namespace Travelista.Helpers
                         Discount = 2,
                         Images = new List<Image>()
                         {
-                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +1+".jpg"},
-                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +2+".jpg"},
-                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +3+".jpg"},
-                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon" +4+".jpg"},
+                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +1+".jpg"},
+                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +2+".jpg"},
+                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +3+".jpg"},
+                            new Image(){ ImageURL = "Faraya Ski Resort Lebanon " +4+".jpg"},
 
                         },
                         TripReviews = new List<TripReView>()
@@ -683,7 +683,7 @@ namespace Travelista.Helpers
                     },    //14
                     new Trip()
                      {
-                        Name = "7 Days Venice, Florence and Rome - Travel by Train",
+                        Name = "7 Days Venice Florence and Rome - Travel by Train",
                         Program = "Day 1: Arrival in Venice\r\n\r\nArrive in Venice, the \"City of Canals,\" by train from your previous destination\r\nCheck into your hotel and freshen up\r\nExplore the enchanting streets and canals of Venice at your leisure\r\nOptional: Take a gondola ride along the Grand Canal or enjoy a sunset walk in St. Mark's Square\r\nDinner at a local trattoria to savor Venetian cuisine\r\nOvernight stay in Venice\r\nDay 2: Venice Sightseeing\r\n\r\nBreakfast at the hotel\r\nGuided walking tour of Venice's iconic landmarks, including St. Mark's Basilica, Doge's Palace, and the Rialto Bridge\r\nVisit the lively Rialto Market to experience Venetian daily life\r\nLunch at a traditional bacaro (wine bar) for cicchetti (Venetian tapas) and local wine\r\nAfternoon visit to the picturesque islands of Murano and Burano by vaporetto (water bus)\r\nDinner at a waterfront restaurant on Burano to enjoy fresh seafood\r\nReturn to Venice for overnight stay\r\nDay 3: Travel from Venice to Florence\r\n\r\nBreakfast at the hotel\r\nCheck out from the hotel and transfer to Venice Santa Lucia Train Station\r\nTravel by train to Florence, the \"Cradle of the Renaissance\"\r\nCheck into your hotel upon arrival and freshen up\r\nGuided walking tour of Florence's historic center, including the Florence Cathedral (Duomo), Giotto's Bell Tower, and the Ponte Vecchio\r\nDinner at a trattoria in the Oltrarno district, known for its authentic Tuscan cuisine\r\nOvernight stay in Florence\r\nDay 4: Florence Exploration\r\n\r\nBreakfast at the hotel\r\nVisit the world-renowned Uffizi Gallery to admire masterpieces by Botticelli, Michelangelo, and Leonardo da Vinci\r\nLunch at a local osteria to taste Florentine specialties such as bistecca alla fiorentina (Florentine steak) and ribollita (Tuscan soup)\r\nExplore the Boboli Gardens and enjoy panoramic views of Florence from Piazzale Michelangelo\r\nFree time for shopping on Via de' Tornabuoni or visiting artisan workshops\r\nDinner at a rooftop restaurant overlooking the city skyline\r\nOvernight stay in Florence\r\nDay 5: Travel from Florence to Rome\r\n\r\nBreakfast at the hotel\r\nCheck out from the hotel and transfer to Florence Santa Maria Novella Train Station\r\nTravel by train to Rome, the \"Eternal City\"\r\nCheck into your hotel upon arrival and freshen up\r\nEvening stroll to explore Rome's charming streets and squares\r\nDinner at a traditional Roman trattoria to taste classic Roman dishes\r\nOvernight stay in Rome\r\nDay 6: Rome Sightseeing\r\n\r\nBreakfast at the hotel\r\nGuided tour of ancient Rome's landmarks, including the Colosseum, Roman Forum, and Palatine Hill\r\nVisit the Vatican City to see St. Peter's Basilica and the Vatican Museums, home to the Sistine Chapel\r\nLunch at a nearby trattoria serving Roman cuisine\r\nAfternoon visit to the Trevi Fountain and the Spanish Steps\r\nOptional: Explore the vibrant neighborhood of Trastevere and sample Roman street food\r\nFarewell dinner at a restaurant in Rome's historic center\r\nOvernight stay in Rome\r\nDay 7: Departure from Rome\r\n\r\nBreakfast at the hotel\r\nFree time for last-minute souvenir shopping or exploring Rome independently\r\nCheck out from the hotel and transfer to Rome Termini Train Station\r\nDeparture from Rome by train or continue your journey to your next destination",
                         Description = "Embark on an unforgettable 7-day journey through three of Italy's most iconic cities: Venice, Florence, and Rome. Traveling by train, you'll experience the rich history, art, and culture of each destination, from the romantic canals of Venice to the Renaissance splendor of Florence and the ancient ruins of Rome.\r\n\r\nIn Venice, explore the winding streets and historic landmarks before venturing to the colorful islands of Murano and Burano. In Florence, marvel at masterpieces of art and architecture and savor Tuscan cuisine. In Rome, delve into the city's ancient history and visit the Vatican City's treasures.\r\n\r\nWith expert guides leading the way and comfortable train travel between cities, this 7-day itinerary offers a seamless and immersive experience in Italy's most enchanting destinations.",
                         Cost =  1249.00,
@@ -697,23 +697,23 @@ namespace Travelista.Helpers
                         {
                             new Image()
                             {
-                                ImageURL = "7 Days Venice, Florence and Rome - Travel by Train "+1+".jpg"
+                                ImageURL = "7 Days Venice Florence and Rome - Travel by Train "+1+".jpg"
                             },
                             new Image()
                             {
-                                ImageURL = "7 Days Venice, Florence and Rome - Travel by Train "+2+".jpg"
+                                ImageURL = "7 Days Venice Florence and Rome - Travel by Train "+2+".jpg"
                             },
                             new Image()
                             {
-                                ImageURL = "7 Days Venice, Florence and Rome - Travel by Train "+3+".jpg"
+                                ImageURL = "7 Days Venice Florence and Rome - Travel by Train "+3+".jpg"
                             },
                             new Image()
                             {
-                                ImageURL = "7 Days Venice, Florence and Rome - Travel by Train "+4+".jpg"
+                                ImageURL = "7 Days Venice Florence and Rome - Travel by Train "+4+".jpg"
                             },
                             new Image()
                             {
-                                ImageURL = "7 Days Venice, Florence and Rome - Travel by Train "+5+".jpg"
+                                ImageURL = "7 Days Venice Florence and Rome - Travel by Train "+5+".jpg"
                             }
                         },
                         TripReviews = new List<TripReView>()
@@ -816,7 +816,7 @@ namespace Travelista.Helpers
 					},    //17
                     new Trip()
 					 {
-						Name = "4-Day Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel",
+						Name = "Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel",
                         Program = "Day 1: Arrival in Aswan\r\n\r\nArrive in Aswan, known for its beautiful Nile River scenery and ancient monuments\r\nTransfer to your Nile cruise ship and check-in\r\nVisit the majestic Philae Temple dedicated to the goddess Isis, situated on an island in the Nile\r\nExplore the Aswan High Dam, an impressive feat of modern engineering\r\nEnjoy a leisurely sail on a felucca, a traditional Egyptian sailboat, around Elephantine Island and the Botanical Gardens\r\nDinner and overnight onboard the Nile cruise ship in Aswan\r\nDay 2: Abu Simbel Excursion and Sail to Kom Ombo\r\n\r\nEarly morning departure for a visit to the iconic Abu Simbel Temples, built by Ramses II\r\nMarvel at the colossal statues and intricate carvings of these ancient temples, which were relocated to higher ground to avoid being submerged by Lake Nasser\r\nReturn to the Nile cruise ship for breakfast and continue sailing towards Kom Ombo\r\nLunch onboard the cruise\r\nVisit the Temple of Kom Ombo, dedicated to the gods Sobek and Horus, and admire its unique double design\r\nSail to Edfu\r\nDinner and overnight onboard the Nile cruise ship in Edfu\r\nDay 3: Edfu Temple and Sail to Luxor\r\n\r\nAfter breakfast, visit the Temple of Horus in Edfu, one of the best-preserved ancient temples in Egypt\r\nExplore the grand halls, sanctuaries, and courtyards of this impressive temple dedicated to the falcon god Horus\r\nReturn to the cruise ship and sail towards Luxor\r\nLunch onboard the cruise\r\nRelax and enjoy the breathtaking views of the Nile River as you sail towards Luxor\r\nDinner and overnight onboard the Nile cruise ship in Luxor\r\nDay 4: Luxor West Bank, Hot Air Balloon Ride, and Karnak Temple\r\n\r\nEarly morning optional hot air balloon ride over the West Bank of Luxor, offering panoramic views of the sunrise and the ancient monuments below (optional activity, subject to weather conditions)\r\nAfter breakfast, cross the Nile to the West Bank and visit the Valley of the Kings, where many pharaohs were buried in elaborate tombs\r\nExplore the Temple of Hatshepsut, dedicated to the female pharaoh Hatshepsut, and admire its stunning architecture\r\nVisit the Colossi of Memnon, two massive stone statues of Pharaoh Amenhotep III\r\nReturn to the cruise ship for lunch\r\nVisit the Karnak Temple Complex, a vast open-air museum and one of the largest religious sites in the world\r\nExplore the Hypostyle Hall, the Sacred Lake, and various temples dedicated to different gods and pharaohs\r\nDisembarkation and transfer to Luxor Airport or your onward destination",
                         Description = "Embark on a magical journey along the Nile River from Aswan to Luxor aboard a luxurious cruise ship. Explore ancient temples, marvel at colossal statues, and witness breathtaking landscapes as you sail through Egypt's timeless wonders. Highlights include a visit to the legendary Abu Simbel Temples, a hot air balloon ride over Luxor, and a tour of the magnificent Karnak Temple Complex. Experience the beauty and splendor of Egypt's ancient treasures on this unforgettable 4-day Nile cruise adventure.",
 						Cost =  500.00,
@@ -824,29 +824,29 @@ namespace Travelista.Helpers
 						CountryId = 1,
 						TripTypeID = 3,
 						Duration = 4,
-						Capacity = 5,
+						Capacity = 2,
 						StartDate = new DateTime(2024,04,02),
 						Images = new List<Image>()
 						{
 							new Image()
 							{
-								ImageURL = "4-Day Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel "+1+".jpg"
+								ImageURL = "Nile Cruise from Aswan to Luxor "+1+".jpg"
 							},
 							new Image()
 							{
-								ImageURL = "4-Day Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel "+2+".jpg"
+								ImageURL = "Nile Cruise from Aswan to Luxor "+2+".jpg"
 							},
 							new Image()
 							{
-								ImageURL = "4-Day Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel "+3+".jpg"
+								ImageURL = "Nile Cruise from Aswan to Luxor "+3+".jpg"
 							},
 							new Image()
 							{
-								ImageURL = "4-Day Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel "+4+".jpg"
+								ImageURL = "Nile Cruise from Aswan to Luxor "+4+".jpg"
 							},
 							new Image()
 							{
-								ImageURL = "4-Day Nile Cruise from Aswan to Luxor With Balloon and Abu Simbel "+5+".jpg"
+								ImageURL = "Nile Cruise from Aswan to Luxor "+5+".jpg"
 							}
 						},
 						TripReviews = new List<TripReView>()
@@ -885,7 +885,7 @@ namespace Travelista.Helpers
 						TripTypeID = 3,
                         Discount = 20,
 						Duration = 5,
-						Capacity = 15,
+						Capacity = 2,
 						StartDate = new DateTime(2024,05,28),
 						Images = new List<Image>()
 						{

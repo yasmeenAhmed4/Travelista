@@ -7,7 +7,7 @@ using Travelista.ViewModel;
 
 namespace Travelista.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

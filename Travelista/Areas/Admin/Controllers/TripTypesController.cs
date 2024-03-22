@@ -4,9 +4,11 @@ using Travelista.GenericRepository;
 using Travelista.Models;
 using Travelista.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Travelista.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TripTypesController : Controller
     {
 

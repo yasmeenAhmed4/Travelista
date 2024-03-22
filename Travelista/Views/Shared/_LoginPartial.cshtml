@@ -30,9 +30,12 @@ CSS
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li @* class="nav-item" *@>
-        <a class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
+   if(!User.IsInRole("Admin"))
+   {
+        <li @* class="nav-item" *@>
+            <a class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        </li>
+   }
     <li>
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button type="submit" class="nav-link btn btn-link" style="color: #ffffff; font-size: 14px; border: none; transition: color 0.3s;"

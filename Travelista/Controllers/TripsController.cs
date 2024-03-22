@@ -24,7 +24,7 @@ namespace Travelista.Controllers
             _intialPredicates = new List<Expression<Func<Trip, bool>>>
                                 {
                                     trip => trip.StartDate > DateTime.Now.Date,
-                                    trip=>trip.Capacity>0
+                                    trip=>trip.Capacity > 0
                                 };
         }
 

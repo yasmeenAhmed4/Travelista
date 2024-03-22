@@ -433,7 +433,7 @@ namespace Travelista.Helpers
                     {
                         Name= "Best of Istanbul private tour pick up and drop off included",
                         Cost = 72.44,
-                        StartDate= new DateTime().Date,
+                        StartDate= new DateTime(2024,06,01),
                         Description="Step into the golden ages of the Ottoman, Byzantine and Roman empires with a full-day, private tour through Istanbul’s Old City. See the monuments and historic sites of Hippodrome Square, where Roman charioteers raced in ancient times, then explore St. Sophia's stunning architecture and museum. See the iconic tiles, mosaics and slender minarets of the Blue Mosque and browse traditional handicrafts inside the Grand Bazaar. Learn about the lives of sultans and courtiers at Topkapi Palace, which contains a remarkable collection of Turkey's greatest holy relics, imperial treasures and artwork. Full-day, private tour of Istanbul See the city's most important sites Enjoy the flexibility of a private tour Learn about local history and culture Hotel Pick up and Drop off included What's Included\r\n\r\nRead more about Best of Istanbul private tour pick up and drop off included - https://www.viator.com/tours/Istanbul/Old-City-Private-Day-Tour-From-Istanbul/d585-21011P2?mcid=56757",
                         Program = "Blue Mosque interior visit of the Blue Mosque 30 minutes • Admission Ticket Free 2 Kapali Carsi visit the famous grand bazaar the biggest shopping mall of the europe 45 minutes • Admission Ticket Free 3 Hagia Sophia Mosque interior visit with your guide between 45 up to 90 min time 45 minutes • Admission Ticket Not Included 4 Hippodrome walk on the streets of ancient hipoddrome and see the ancient Columns and obelis 30 minutes • Admission Ticket Free 5 Topkapi Palace the largest museum of the city and house of sultans for 300 years Closed on Tuesday replaced with Underground Basilica Cistern 2 hours • Admission Ticket Not Included Sultanahmet District (Pass By) walk on the old streets of the area Blue Mosque (Pass By) Visit the ancient Roman Hippodrome in front of Blue Mosque\r\n\r\nRead more about Best of Istanbul private tour pick up and drop off included - https://www.viator.com/tours/Istanbul/Old-City-Private-Day-Tour-From-Istanbul/d585-21011P2?mcid=56757",
                         Capacity = 40,
@@ -466,7 +466,7 @@ namespace Travelista.Helpers
                     {
                         Name="Faraya Ski Resort Lebanon",
                         Cost = 60.00,
-                        StartDate=new DateTime(20/5/2024).Date,
+                        StartDate=new DateTime(2024,08,01),
                         Description="Lebanon’s Mzaar Kfardebian offers the largest ski area in the Middle East, with 25 chairlifts, 50 runs, and around 50 miles (80 kilometers) of slopes. There’s no public transport but you can save yourself the expense of a taxi or car hire with this small-group shuttle service. Your driver will collect you from your Beirut hotel or rental in the morning, drive you to the resort, then bring you back. Spend the day at the Mzaar Kfardebian ski resort in Faraya Enjoy lively bars, interesting restaurants, and your choice of ski runs Numbers are capped at 15 travelers, so there won’t be too many stops Picks up and drops direct to hotels, homes, and rentals all over Beirut\r\n\r\nRead more about Faraya Ski Resort Lebanon - https://www.viator.com/tours/Beirut/Faraya-Ski-Resort-Lebanon/d4215-72500P30?mcid=56757",
                         Program = "You will be picked up from your Hotel or Airbnb Address in Beirut Between 8:30am - 9:00am, brought to the departing point, and we will head to Mzaar Ski Resort which is widely known as the Middle East’s largest ski resort. With a legacy of ski culture and mountain energy and a spirit of adventure, Mzaar has driven locals and tourists to call it home. Beyond it’s 25 chairlifts, 50 runs and 100km of terrain, Mzaar is home to an entertainment scene with eclectic restaurants, boisterous bars, topping the list of things to do. Everyone will find no shortage of way to create lasting memories during a day, weekend or holiday. By 4:00 PM everyone has to be back in the Bus to head back to beirut.\r\n\r\nRead more about Faraya Ski Resort Lebanon - https://www.viator.com/tours/Beirut/Faraya-Ski-Resort-Lebanon/d4215-72500P30?mcid=56757",
                         Capacity = 60,
@@ -518,7 +518,7 @@ namespace Travelista.Helpers
                         Duration = 4,
                         Capacity = 100,
                         IsTrend = true,
-                        StartDate = new DateTime(2024/09/02).Date,
+                        StartDate = new DateTime(2024 , 09, 01),
                         Images = new List<Image>()
                         {
                             new Image()

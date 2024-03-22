@@ -27,7 +27,7 @@
 </section>
 <!-- End banner Area -->
 
-
+<!--start trending trips section-->
 <section class="recent-blog-area section-gap">
 	<div class="container">
 
@@ -72,7 +72,7 @@
 
 							<div style="display:flex;justify-content:space-between;">
 								<h6 class="date">@trip.StartDate.ToString("MM/dd/yyyy")</h6>
-								<a onclick="addToWishList(event , @trip.Id)">
+								<a onclick="addToWishList(event , @trip.Id)" style="text-align:center;">
 									<i style="color: #fed700;font-size:25px;padding:7px;" class="fa fa-heart"></i>
 								</a>
 							</div>
@@ -89,19 +89,13 @@
 	</div>
 </section>
 
-
-
-	<!--start video area-->
-
+<!--start video area-->
 	<div class="video" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;overflow:hidden">
 
 	<video height="700" autoplay muted loop style="margin-bottom:50px;object-fit: cover;">
 			<source src="~/img/Egypt.mp4" type="video/mp4">
 			Your browser does not support the video tag.
 		</video>
-
-
-
 	<!--Discover Egypt-->
 	<form asp-action="Index" asp-controller="Trips" method="post">
 		<input type="hidden" name="Country" value="Egypt" />
@@ -156,7 +150,7 @@
 							
 							<div style="display:flex;justify-content:space-between;">
 								<h6 class="date">@trip.StartDate.ToString("MM/dd/yyyy")</h6>
-								<a asp-area="" onclick="addToWishList(event , @trip.Id)">
+								<a onclick="addToWishList(event , @trip.Id)" style="text-align:center;">
 									<i style="color: #fed700;font-size:25px;padding:7px;" class="fa fa-heart"></i>
 								</a>
 							</div>

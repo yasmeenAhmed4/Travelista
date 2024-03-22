@@ -64,7 +64,7 @@ namespace Travelista.Controllers
 		}
 		
 		[HttpPost]
-		public IActionResult Charge(int tripID , long Amount, string stripeEmail, string stripeToken)
+		public IActionResult Charge(int tripID , long Amount , int capacity, string stripeEmail, string stripeToken)
 		{
 
 			Booking order = new();
@@ -93,7 +93,7 @@ namespace Travelista.Controllers
 			{
 				Repository.Create(order);
 				var selectedTrip = TripRepository1.GetAll().Where(i => i.Id == tripID).FirstOrDefault();
-				selectedTrip.Capacity -= 1;
+				selectedTrip.Capacity -= capacity;
 				TripRepository1.Update(selectedTrip);
 				return RedirectToAction("PaymentSuccess", "Booking");
 			}

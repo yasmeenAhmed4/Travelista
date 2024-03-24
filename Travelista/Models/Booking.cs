@@ -17,7 +17,7 @@ namespace Travelista.Models
 		[DataType(DataType.Currency)]
 		public double Cost { get; set; }
 		public DateTime BookDate { get; set; }
-
+		public string? Status { get; set; }
 		[Required]
 		[ForeignKey("ApplicationUser")]
 		public string UserId { get; set; }

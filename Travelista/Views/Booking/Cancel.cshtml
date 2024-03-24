@@ -57,17 +57,25 @@
 				</div>
 				<div class="col-lg-6 insurence-right">
 					<h6 class="text-uppercase">Need to know</h6>
-					<h1>Insurance for journey</h1>
+					<h1>Refund Policy</h1>
 					<p>you can get a refund as long as you cancel the booking more than a week before the trip date</p>
 					<div class="list-wrap">
 						@if(Model.Trip?.StartDate.Date <= DateTime.Now.Date.AddDays(7))
 						{
-							<h4>Non-refundable</h4>
-							<a href="#" class="genric-btn danger">confirm</a>
+							<div style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
+								<h4>Non-refundable</h4>
+								<br><br>
+								<a href="#" class="genric-btn danger">confirm</a>
+							</div>
 						}
 						else
 						{
-							<a href="#" class="genric-btn success">confirm</a>
+							<div style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
+								confirm cancellation and get a refund
+								<br><br>
+								<a href="#" class="genric-btn success">confirm</a>
+							</div>
+							
 						}
 					</div>
 				</div>
@@ -82,7 +90,7 @@
 				<div class="col-lg-6 insurence-left">
 					
 					<div class="list-wrap">
-						
+						@Model.Trip?.Name
 					</div>
 				</div>
 				<div class="col-lg-6 insurence-right">

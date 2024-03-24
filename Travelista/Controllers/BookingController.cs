@@ -28,10 +28,10 @@ namespace Travelista.Controllers
 			TripRepository1 = tripRepository1;
 			_userManager = userManager;
 		}
-		public ICollection<Booking> Index()
+		public IActionResult Index()
 		{
 
-			return Repository.GetAll().Include(o => o.ApplicationUser).ToList();
+			return View(Repository.GetAll().ToList());
 		}
 		// trip id
 		public async Task<IActionResult> CheckOut(int id)
@@ -69,7 +69,7 @@ namespace Travelista.Controllers
 
 			Booking order = new();
 			order.TripID = tripID;
-			order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+			order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 			order.BookDate = DateTime.Now;
 
 			var discountAmount = (TripRepository1.GetById(tripID).Discount / 100) * Amount;
@@ -106,6 +106,11 @@ namespace Travelista.Controllers
         {
 			return View();
         }
+		public IActionResult Cancel(int id)
+		{
+			var canceled = Repository.GetById(id);
+			return View(canceled);
+		}
 	}
 }
 

@@ -1,5 +1,4 @@
-﻿@model List<WishlistItem>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <head>
 	<!-- Mobile Specific Meta -->
@@ -31,22 +30,23 @@
 	<link rel="stylesheet" href="css/owl.carousel.css">
 	<link rel="stylesheet" href="css/main.css">
 	<style>
-		a{
+		a {
 			text-decoration: none;
-			color:dimgrey;
+			color: dimgrey;
 		}
-		a.x-icon{
-			color:grey;
-			font-size:large;
-			margin-left:200px;
-		}
-		a:hover{
-			color:orange;
-		}
+
+			a.x-icon {
+				color: grey;
+				font-size: large;
+				margin-left: 200px;
+			}
+
+			a:hover {
+				color: orange;
+			}
 	</style>
 </head>
 <body>
-	
 	<!-- start banner Area -->
 	<section class="relative about-banner" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -54,23 +54,25 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
 					<h1 class="text-white">
-						WishList
+						Your Bookings
 					</h1>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
-	
 	<div class="whole-wrap">
 		<div class="container">
 			<div class="section-top-border">
+				<h3 class="mb-30"></h3>
 				<div class="progress-table-wrap">
 					<div class="progress-table">
 						<div class="table-head">
 							<div class="serial">#</div>
-							<div class="country">Country</div>
-							<div class="visit">Trip</div>
+							<div class="visit">Booking Date</div>
+							<div class="country">Trip</div>
+							<div class="visit">Total</div>
+
 
 						</div>
 						@{
@@ -79,14 +81,25 @@
 						@foreach (var item in Model)
 						{
 							<div class="table-row">
+
 								<div class="serial">@i</div>
-								<div class="country"> <img src="~/img/elements/@item.Trip?.Country?.Name .png" alt="flag" width="60" height="40"></div>
-								<div class="visit"><a href="/Trip/Details/@item.TripId">@item.Trip?.Name</a></div>
-								<div class="percentage">
-									<div class="progress">
-										<div class="visit"><a href="/WishList/RemoveFromWishList/@item.TripId" class="x-icon"><i class="fa fa-times" aria-hidden="true"></i></a></div>
-									</div>
-								</div>
+
+
+
+								<div class="visit">@item.BookDate.ToString("MM/dd/yyyy")</div>
+
+								<div class="country"><a href="/Trip/Details/@item.TripID">@item.Trip?.Name</a></div>
+
+								
+
+
+								<div class="visit">@item.Cost</div>
+
+
+								@if (@item.Trip?.StartDate > DateTime.Now.Date)
+								{
+									<div class="visit"><a href="/Booking/Cancel/@item.Id" class="genric-btn danger">Cancel</a></div>
+								}
 							</div>
 							i++;
 						}
@@ -98,7 +111,7 @@
 		</div>
 	</div>
 
-
+	
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>

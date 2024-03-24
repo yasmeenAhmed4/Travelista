@@ -11,7 +11,6 @@ using Stripe;
 using Travelista.Services;
 using Travelista.Helpers;
 
-
 namespace Travelista
 {
 	public class Program
@@ -19,11 +18,13 @@ namespace Travelista
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
-			
+
 			// Add services to the container.
-			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 			builder.Services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(connectionString));
+				
+					options.UseSqlServer(connectionString).UseLazyLoadingProxies());
+
 			builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -38,7 +39,9 @@ namespace Travelista
 				})
 				.AddFacebook(options =>
 				{
-					builder.Configuration.Bind("Authentication:Facebook", options);
+					//builder.Configuration.Bind("Authentication:Facebook", options);
+					options.ClientId = "1415721902392479";
+					options.ClientSecret = "08178782ab513c4a19fb8e194b075d62";
 				})
 				.AddMicrosoftAccount(options =>
 				{

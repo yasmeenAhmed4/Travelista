@@ -24,18 +24,13 @@ namespace Travelista.Controllers
 		}
 		public IActionResult Index()
 		{
-			var model = wishlistRepo.GetAll()
-				.Include(i => i.Trip)
-				.ThenInclude(i => i.Country)
-				.AsEnumerable()
-				.Where(i => i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
-				.ToList();
+			var model = wishlistRepo.GetAll().Where(i => i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).ToList();
 
 			return View(model);
 		}
 		public IActionResult AddToWishList(int id)
 		{
-			var existingItem = wishlistRepo.GetAll().AsEnumerable().FirstOrDefault(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+			var existingItem = wishlistRepo.GetAll().Where(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).FirstOrDefault();
 
 			if (existingItem == null)
 			{
@@ -51,7 +46,7 @@ namespace Travelista.Controllers
 
 		public IActionResult RemoveFromWishList(int id) 
 		{
-			var item = wishlistRepo.GetAll().AsEnumerable().Where(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).FirstOrDefault();
+			var item = wishlistRepo.GetAll().Where(i => i.TripId == id && i.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier)).FirstOrDefault();
 			if(item !=null)
 			{
 				wishlistRepo.Delete(item);

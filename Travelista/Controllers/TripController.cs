@@ -19,14 +19,8 @@ namespace Travelista.Controllers
 		}
 		public IActionResult Details(int id)
         {
-            ViewBag.PopularTrips = tripRepo.GetAll()
-                                            .Include(i => i.Images)
-                                            .Include(i=>i.Country)
-										    .AsEnumerable()
-										    .Where(i => i.IsTrend == true)
-										    .ToList();
+            ViewBag.PopularTrips = tripRepo.GetAll().Where(i => i.IsTrend == true).ToList();
 
-			ViewBag.Reviews = reviewRepo.GetAll().AsEnumerable().Where(i => i.TripId == id).ToList();
             var model = tripRepo.GetById(id);
             return View(model);
         }

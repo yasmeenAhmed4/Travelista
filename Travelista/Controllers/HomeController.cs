@@ -23,7 +23,7 @@ namespace Travelista.Controllers
 			return View(AllTrendingTrip);
 		}
 
-		public IActionResult Privacy()
+		public IActionResult About()
 		{
 			return View();
 		}

@@ -67,8 +67,8 @@
 			font-size: 20px;
 			color: #242424;
 			width: 45px;
-			text-align: center;
-			height: 45px;
+			text-align: justify;
+			height: 50px;
 			line-height: 45px;
 			display: block;
 			transition: all 0.3s ease-in-out;
@@ -121,7 +121,12 @@
 						</li>
 
 						<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+						<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
 						<li><a asp-area="" asp-controller="Contact" asp-action="SendMessage">Contact</a></li>
+						@if(User.Identity.IsAuthenticated && User.IsInRole("User"))
+						{
+							<li><a asp-area="" asp-controller="Booking" asp-action="Index">Bookings</a></li>
+						}
 						<li><a asp-area="" asp-controller="Trips" asp-action="Index">Trips</a></li>
 						@if (@User.IsInRole("Admin"))
 						{

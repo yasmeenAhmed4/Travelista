@@ -170,7 +170,7 @@
 
 					<div class="comments-area">
 						<h4>Reviews</h4>
-						@foreach (var item in ViewBag.Reviews)
+						@foreach (var item in Model.TripReviews)
 						{
 							<div class="comment-list">
 								<div class="single-comment justify-content-between d-flex">
@@ -240,15 +240,6 @@
 	</section>
 	<!-- End post-content Area -->
 	
-
-
-	<script>
-			document.forms[0].onsubmit = function(){
-				setTimeout(function () {
-				document.forms[0].reset();
-				} , 1000)
-			};
-	</script>
 	<script>
 		function addToWishList(event, id) {
 			event.preventDefault();
@@ -272,6 +263,13 @@
 			});
 
 		}
+	</script>
+	<script>
+		document.forms[0].onsubmit = function () {
+			setTimeout(function () {
+				document.forms[0].reset();
+			}, 2000)
+		};
 	</script>
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="js/popper.min.js"></script>

@@ -14,7 +14,7 @@ namespace Travelista.Data
 		{
 		}
 
-		public ApplicationDbContext()
+		public ApplicationDbContext():base()
 		{
 		}
 
@@ -55,24 +55,14 @@ namespace Travelista.Data
             };
 
             PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
-            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Abc123!"); // Replace with actual password
+            adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Abc123!"); 
 
             builder.Entity<ApplicationUser>().HasData(adminUser);
 
 
             builder.Entity<IdentityUserRole<string>>().HasData(
-                new IdentityUserRole<string> { UserId = adminUser.Id, RoleId = "1" } // Admin user assigned Admin role
+                new IdentityUserRole<string> { UserId = adminUser.Id, RoleId = "1" } // Admin user assigned A
             );
-
-
-
-
-
-
-
-
-
-
 
             base.OnModelCreating(builder);
         }

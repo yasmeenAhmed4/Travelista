@@ -20,6 +20,6 @@ namespace Travelista.Models
 		[Required]
 		public string? Email { get; set; }
 
-		public Trip? Trip { get; set; }
+		public virtual Trip? Trip { get; set; }
 	}
 }

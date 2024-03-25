@@ -49,28 +49,22 @@
 						<label>Email address *</label>
 						<input type="email" class="form-control" name="BuyerEmail" required value="@ViewBag.Email">
 
-						<div class="col-sm-6">
-							<label>Group Size *</label>
-							<input type="number" min="1" max="@Model.Capacity" value="1" class="form-control" name="Group-Size" required>
-						</div>
-
-								<table class="table table-summary">
-									<thead>
-										<tr>
-											@* <th>Trip</th>
-											<th>Total</th> *@
-										</tr>
-										
-									</thead>
-
+						@if(Model.TripTypeID == 3)
+						{
+							<div class="col-sm-6">
+								<label>Group Size *</label>
+								<input type="number" value="2" class="form-control" name="Group-Size" disabled>
+							</div>
+						}else
+						{
+							<div class="col-sm-6">
+								<label>Group Size *</label>
+								<input type="number" min="1" max="@Model.Capacity" value="1" class="form-control" name="Group-Size" required>
+							</div>
+						}
+						<br><br>
 							<table class="table table-summary">
-								<thead>
-									<tr>
-										<th>Trip</th>
-										<th>Total</th>
-									</tr>
-
-								</thead>
+								
 
 								<tbody>
 
@@ -92,7 +86,7 @@
 							<div id="paypal-btn" style="width:500px"></div>
 							
 														
-							<br/>
+							<br>
 							@if(ViewBag.found == true)
 							{
 								<form asp-action="Charge" asp-controller="Booking" method="POST">

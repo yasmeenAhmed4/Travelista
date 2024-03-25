@@ -64,6 +64,8 @@
 						{
 							<div style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
 								<h4>Non-refundable</h4>
+								<a asp-area="" asp-controller="Booking" asp-action="CancelBookingWithoutRefund" asp-route-id="@Model.Id"
+								   class="btn btn-danger cancel-booking-btn">Cancel this Booking</a>
 								<br><br>
 								<a href="#" class="genric-btn danger">confirm</a>
 							</div>
@@ -73,7 +75,8 @@
 							<div style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
 								confirm cancellation and get a refund
 								<br><br>
-								<a href="#" class="genric-btn success">confirm</a>
+								<a asp-area="" asp-controller="Booking" asp-action="CancelBooking" asp-route-id="@Model.Id"
+								   class="btn btn-danger cancel-booking-btn">Confirm</a>
 							</div>
 							
 						}

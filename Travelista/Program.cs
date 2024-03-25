@@ -47,17 +47,25 @@ namespace Travelista
 				{
 					builder.Configuration.Bind("Authentication:Microsoft", options);
 				});
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(1000);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
-			//Adding data to database once it's created
-			SeedData.Seed();
+            builder.Services.AddHttpContextAccessor();
+            //Adding data to database once it's created
+            SeedData.Seed();
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             builder.Services.AddTransient<IEmailSender, EmailSender>();
+           
 
-			//Stripe
-			StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+            //Stripe
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 			var app = builder.Build();
 			
@@ -79,8 +87,9 @@ namespace Travelista
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
+            app.UseSession();
 
-			app.MapAreaControllerRoute(
+            app.MapAreaControllerRoute(
 			name: "Admin",
 			areaName: "Admin",
 			pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");

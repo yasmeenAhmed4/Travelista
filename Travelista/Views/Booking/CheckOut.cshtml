@@ -52,8 +52,9 @@
 						@if(Model.TripTypeID == 3)
 						{
 							<div class="col-sm-6">
-								<label>Group Size *</label>
-								<input type="number" value="2" class="form-control" name="Group-Size" disabled>
+								<br />
+								<label>Group Size : 2</label>
+								<input type="number" value="1" class="form-control" name="Group-Size" disabled style="display: none;">
 							</div>
 						}else
 						{
@@ -102,8 +103,9 @@
 									
 									</script> *@
 
-								<input type="submit" value="Go TO CheckOut" class="stripe-button" 
-								style=" color: #fed700;font-size:25px;padding:7px;" />
+								<input type="submit" value="Go TO CheckOut" class="stripe-button" style="background-color: #fed700; color: #fff;
+									font-size: 20px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; text-transform: uppercase;">
+
 
 								</form>
 							}
@@ -174,6 +176,11 @@
 		var currentTotal = parseFloat(total.textContent.trim().replace(/[^0-9.-]+/g, ""));
 		updateStripeAmount(currentTotal);
 	});
+
+		document.getElementById("groupSizeInput").value = 1;
+		document.getElementById("groupSizeInput").addEventListener("input", function () {
+			this.value = 2;
+		});
 
 </script>
 }
